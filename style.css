@@ -137,3 +137,15 @@ a {
     -webkit-margin-end: 0px;
     font-weight: bold;
 }
+
+ .textbox { 
+     padding: 3px; 
+     border-width: 2px; 
+     border-color: #cccccc; 
+     border-style: solid; 
+     font-size: 25px;  
+ } 
+
+.textbox:focus { 
+    outline: none;
+} 
