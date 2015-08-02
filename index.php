@@ -13,8 +13,15 @@
 	</head>
 	<body>
 		<header>
-			<h1>
-				<a href="/">Le Nouveau Minecraft</a>
+			
+            <h1>
+                <div id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+				
+                <a href="/">Le Nouveau Minecraft</a>
 			</h1>
 		</header>
 		<article>
