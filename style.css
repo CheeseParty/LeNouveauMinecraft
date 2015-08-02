@@ -55,7 +55,7 @@ header h1 a {
 	top: -100px;
 	width: 200px;
 	text-align: center;
-	left: calc(10% - 20px);
+	left: 0;
 	background: #25885B;
 	transition: all .3s ease;
     /*box-shadow: 0px 1px 8px -2px #000;*/

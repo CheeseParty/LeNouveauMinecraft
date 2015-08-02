@@ -45,20 +45,28 @@
 			});
 		}
 
+		function moveMenu() {
+			document.getElementById("menu").style.left = window.getComputedStyle(document.querySelector("article")).marginLeft;
+		}
+
 		function initMenu() {
 			document.getElementById("hamburger").addEventListener('click', function(){
 				var menu = document.getElementById("menu");
 				if(window.getComputedStyle(menu).top == "-100px") {
-					menu.style.top = "75px";
+					menu.style.top = "70px";
 				} else {
 					menu.style.top = "-100px";
 				}
+			});
+			window.addEventListener('resize', function(){
+				moveMenu();
 			});
 		}
 
 		window.onload = function() {
 			initHeader();
 			initMenu();
+			moveMenu();
 			var article = document.querySelector('article');
 			for(var i = 0; i < 2; i++) {
 				var copy = article.cloneNode(true);
