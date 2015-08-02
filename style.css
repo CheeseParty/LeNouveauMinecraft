@@ -10,6 +10,7 @@ header {
 	background: #25885B;
 	margin-bottom: 1em;
 	position: fixed;
+	z-index: 99;
 	width: 100%;
 	top: 0;
 }
@@ -31,24 +32,52 @@ header h1 a {
     padding-left:10px;
 }
 
-#hamburger{
-    height:24px;
-    display:inline-block;
-    width:30px;
+#hamburger {
+    height: 24px;
+    display: inline-block;
+    width: 30px;
     transition: transform .3s ease;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-#hamburger span{
-    height:4px;
-    background-color:#fff;
-    display:block;
-    
+#hamburger span {
+    height: 4px;
+    background-color: #fff;
+    display: block;
 }
 
-#hamburger span:nth-child(2){
-    margin:6px 0;
+#hamburger span:nth-child(2) {
+    margin: 6px 0;
 }
+
+#menu {
+	position: fixed;
+	top: -100px;
+	width: 200px;
+	text-align: center;
+	left: calc(10% - 20px);
+	background: #25885B;
+	transition: all .3s ease;
+    /*box-shadow: 0px 1px 8px -2px #000;*/
+}
+
+#menu span {
+	transition: background .2s ease;
+	cursor: pointer;
+	display: block;
+	padding: 10px 20px;
+	color: #FFF;
+	font-size: 17pt;
+}
+
+#menu span:last-child {
+	border-bottom: 0;
+}
+
+#menu span:hover {
+    background: #1F774F;
+}
+
 article {
 	padding: 0 40px;
 	background: #fff;

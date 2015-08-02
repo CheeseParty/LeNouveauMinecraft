@@ -13,17 +13,20 @@
 	</head>
 	<body>
 		<header>
-			
-            <h1>
-                <div id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-				
-                <a href="/">Le Nouveau Minecraft</a>
+			<h1>
+				<div id="hamburger">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<a href="/">Le Nouveau Minecraft</a>
 			</h1>
 		</header>
+		<div id="menu">
+			<span>Maps</span>
+			<span>Mods</span>
+			<span>Plugins</span>
+		</div>
 		<article>
 			<h2>Des péniches dans l'espace</h2>
 			<div><img src="https://upload.wikimedia.org/wikipedia/pt/7/71/Minecraft2_logo.png"></div>
@@ -34,13 +37,28 @@
 			window.addEventListener('scroll', function(){
 				if(document.body.scrollTop > 0) {
 					document.querySelector('header').style.background = "grey";
+					document.querySelector('#menu').style.background = "grey";
 				} else {
 					document.querySelector('header').style.background = "#25885B";
+					document.querySelector('#menu').style.background = "#25885B";
 				}
 			});
 		}
+
+		function initMenu() {
+			document.getElementById("hamburger").addEventListener('click', function(){
+				var menu = document.getElementById("menu");
+				if(window.getComputedStyle(menu).top == "-100px") {
+					menu.style.top = "75px";
+				} else {
+					menu.style.top = "-100px";
+				}
+			});
+		}
+
 		window.onload = function() {
 			initHeader();
+			initMenu();
 			var article = document.querySelector('article');
 			for(var i = 0; i < 2; i++) {
 				var copy = article.cloneNode(true);
