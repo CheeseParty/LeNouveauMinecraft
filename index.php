@@ -19,15 +19,19 @@
 					<span></span>
 					<span></span>
 				</div>
-				<a href="/">Le Nouveau Minecraft</a>
+				<a href="index.php">Le Nouveau Minecraft</a>
+                <a class="register_link" href="gate.php">Inscription</a>
 			</h1>
+            
+            
 		</header>
 		<div id="menu">
 			<span>Maps</span>
 			<span>Mods</span>
 			<span>Plugins</span>
 		</div>
-		<article>
+		
+        <article>
 			<h2>Des péniches dans l'espace</h2>
 			<div><img src="https://upload.wikimedia.org/wikipedia/pt/7/71/Minecraft2_logo.png"></div>
 			<p>"On l'a fait", se réjouissait ce matin le président Obama, en observant le convoi de péniches décoller. Sa réaction a conduit à l'indignation du côté républicain, qui réclame désormais des excuses pour "propos racistes" et "calomnies". En effet, les péniches étaient noires et d'une taille...</p>
