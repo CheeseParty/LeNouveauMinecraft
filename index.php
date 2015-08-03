@@ -2,10 +2,11 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Le Nouveau Minecraft - News sur le jeu de type "sandbox"</title>
+		<title>Nether News - News sur le jeu de type "sandbox"</title>
 		<link rel="stylesheet" href="style.css">
 		<link href='http://fonts.googleapis.com/css?family=Merriweather:700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
 
 		<!-- Métadonnées pour SEO -->
 		
@@ -20,7 +21,7 @@
 					<span></span>
 					<span></span>
 				</div>
-				<a id="title" href="index.php"><h1>Le Nouveau Minecraft</h1></a>
+				<a id="title" href="index.php"><h1>Nether News</h1></a>
 				<a id="login" href="gate.php">
 					<img src="profile.svg">
 					<span>Connexion | Inscription</span>

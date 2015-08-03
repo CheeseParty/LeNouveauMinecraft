@@ -3,6 +3,8 @@ body {
     padding: 10px 0 0;
     background: #F1F4F9;
     font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 124%;
 }
 
 header {
