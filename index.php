@@ -33,15 +33,34 @@
 			<a href="#">Mods</a>
 			<a href="#">Plugins</a>
 		</div>
-		
+		<section id="articles">
+			<article>
+				<div style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
+					<h2>MAP: AAWDWADDD!!A</h2>
+				</div>
+			</article>
+		</section>
+
+<!--		<section id="articles">
+			<article>
+				<a href="#">
+					<h2>MAP: MadCockIsland</h2>
+					<div>
+						<img src="http://screenshots.fr.sftcdn.net/fr/scrn/189000/189271/minecraft-02-700x393.jpg">
+					</div>
+				</a>
+			</article>
+		</section>
 		<article>
 			<h2>Des péniches dans l'espace</h2>
 			<div><img src="https://upload.wikimedia.org/wikipedia/pt/7/71/Minecraft2_logo.png"></div>
-			<p>"On l'a fait", se réjouissait ce matin le président Obama, en observant le convoi de péniches décoller. Sa réaction a conduit à l'indignation du côté républicain, qui réclame désormais des excuses pour "propos racistes" et "calomnies". En effet, les péniches étaient noires et d'une taille...</p>
+			<p>"On l'a fait", se réjouissait ce matin le président Obama, en observant le convoi de péniches décoller. Sa réaction a conduit à l'indignation du côté républicain, qui réclame désormais des excuses pour "propos racistes" et "calomnies". En effet, les péniches étaient noires et d'une taille indécente.</p>
 		</article>
+		-->
 		<script type="text/javascript">
+		// Change la couleur du header au scroll
 		function initHeader() {
-			window.addEventListener('scroll', function(){
+			window.addEventListener('scroll', function() {
 				if(document.body.scrollTop > 0) {
 					document.getElementById('header').style.background = "#808080";
 					document.getElementById('menu').style.background = "#808080";
@@ -54,10 +73,12 @@
 			});
 		}
 
+		// Place le menu au bon endroit
 		function moveMenu() {
-			document.getElementById("menu").style.left = window.getComputedStyle(document.querySelector("article")).marginLeft;
+			document.getElementById("menu").style.left = window.getComputedStyle(document.getElementById("header-container")).marginLeft;
 		}
 
+		// Toggle le menu
 		function initMenu() {
 			document.getElementById("hamburger").addEventListener('click', function(){
 				var menu = document.getElementById("menu");
@@ -75,6 +96,7 @@
 			});
 		}
 
+		// Initialisation
 		window.onload = function() {
 			initHeader();
 			initMenu();
@@ -82,7 +104,7 @@
 			var article = document.querySelector('article');
 			for(var i = 0; i < 2; i++) {
 				var copy = article.cloneNode(true);
-				document.body.appendChild(copy);
+				document.querySelector('#articles').appendChild(copy);
 			}
 		}
 		</script>
