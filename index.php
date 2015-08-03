@@ -36,7 +36,7 @@
 		<section id="articles">
 			<article>
 				<div style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
-					<h2>MAP: AAWDWADDD!!A</h2>
+					<h2>MAP: It's so huge! ü</h2>
 				</div>
 			</article>
 		</section>
