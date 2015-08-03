@@ -1,57 +1,37 @@
 body {
+    background-image: url(bkg.jpg);
     margin: 0;
-    padding: 10px 0 0;
-    background: #F1F4F9;
-    font-family: 'Open Sans', sans-serif;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size: 124%;
-}
-
-header {
-    transition: background .3s ease;
-    background: #25885B;
-    position: fixed;
-    z-index: 99;
-    width: 100%;
-    top: 0;
-}
-
-header a {
-    text-decoration: none;
-    color: #fff;
-}
-
-#header-container {
-    margin: 0 auto;
-    max-width: 1000px;
-    width: calc(90% - 80px);
     padding: 0;
-    list-style-type: none;
+    font-family: "Roboto Condensed";
+    font-size:16pt;
+}
+a{
+    text-decoration: none;
+}
+#content { 
+    background-color: rgba(45,72,57,0.3);
+    width: 1200px;
+    margin: 0 auto;
+    padding:0;
+    display:block;
+    padding:30px 40px;
+    height:2000px;;
 }
 
-#login {
-    background: #31A972;
-    padding: 10px 15px;
-    color: #fff;
+.title {
+    color:#1bf28a;
+    font-family: "Open Sans";
+    font-size:35pt;
+    margin-top:-8px;
+    display:block;
+    margin-left:5px;
     cursor: pointer;
+    
 }
 
-#login img {
-    display: none;
-}
-
-#title {
-    width: calc(100% - 260px);
-}
-
-#hamburger,#title,#login {
+#hamburger,.title,.login {
     display: inline-table;
     vertical-align: middle;
-}
-
-h1 {
-    font-family: 'Merriweather', serif;
-    font-size: 22pt;
 }
 
 #hamburger {
@@ -64,7 +44,7 @@ h1 {
 
 #hamburger span {
     height: 3px;
-    background-color: #fff;
+    background-color: #1bf28a;
     display: block;
 }
 
@@ -72,109 +52,59 @@ h1 {
     margin: 6px 0;
 }
 
-#menu {
-    position: fixed;
-    top: -100px;
-    width: 200px;
-    text-align: center;
-    left: 0;
-    background: #25885B;
-    transition: all .3s ease;
+.login{
+    padding:4px 10px;
+    background:#11b364;
+    color:#fff;
+    float:right;
+    margin-top:13px;
 }
 
-#menu a {
-    transition: background .2s ease;
-    cursor: pointer;
-    display: block;
-    padding: 10px 20px;
-    color: #FFF;
-    font-size: 17pt;
+.login:hover{
+    background:#13ce73;
+}
+#page{
+    margin:50px auto;
+    display:block;
 }
 
-#menu a:last-child {
-    border-bottom: 0;
+#image{
+    width:1000px;
+    margin:10px auto;
+    height:400px;
+    background-color:#395d4b;
 }
 
-#menu a:hover {
-    color: lightgrey;
+.article{
+    width:500px;
+    background:rgba(80,91,85,0.20);
+    padding:15px 30px;
+    margin:20px;
+    float:left;
+}
+.articletitle{
+    color:#fff;
+    font-family:"Merriweather";
+    font-size:120%;
+    margin:0;
+    padding:0;
+    display:block;
 }
 
-article {
-    padding: 0 40px;
-    background: #fff;
-    max-width: 1000px;
-    width: calc(90% - 80px);
-    margin: 65px auto;
+.articletext{
+    font-size:80%;
+    color:#fff;
 }
 
-h2 {
-    padding: 40px 0 20px;
-    margin: 0;
+.savoirplus{
+    background-color:#6f7371;
+    color:#fff;
+    font-size:80%;
+    padding:2px 4px;
+    float:right;
+    margin-top:-20px;
 }
 
-article div {
-    background: #E4E4E4;
-}
-
-article div img {
-    width: 100%;
-    display: block;
-}
-
-article p {
-    padding: 40px 0;
-    margin: 0;
-}
-
-a {
-    text-decoration: none;
-}
-
-.register_link {
-    display: inline;
-    float: right;
-    font-size: 12pt;
-    font-weight: normal;
-    transition: .3s ease;
-}
-
-.register_link:hover {
-    color: #51f6ab;
-}
-
-#content {
-    max-width: 1000px;
-    margin: 65px auto;
-    background: #fff;
-    padding: 20px 40px 20px 40px;
-}
-
-.form_title {
-    display: block;
-    font-size: 1.5em;
-    -webkit-margin-before: 0.83em;
-    -webkit-margin-after: 0.83em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    font-weight: bold;
-}
-
-@media screen and (max-width: 830px) {
-    #login {
-        padding: 0;
-    }
-
-    #login span {
-        display: none;
-    }
-
-    #login img {
-        display: block;
-        width: 50px;
-        padding: 5px;
-    }
-
-    #title {
-        width: calc(100% - 110px);
-    }
+.savoirplus:hover{
+    background-color:#7c817f;
 }

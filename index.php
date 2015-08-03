@@ -14,77 +14,46 @@
 
 	</head>
 	<body>
-		<header id="header">
-			<div id="header-container">
-				<div id="hamburger">
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-				<a id="title" href="index.php"><h1>Nether News</h1></a>
-				<a id="login" href="gate.php">
-					<img src="profile.svg">
-					<span>Connexion | Inscription</span>
-				</a>
-			</div>
-		</header>
-		<div id="menu">
-			<a href="#">Maps</a>
-			<a href="#">Mods</a>
-			<a href="#">Plugins</a>
-		</div>
-		
-		<article>
-			<h2>Des péniches dans l'espace</h2>
-			<div><img src="https://upload.wikimedia.org/wikipedia/pt/7/71/Minecraft2_logo.png"></div>
-			<p>"On l'a fait", se réjouissait ce matin le président Obama, en observant le convoi de péniches décoller. Sa réaction a conduit à l'indignation du côté républicain, qui réclame désormais des excuses pour "propos racistes" et "calomnies". En effet, les péniches étaient noires et d'une taille...</p>
-		</article>
-		<script type="text/javascript">
-		function initHeader() {
-			window.addEventListener('scroll', function(){
-				if(document.body.scrollTop > 0) {
-					document.getElementById('header').style.background = "#808080";
-					document.getElementById('menu').style.background = "#808080";
-					document.getElementById('login').style.background = "#9C9C9C";
-				} else {
-					document.getElementById('header').style.background = "#25885B";
-					document.getElementById('menu').style.background = "#25885B";
-					document.getElementById('login').style.background = "#31A972";
-				}
-			});
-		}
-
-		function moveMenu() {
-			document.getElementById("menu").style.left = window.getComputedStyle(document.querySelector("article")).marginLeft;
-		}
-
-		function initMenu() {
-			document.getElementById("hamburger").addEventListener('click', function(){
-				var menu = document.getElementById("menu");
-				var burger = document.getElementById("hamburger");
-				if(window.getComputedStyle(menu).top == "-100px") {
-					menu.style.top = "70px";
-					burger.style.transform = "rotate(90deg)";
-				} else {
-					menu.style.top = "-100px";
-					burger.style.transform = "rotate(0)";
-				}
-			});
-			window.addEventListener('resize', function(){
-				moveMenu();
-			});
-		}
-
-		window.onload = function() {
-			initHeader();
-			initMenu();
-			moveMenu();
-			var article = document.querySelector('article');
-			for(var i = 0; i < 2; i++) {
-				var copy = article.cloneNode(true);
-				document.body.appendChild(copy);
-			}
-		}
-		</script>
+		<div id="content">
+            
+            <header>
+                <div id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                </div>
+                
+                <a class="title" href="index.php">Nether News</a>
+                <a class="login" href="gate.php" target="_blank">Connexion | Inscription</a>
+                
+            </header>
+            
+            <div id="page">
+                <div id="image"></div>
+                
+                <div class="article">
+                    <article>
+                        <p class="articletitle">Notre premier article</p>
+                        <p class="articletext">Fusce sodales nibh id ultrices bibendum. Donec iaculis vel ligula at sollicitudin. Praesent quis enim quis leo iaculis sollicitudin consectetur id tellus. Curabitur quis velit ultricies, porta lorem quis, lobortis magna. Donec ac iaculis libero, non pellentesque lorem. Suspendisse vitae faucibus nunc, ornare consequat ante. Mauris quis gravida eros. Curabitur posuere lectus ac nisl lacinia, a posuere odio vulputate. In nec sapien eu leo lobortis tempor. Nulla facilisi.</p>
+                        
+                        <a class="savoirplus" href="#">En savoir +</a>
+                    </article>
+                    
+                    
+                </div>
+                
+                <div class="article">
+                    <article>
+                        <p class="articletitle">Notre deuxième article</p>
+                        <p class="articletext">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis ac nisl lacus. Suspendisse potenti. Pellentesque euismod tortor eget nulla eleifend, eget suscipit nunc blandit. Nullam faucibus nisi et diam auctor, a iaculis justo euismod. Aliquam venenatis lobortis nulla, sodales faucibus eros auctor non. Nullam porttitor neque eu velit efficitur, tristique rutrum massa feugiat. Donec congue tempor pulvinar. Integer quis risus egestas, convallis risus at, vestibulum diam. In enim leo, tincidunt consequat fringilla ut, scelerisque sit amet felis. Praesent elit magna, porttitor sed ante eu, aliquam sodales risus. Aenean pharetra tellus pharetra, maximus lacus in, consequat elit. Vestibulum hendrerit quam purus, vitae ullamcorper lacus sodales nec. Fusce volutpat ante at turpis laoreet, sit amet lacinia sem tempus. Morbi eu euismod risus.</p>
+                        
+                        <a class="savoirplus" href="#">En savoir +</a>
+                    </article>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        
 	</body>
 </html>
