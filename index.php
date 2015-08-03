@@ -24,7 +24,7 @@
                 </div>
                 
                 <a class="title" href="index.php">Nether News</a>
-                <a class="login" href="gate.php" target="_blank">Connexion | Inscription</a>
+                <a class="login" href="login.php" target="_blank">Connexion | Inscription</a>
                 
             </header>
             
