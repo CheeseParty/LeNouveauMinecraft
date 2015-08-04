@@ -16,16 +16,18 @@
 	<body>
 		<header id="header">
 			<div id="header-container">
-				<div id="hamburger">
-					<span></span>
-					<span></span>
-					<span></span>
+				<div id="header-inner">
+					<div id="hamburger">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<a id="title" href="index.php"><h1>Nether News</h1></a>
+					<a id="login" href="gate.php">
+						<img src="profile.svg">
+						<span>Connexion | Inscription</span>
+					</a>
 				</div>
-				<a id="title" href="index.php"><h1>Nether News</h1></a>
-				<a id="login" href="gate.php">
-					<img src="profile.svg">
-					<span>Connexion | Inscription</span>
-				</a>
 			</div>
 		</header>
 		<div id="menu">
@@ -36,27 +38,15 @@
 		<section id="articles">
 			<article>
 				<div style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
-					<h2>MAP: It's so huge! ü</h2>
+					<h2>MAP: It's so huge! Ü</h2>
 				</div>
 			</article>
 		</section>
 
-<!--		<section id="articles">
-			<article>
-				<a href="#">
-					<h2>MAP: MadCockIsland</h2>
-					<div>
-						<img src="http://screenshots.fr.sftcdn.net/fr/scrn/189000/189271/minecraft-02-700x393.jpg">
-					</div>
-				</a>
-			</article>
-		</section>
-		<article>
-			<h2>Des péniches dans l'espace</h2>
-			<div><img src="https://upload.wikimedia.org/wikipedia/pt/7/71/Minecraft2_logo.png"></div>
-			<p>"On l'a fait", se réjouissait ce matin le président Obama, en observant le convoi de péniches décoller. Sa réaction a conduit à l'indignation du côté républicain, qui réclame désormais des excuses pour "propos racistes" et "calomnies". En effet, les péniches étaient noires et d'une taille indécente.</p>
-		</article>
-		-->
+<!--
+"On l'a fait", se réjouissait ce matin le président Obama, en observant le convoi de péniches décoller. Sa réaction a conduit à l'indignation du côté républicain, qui réclame désormais des excuses pour "propos racistes" et "calomnies". En effet, les péniches étaient noires et d'une taille indécente.
+-->
+
 		<script type="text/javascript">
 		// Change la couleur du header au scroll
 		function initHeader() {
