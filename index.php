@@ -23,9 +23,15 @@
                         <span></span>
                 </div>
                 
-                <a class="title" href="index.php">Paul Le Poulpe</a>
+                <a class="title" href="index.php">Nether News</a>
                 <a class="login" href="login.php" target="_blank">Connexion | Inscription</a>
-                
+                <div id="menu">
+                    <p class="menutext">MENU</p>
+			<span>Maps</span>
+			<span>Mods</span>
+			<span>Plugins</span>
+            <span>Versions</span>
+		</div>
             </header>
             
             <div id="page">
@@ -58,13 +64,21 @@
 		function initMenu() {
 			document.getElementById("hamburger").addEventListener('click', function(){
 				var menu = document.getElementById("menu");
-				if(window.getComputedStyle(menu).top == "-100px") {
-					menu.style.top = "75px";
+				if(window.getComputedStyle(menu).top == "-230px") {
+					menu.style.top = "85px";
 				} else {
-					menu.style.top = "-100px";
+					menu.style.top = "-230px";
 				}
 			});
 		}
+            window.onload=function(){
+                initMenu();
+                moveMenu();
+            }
+            
+            function moveMenu() {
+    document.getElementById("menu").style.left = window.getComputedStyle(document.getElementById("content")).marginLeft;
+  }
                 </script>
 	</body>
 </html>
