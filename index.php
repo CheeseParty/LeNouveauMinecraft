@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <script text="javascript">
+        <script type='text/javascript'>
 		function initMenu() {
             		document.getElementById("hamburger").addEventListener('click', function(){
 				var menu = document.getElementById("menu");
