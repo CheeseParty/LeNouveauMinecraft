@@ -89,9 +89,9 @@ Classes: exemple
 					document.getElementById('menu').style.background = "#808080";
 					document.getElementById('login').style.background = "#9C9C9C";
 				} else {
-					document.getElementById('header').style.background = "#25885B";
-					document.getElementById('menu').style.background = "#25885B";
-					document.getElementById('login').style.background = "#31A972";
+					document.getElementById('header').style.background = "#27AE60";
+					document.getElementById('menu').style.background = "#27AE60";
+					document.getElementById('login').style.background = "#2ECC71";
 				}
 			});
 		}

@@ -16,7 +16,7 @@ a {
 /* Header */
 header {
     transition: background .3s ease;
-    background: #25885B;
+    background: #27AE60;
     position: fixed;
     z-index: 99;
     width: 100%;
@@ -41,7 +41,7 @@ header a {
 }
 
 #login {
-    background: #31A972;
+    background: #2ECC71;
     padding: 10px 15px;
     color: #fff;
     cursor: pointer;
@@ -93,7 +93,7 @@ h1 {
     width: 200px;
     text-align: center;
     left: 0;
-    background: #25885B;
+    background: #27AE60;
     transition: all .3s ease;
     z-index: 88;
 }
