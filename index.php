@@ -36,17 +36,50 @@
 			<a href="#">Plugins</a>
 		</div>
 		<section id="articles">
-			<article>
+			<article class="map">
 				<div style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
-					<h2>MAP: It's so huge! Ü</h2>
+					<h2>MAP: <span>It's so huge! Ü</span></h2>
+					<span>1.8.7</span>
 				</div>
 			</article>
+			<article class="mod">
+				<div style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
+					<h2>MAP: <span>It's so huge! Ü</span></h2>
+					<span>1.8.7</span>
+				</div>
+			</article>
+			<article class="plugin">
+				<div style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
+					<h2>MAP: <span>It's so huge! Ü</span></h2>
+					<span>1.8.7</span>
+				</div>
+			</article>
+			<article class="version">
+				<div style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
+					<h2>MAP: <span>It's so huge! Ü</span></h2>
+					<span>1.8.7</span>
+				</div>
+			</article>
+			
 		</section>
-
+	<!--	<footer>
+			CAUPIRAYT lmao
+		</footer>  -->
 <!--
 "On l'a fait", se réjouissait ce matin le président Obama, en observant le convoi de péniches décoller. Sa réaction a conduit à l'indignation du côté républicain, qui réclame désormais des excuses pour "propos racistes" et "calomnies". En effet, les péniches étaient noires et d'une taille indécente.
--->
 
+Classes: exemple
+
+.map {
+	border: red
+	background rgba(red,0.75)
+}
+
+.map {
+	border: red
+	background rgba(red,0.75)
+}
+-->
 		<script type="text/javascript">
 		// Change la couleur du header au scroll
 		function initHeader() {
@@ -92,7 +125,7 @@
 			initMenu();
 			moveMenu();
 			var article = document.querySelector('article');
-			for(var i = 0; i < 2; i++) {
+			for(var i = 0; i < 5; i++) {
 				var copy = article.cloneNode(true);
 				document.querySelector('#articles').appendChild(copy);
 			}
