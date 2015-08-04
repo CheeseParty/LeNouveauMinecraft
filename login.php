@@ -28,10 +28,11 @@
                 
             </form>
                   
-            <p class="separatorform">---------------------------- ou ----------------------------</p>
+                                                    <hr class="separatorform">
 
-<p class="form_title">Inscrivez vous</p>
+            <p class="form_title">Inscrivez vous</p>
             <p class="forminfo">(*) = obligatoires</p>
+            
             <form method="post" action="regform.php">
                 <input type="text" class="textbox" name="pseudo" placeholder="Nom d'utilisateur" required>       
                 <input type="password" class="textbox" name="password" placeholder="Mot de passe" required>
@@ -42,6 +43,19 @@
             
         </div>
         
+        <script type="text/javascript">
+            function toggleLogin() {
+                var loginbox = document.getElementById("loginbox");
+                if(loginbox.style.zIndex==99) {
+                    loginbox.style.zIndex=-1;
+                }
+                
+                else{
+                    login.style.zIndex=99;
+                }
+                    
+            }
+        </script>
           
     </body>     
 </html>

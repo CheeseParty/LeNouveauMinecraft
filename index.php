@@ -14,6 +14,7 @@
 
 	</head>
 	<body>
+        <div id="cache"></div>
 		<div id="content">
             
             <header>
@@ -24,7 +25,36 @@
                 </div>
                 
                 <a class="title" href="index.php">Nether News</a>
-                <a class="login" href="login.php" target="_blank">Connexion | Inscription</a>
+                <a class="login" onclick="toggleLogin()">Connexion | Inscription</a>
+                
+                <div id="loginbox">
+                    <p class="form_title">Connectez vous</p>
+                    <img class="cross" src="close32.svg" onclick="toggleLogin()">
+                    <form method="post" action="logform.php">
+                    <input type="text" class="textbox" name="pseudo" placeholder="Nom d'utilisateur" required>
+                    <input type="password" class="textbox" name="password" placeholder="Mot de passe" required>
+
+                    <div id="loginzone">
+                        <label class="css-label"><input type="checkbox" name="rememberbox" value="1"> Se souvenir de moi</label>
+                        <input type="submit" class="form_btn" value="Connexion">
+                    </div>
+
+                    </form>
+
+                                                            <hr class="separatorform">
+
+                    <p class="form_title">Inscrivez vous</p>
+                    <p class="forminfo">(*) = obligatoires</p>
+
+                    <form method="post" action="regform.php">
+                        <input type="text" class="textbox" name="pseudo" placeholder="Nom d'utilisateur" required>       
+                        <input type="password" class="textbox" name="password" placeholder="Mot de passe" required>
+                        <input type="password" class="textbox" name="password2" placeholder="Répétez le mot de passe" required>
+                        <input type="email" class="textbox" name="email" placeholder="Adresse mail valide" required>
+                        <input type="submit" class="form_btn2" value="Inscription">
+                    </form>
+            
+        </div>
                 <div id="menu">
                     <p class="menutext">MENU</p>
 			<span>Maps</span>
@@ -63,6 +93,20 @@
             </div>
         </div>
         <script type='text/javascript'>
+            function toggleLogin() {
+                var loginbox = document.getElementById("loginbox");
+                if(loginbox.style.zIndex==99) 
+                {   
+                    cache.style.zIndex=-1;
+                    loginbox.style.zIndex=-1;
+                }
+                
+                else{
+                    loginbox.style.zIndex=99;
+                    cache.style.zIndex=99;
+                }
+                    
+            }
 		function initMenu() {
             		document.getElementById("hamburger").addEventListener('click', function(){
 				var menu = document.getElementById("menu");

@@ -58,6 +58,7 @@ a{
     color:#fff;
     float:right;
     margin-top:13px;
+    cursor: pointer;
 }
 
 .login:hover{
@@ -153,4 +154,120 @@ a{
     color:#fff;
     text-align:center;
     text-decoration: underline;
+}
+
+html,body{
+    background-color:#f8f8f8;
+    margin:0;
+    padding:0;
+}
+
+#cache{
+    background:rgba(194,197,199,0.6);
+    z-index:-1;
+    position: fixed;
+    width:100%;
+    height: 100%;
+    
+}
+
+#loginbox{
+    z-index: -1;
+    position: fixed;
+    color:#3e3e3e;
+    width:400px;
+    background-color:#ecf0f1;
+    top:calc(50% - 300px);
+    right:calc(50% - 200px);
+    
+    display: block;
+    font-family:"Roboto Condensed";
+    padding-bottom: 10px;
+    border:1px solid #3e3e3e;
+    box-shadow: 1px 0px 42px #3e3e3e;
+}
+
+.form_title{
+    font-size:145%;
+    padding: 10px;
+    font-family: "Merriweather";
+    text-align: center;
+    font-weight: bold;
+    margin:0;
+}
+
+
+.textbox{
+    margin:0 auto;
+    margin-bottom: 10px;
+    width:250px;
+    display:block;
+    padding:6px 3px;
+    font-size:15pt;
+    font-family:"Roboto Condensed";
+}
+
+.form_btn{
+    background-color:#3e3e3e;
+    border:0;
+    color:#fff;
+    padding:4px 10px;
+    display:inline-block;
+    cursor:pointer;
+    font-size: 13pt;
+    font-family: "Roboto condensed";
+    
+}
+
+.form_btn:hover,.form_btn2:hover{
+    background-color:#696969;
+}
+
+
+#loginzone{
+    text-align: center;
+    margin: 0 auto;
+    font-size:11pt;
+    width:250px;
+    
+}
+
+label{
+    padding-right:10px;
+    cursor: pointer;
+}
+
+.separatorform{
+    width:60%;
+    border: 0;
+    height:1px;
+    background: #262626;
+    margin:40px auto 30px auto;
+}
+    
+.forminfo{
+    font-size:8pt;
+    text-align:center;
+    margin:0;
+    padding-bottom: 10px;
+}
+
+.form_btn2{
+    background-color:#3e3e3e;
+    border:0;
+    color:#fff;
+    padding:4px 10px;
+    display:block;
+    cursor:pointer;
+    font-size: 13pt;
+    font-family: "Roboto condensed";
+    margin: 0 auto;
+}
+
+.cross{
+    width:20px;
+    top:5px;
+    right:5px;
+    position:absolute;
+    cursor:pointer;
 }
