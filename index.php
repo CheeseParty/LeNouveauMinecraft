@@ -38,17 +38,19 @@
                 <div id="image"></div>
                 
                 <div class="article">
-                    <article>
-                        <p class="articletitle">Notre premier article</p>
-                        <p class="articletext">Fusce sodales nibh id ultrices bibendum. Donec iaculis vel ligula at sollicitudin. Praesent quis enim quis leo iaculis sollicitudin consectetur id tellus. Curabitur quis velit ultricies, porta lorem quis, lobortis magna. Donec ac iaculis libero, non pellentesque lorem. Suspendisse vitae faucibus nunc, ornare consequat ante. Mauris quis gravida eros. Curabitur posuere lectus ac nisl lacinia, a posuere odio vulputate. In nec sapien eu leo lobortis tempor. Nulla facilisi.</p>
-                        
-                        <a class="savoirplus" href="#">En savoir +</a>
+                    <img src="http://screenshots.fr.sftcdn.net/fr/scrn/189000/189271/minecraft-02-700x393.jpg">
+                    <h2>MAP: It's so huge! ü</h2>
                     </article>
                     
                     
                 </div>
-                
-                <div class="article">
+                <!-- <article>
+                        <p class="articletitle">Notre premier article</p>
+                        <p class="articletext">Fusce sodales nibh id ultrices bibendum. Donec iaculis vel ligula at sollicitudin. Praesent quis enim quis leo iaculis sollicitudin consectetur id tellus. Curabitur quis velit ultricies, porta lorem quis, lobortis magna. Donec ac iaculis libero, non pellentesque lorem. Suspendisse vitae faucibus nunc, ornare consequat ante. Mauris quis gravida eros. Curabitur posuere lectus ac nisl lacinia, a posuere odio vulputate. In nec sapien eu leo lobortis tempor. Nulla f...(line truncated)...
+                        
+                        <a class="savoirplus" href="#">En savoir +</a> -->
+            
+               <!-- <div class="article">
                     <article>
                         <p class="articletitle">Notre deuxième article</p>
                         <p class="articletext">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis ac nisl lacus. Suspendisse potenti. Pellentesque euismod tortor eget nulla eleifend, eget suscipit nunc blandit. Nullam faucibus nisi et diam auctor, a iaculis justo euismod. Aliquam venenatis lobortis nulla, sodales faucibus eros auctor non. Nullam porttitor neque eu velit efficitur, tristique rutrum massa feugiat. Donec congue tempor pulvinar. Integer quis risus egestas, convallis risus at, vestibulum diam. In enim leo, tincidunt consequat fringilla ut, scelerisque sit amet felis. Praesent elit magna, porttitor sed ante eu, aliquam sodales risus. Aenean pharetra tellus pharetra, maximus lacus in, consequat elit. Vestibulum hendrerit quam purus, vitae ullamcorper lacus sodales nec. Fusce volutpat ante at turpis laoreet, sit amet lacinia sem tempus. Morbi eu euismod risus.</p>
@@ -56,7 +58,7 @@
                         <a class="savoirplus" href="#">En savoir +</a>
                     </article>
                     
-                    
+                    -->
                 </div>
             </div>
         </div>

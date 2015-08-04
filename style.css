@@ -75,7 +75,15 @@ a{
     background-color:#395d4b;
 }
 
+
 .article{
+    background-image:url("http://screenshots.fr.sftcdn.net/fr/scrn/189000/189271/minecraft-02-700x393.jpg");
+    width:550px;
+    margin:20px;
+    float:left;
+    height:300px;
+}
+/**.article{
     width:500px;
     background:rgba(80,91,85,0.20);
     padding:15px 30px;
@@ -103,7 +111,7 @@ a{
     padding:2px 4px;
     float:right;
     margin-top:-20px;
-}
+}*/
 
 .savoirplus:hover{
     background-color:#7c817f;
