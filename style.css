@@ -120,7 +120,7 @@ h1 {
     width: 90%;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 75px 0;
+    padding: 100px 0;
 }
 
 article {
@@ -131,23 +131,25 @@ article {
     box-sizing: border-box;
 }
 
-article div {
+article a {
+    cursor: pointer;
+    display: block;
     width: 100%;
     padding-bottom: calc(52.25% - 40px);
     position: relative;
 }
 
-article div h2 {
+article a h2 {
     margin: 0;
     padding: 3px 5px;
     color: #fff;
 }
 
-article div h2 span {
+article a h2 span {
     font-weight: normal;
 }
 
-article>div>span {
+article>a>span {
     padding: 3px 6px;
     font-weight: bold;
     font-size: 18pt;
@@ -160,7 +162,7 @@ article>div>span {
     border: 3px solid #C0392B;
 }
 
-.map div h2, .map>div>span {
+.map a h2, .map>a>span {
     background: rgba(192,57,43,0.75);
 }
 
@@ -168,7 +170,7 @@ article>div>span {
     border: 3px solid #2980b9;
 }
 
-.mod div h2, .mod>div>span {
+.mod a h2, .mod>a>span {
     background: rgba(41,128,185,0.75);
 }
 
@@ -176,7 +178,7 @@ article>div>span {
     border: 3px solid #16A085;
 }
 
-.plugin div h2, .plugin>div>span {
+.plugin a h2, .plugin>a>span {
     background: rgba(22,160,133,0.75);
 }
 
@@ -184,33 +186,33 @@ article>div>span {
     border: 3px solid #8E44AD;
 }
 
-.version div h2, .version>div>span {
+.version a h2, .version>a>span {
     background: rgba(142,68,173,0.75);
 }
 
 /* Footer */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+#articles article:last-child {
+    margin-bottom: 150px; /* bottom = footer height */
+}
+
 footer {
     color: #fff;
     background: #525252;
     text-align: center;
     width: 100%;
-    line-height: 75px;
+    line-height: 100px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
 }
 
-#articles {
-    min-height: 100%;
-    /* equal to footer height */
-    margin-bottom: -75px; 
-}
-
-#articles:after {
-    content: "";
-    display: block;
-}
-
-footer, #articles:after {
-    height: 75px; 
-}
 
 /* Media queries */
 @media screen and (max-width: 700px) {

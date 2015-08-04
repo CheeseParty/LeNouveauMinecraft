@@ -37,48 +37,36 @@
 		</div>
 		<section id="articles">
 			<article class="map">
-				<div style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
+				<a style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
 					<h2>MAP: <span>It's so huge! Ü</span></h2>
 					<span>1.8.7</span>
-				</div>
+				</a>
 			</article>
 			<article class="mod">
-				<div style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
+				<a style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
 					<h2>MAP: <span>It's so huge! Ü</span></h2>
 					<span>1.8.7</span>
-				</div>
+				</a>
 			</article>
 			<article class="plugin">
-				<div style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
+				<a style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
 					<h2>MAP: <span>It's so huge! Ü</span></h2>
 					<span>1.8.7</span>
-				</div>
+				</a>
 			</article>
 			<article class="version">
-				<div style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
+				<a style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
 					<h2>MAP: <span>It's so huge! Ü</span></h2>
 					<span>1.8.7</span>
-				</div>
+				</a>
 			</article>
 			
 		</section>
-	<!--	<footer>
+		<footer>
 			CAUPIRAYT lmao
-		</footer>  -->
+		</footer>
 <!--
 "On l'a fait", se réjouissait ce matin le président Obama, en observant le convoi de péniches décoller. Sa réaction a conduit à l'indignation du côté républicain, qui réclame désormais des excuses pour "propos racistes" et "calomnies". En effet, les péniches étaient noires et d'une taille indécente.
-
-Classes: exemple
-
-.map {
-	border: red
-	background rgba(red,0.75)
-}
-
-.map {
-	border: red
-	background rgba(red,0.75)
-}
 -->
 		<script type="text/javascript">
 		// Change la couleur du header au scroll
