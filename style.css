@@ -198,16 +198,9 @@ footer {
 
 footer div {
     font-size: 50pt;
-    color: darkgrey;
+    text-shadow: 5px 0 darkgrey;
     font-family: "Merriweather";
 }
-
-footer span {
-    position: relative;
-    left: 50px;
-    color: #fff;
-}
-
 
 /* Media queries */
 @media screen and (max-width: 700px) {
