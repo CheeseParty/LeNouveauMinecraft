@@ -141,7 +141,7 @@ article a {
 
 article a h2 {
     margin: 0;
-    padding: 3px 5px;
+    padding: 6px 10px;
     color: #fff;
 }
 
@@ -158,32 +158,17 @@ article>a>span {
     color: #fff;
 }
 
-.map {
-    border: 3px solid #C0392B;
-}
-
 .map a h2, .map>a>span {
     background: rgba(192,57,43,0.75);
 }
 
-.mod {
-    border: 3px solid #2980b9;
-}
 
 .mod a h2, .mod>a>span {
     background: rgba(41,128,185,0.75);
 }
 
-.plugin {
-    border: 3px solid #16A085;
-}
-
 .plugin a h2, .plugin>a>span {
     background: rgba(22,160,133,0.75);
-}
-
-.version {
-    border: 3px solid #8E44AD;
 }
 
 .version a h2, .version>a>span {
@@ -197,20 +182,30 @@ html {
 }
 
 #articles article:last-child {
-    margin-bottom: 150px; /* bottom = footer height */
+    margin-bottom: 200px; /* bottom = footer height */
 }
 
 footer {
     color: #fff;
     background: #525252;
     text-align: center;
-    width: 100%;
-    line-height: 100px;
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 100px;
     width: 100%;
+    padding: 25px 0;
+}
+
+footer div {
+    font-size: 50pt;
+    color: darkgrey;
+    font-family: "Merriweather";
+}
+
+footer span {
+    position: relative;
+    left: 50px;
+    color: #fff;
 }
 
 

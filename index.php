@@ -62,6 +62,7 @@
 			
 		</section>
 		<footer>
+			<div><span>N</span>N&nbsp;&nbsp;</div>
 			CAUPIRAYT lmao
 		</footer>
 <!--
