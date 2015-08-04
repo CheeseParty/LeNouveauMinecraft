@@ -62,15 +62,23 @@
         </div>
         <script text="javascript">
 		function initMenu() {
-			document.getElementById("hamburger").addEventListener('click', function(){
+            		document.getElementById("hamburger").addEventListener('click', function(){
 				var menu = document.getElementById("menu");
+				var burger = document.getElementById("hamburger");
 				if(window.getComputedStyle(menu).top == "-230px") {
 					menu.style.top = "85px";
+					burger.style.transform = "rotate(90deg)";
 				} else {
 					menu.style.top = "-230px";
+					burger.style.transform = "rotate(0)";
 				}
 			});
+			window.addEventListener('resize', function(){
+				moveMenu();
+			});
 		}
+
+		
             window.onload=function(){
                 initMenu();
                 moveMenu();
