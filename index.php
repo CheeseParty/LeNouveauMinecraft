@@ -54,6 +54,17 @@
                 </div>
             </div>
         </div>
-        
+        <script text="javascript">
+		function initMenu() {
+			document.getElementById("hamburger").addEventListener('click', function(){
+				var menu = document.getElementById("menu");
+				if(window.getComputedStyle(menu).top == "-100px") {
+					menu.style.top = "75px";
+				} else {
+					menu.style.top = "-100px";
+				}
+			});
+		}
+                </script>
 	</body>
 </html>
