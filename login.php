@@ -1,4 +1,6 @@
-<!doctype html>
+<?php 
+    session_start();
+?>
 <!doctype html>
 <html lang="fr">
 	<head>
@@ -42,9 +44,20 @@
 						<span></span>
 					</div>
 					<a id="title" href="index.php"><h1>Nether News</h1></a>
-					<a id="login" href="login.php">
-						<img src="profile.svg">
-						<span>Connexion | Inscription</span>
+					
+                        <?php 
+                            
+                            if(isset($_SESSION['auth'])) {
+                               // echo"<span>Connecté en tant que :" .$_SESSION['auth']. "</span>";
+                                 echo"<a id='logoff' href='logoff.php'><img src='profile.svg'><span>Déconnexion</span></a>";
+                                
+                            }
+                            
+                            else {
+                               echo"<a id='login' href='login.php'><img src='profile.svg'><span>Connexion | Inscription</span></a>";
+                            }
+                        ?>
+						
 					</a>
 				</div>
 			</div>
@@ -83,7 +96,15 @@
             </form>
             
         </div>
-        
+        <footer>
+			<div>N</div>
+			© "Copyright" Nether News <?php echo date('Y'); ?>
+            <?php 
+                if(isset($_SESSION['auth'])){
+                    echo"<p class='session'>Connecté en tant que ".$_SESSION['auth']."</p>";
+                }
+?>
+		</footer>
         <script type="text/javascript">
 		// Initialise les variables
 		function initVars() {
