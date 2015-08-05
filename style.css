@@ -48,6 +48,7 @@ header a {
 
 #logout {
     background: #fa4242;
+    text-align: center;
 }
 
 #login img, #logout img {
