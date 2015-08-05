@@ -1,0 +1,29 @@
+.validtitle, .validsubtitle {
+    font-size: 28pt;
+    font-family: "Merriweather";
+    color: #696969;
+    text-align: center;
+    margin:0;
+    padding:7.5px;
+}
+
+.validsubtitle {
+    font-size: 15pt;
+}
+
+.validtitle {
+    margin-top:150px;
+}
+.validsubtitle span {
+    text-decoration: underline;
+}
+
+.validinfo {
+    color:#696969;
+    text-align:center;
+}
+
+#validzone {
+    width:1000px;
+    margin:auto;
+}
