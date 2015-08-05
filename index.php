@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!doctype html>
 <html lang="fr">
 	<head>
@@ -20,9 +23,17 @@
 						<span></span>
 					</div>
 					<a id="title" href="index.php"><h1>Nether News</h1></a>
-					<a id="login" href="login.php">
-						<img src="profile.svg">
-						<span>Connexion | Inscription</span>
+                            
+                        <?php 
+                        
+                                if(isset($_SESSION['AUTH'])) {
+                                 echo"<a id='logout' href='logout.php'><img src='logout.svg'><span>Déconnexion</span></a>";
+                                } else {
+                                    echo"<a id='login' href='login.php'><img src='profile.svg'><span>Connexion | Inscription</span></a>";
+                                }
+                              ?>
+                        
+
 					</a>
 				</div>
 			</div>
@@ -95,22 +106,18 @@
 		}
 
 		// Toogle le login
-		function initLogin() {
-			document.getElementById("login").addEventListener('click', function() {
-				console.log("Login");
 				/* Todo:
 					Initialiser la variable du loginbox
 					Faire apparaitre / disparaitre
 				*/
-			});
-		}
+           
+		
 
 		// Initialisation
 		window.onload = function() {
 			initVars();
 			initMenu();
 			moveMenu();
-			initLogin();
 			var article = document.querySelector('article');
 			for(var i = 0; i < 5; i++) {
 				var copy = article.cloneNode(true);

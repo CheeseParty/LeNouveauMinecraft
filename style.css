@@ -23,7 +23,6 @@ header {
 }
 
 header a {
-    text-decoration: none;
     color: #fff;
 }
 
@@ -39,7 +38,7 @@ header a {
     padding: 0 1.6%;
 }
 
-#login {
+#login, #logout {
     background: #2ECC71;
     padding: 10px 15px;
     color: #fff;
@@ -47,7 +46,11 @@ header a {
     width: 184px;
 }
 
-#login img {
+#logout {
+    background: #fa4242;
+}
+
+#login img, #logout img {
     display: none;
 }
 
@@ -58,7 +61,8 @@ header a {
 
 #hamburger,
 #title,
-#login {
+#login,
+#logout {
     display: inline-table;
     vertical-align: middle;
 }
@@ -228,16 +232,16 @@ footer div {
         width: calc(100% - 106px);
     }
 
-    #login {
+    #login, #logout{
         padding: 7px;
         width: 50px;
     }
-
-    #login span {
+    
+    #login span, #logout span{
         display: none;
     }
-
-    #login img {
+    
+    #login img, #logout img{
         display: block;
         width: 50px;
     }
