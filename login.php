@@ -57,8 +57,8 @@ if(isset($_SESSION['AUTH'])) {
         <script type="text/javascript">
         document.body.onload = function() {
         <?php
-        if(isset($_GET['error'])) {
-            switch ($_GET['error']) {
+        if(isset($_GET['message'])) {
+            switch ($_GET['message']) {
                 case 'empty':
                     $message = "Veuillez remplir tous les champs.";
                     break;

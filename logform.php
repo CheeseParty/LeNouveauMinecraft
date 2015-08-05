@@ -15,7 +15,7 @@ if(isset($_POST['pseudo']) AND isset($_POST['password'])) {
     }
 
     else {
-        header("Location: login.php?error=badlogin");
+        header("Location: login.php?message=badlogin");
         exit;
     }
 }

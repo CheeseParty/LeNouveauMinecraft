@@ -4,11 +4,11 @@
 session_start();
 
 // Vérification de la requête
-$error = false;
+$message = false;
 
 function check($var) {
     if(!isset($var)) {
-        $error = "empty";
+        $message = "empty";
         return false;
     } else {
         return true;
@@ -17,24 +17,24 @@ function check($var) {
 
 if(check($_POST['pseudo'])) {
     if(!preg_match('#^[A-Za-z][A-Za-z0-9]{5,31}$#', $_POST['pseudo'])) {
-        $error = "pseudo";
+        $message = "pseudo";
     }
 }
 check($_POST['password']);
 check($_POST['password2']);
 if(check($_POST['email'])) {
     if(!preg_match('#^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$#', $_POST['email'])) {
-        $error = "email";
+        $message = "email";
     }
 }
 if($_POST['password'] != $_POST['password2']) {
-    $error = "password";
+    $message = "password";
 }
 
 
 // Si la requête est ok
-if($error != false) {
-    header("Location: login.php?error=$error");
+if($message != false) {
+    header("Location: login.php?message=$message");
     exit;
 }
 
@@ -51,7 +51,7 @@ $check -> execute(array(
 // S'ils existent déjà
 if($check->rowCount() > 0) {
     // On redirige avec message d'erreur
-    header("Location: login.php?error=exist");
+    header("Location: login.php?message=exist");
     exit;
 }
 
@@ -66,7 +66,7 @@ else {
     ));
     $register->closeCursor();
 
-    $_SESSION['AUTH'] = $_POST['pseudo'];
+    $message = "sent";
 
     //Et on redirige à l'accueil
     header("Location: index.php");
