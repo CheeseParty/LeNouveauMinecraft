@@ -40,7 +40,7 @@
 						<span></span>
 					</div>
 					<a id="title" href="index.php"><h1>Nether News</h1></a>
-					<a id="login" href="gate.php">
+					<a id="login" href="login.php">
 						<img src="profile.svg">
 						<span>Connexion | Inscription</span>
 					</a>
@@ -87,19 +87,10 @@
 "On l'a fait", se réjouissait ce matin le président Obama, en observant le convoi de péniches décoller. Sa réaction a conduit à l'indignation du côté républicain, qui réclame désormais des excuses pour "propos racistes" et "calomnies". En effet, les péniches étaient noires et d'une taille indécente.
 -->
 		<script type="text/javascript">
-		// Change la couleur du header au scroll
-		function initHeader() {
-			window.addEventListener('scroll', function() {
-				if(document.body.scrollTop > 0) {
-					document.getElementById('header').style.background = "#808080";
-					document.getElementById('menu').style.background = "#808080";
-					document.getElementById('login').style.background = "#9C9C9C";
-				} else {
-					document.getElementById('header').style.background = "#27AE60";
-					document.getElementById('menu').style.background = "#27AE60";
-					document.getElementById('login').style.background = "#2ECC71";
-				}
-			});
+		// Initialise les variables
+		function initVars() {
+			menu = document.getElementById("menu");
+			burger = document.getElementById("hamburger");
 		}
 
 		// Place le menu au bon endroit
@@ -109,9 +100,7 @@
 
 		// Toggle le menu
 		function initMenu() {
-			document.getElementById("hamburger").addEventListener('click', function(){
-				var menu = document.getElementById("menu");
-				var burger = document.getElementById("hamburger");
+			document.getElementById("hamburger").addEventListener('click', function() {
 				if(window.getComputedStyle(menu).top == "-100px") {
 					menu.style.top = "70px";
 					burger.style.transform = "rotate(90deg)";
@@ -125,11 +114,23 @@
 			});
 		}
 
+		// Toogle le login
+		function initLogin() {
+			document.getElementById("login").addEventListener('click', function() {
+				console.log("Login");
+				/* Todo:
+					Initialiser la variable du loginbox
+					Faire apparaitre / disparaitre
+				*/
+			});
+		}
+
 		// Initialisation
 		window.onload = function() {
-			initHeader();
+			initVars();
 			initMenu();
 			moveMenu();
+			initLogin();
 			var article = document.querySelector('article');
 			for(var i = 0; i < 5; i++) {
 				var copy = article.cloneNode(true);
