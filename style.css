@@ -2,7 +2,6 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Open Sans', sans-serif;
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 124%;
     height: 100%;
@@ -57,7 +56,9 @@ header a {
     padding-left: 8px;
 }
 
-#hamburger,#title,#login {
+#hamburger,
+#title,
+#login {
     display: inline-table;
     vertical-align: middle;
 }
@@ -149,7 +150,7 @@ article a h2 span {
     font-weight: normal;
 }
 
-article>a>span {
+article > a > span {
     padding: 3px 6px;
     font-weight: bold;
     font-size: 18pt;
@@ -158,20 +159,24 @@ article>a>span {
     color: #fff;
 }
 
-.map a h2, .map>a>span {
+.map a h2,
+.map > a > span {
     background: rgba(192,57,43,0.75);
 }
 
 
-.mod a h2, .mod>a>span {
+.mod a h2,
+.mod > a > span {
     background: rgba(41,128,185,0.75);
 }
 
-.plugin a h2, .plugin>a>span {
+.plugin a h2,
+.plugin > a > span {
     background: rgba(22,160,133,0.75);
 }
 
-.version a h2, .version>a>span {
+.version a h2,
+.version > a > span {
     background: rgba(142,68,173,0.75);
 }
 
@@ -237,7 +242,3 @@ footer div {
         width: 50px;
     }
 }
-
-
-
-/* Stuff */

@@ -1,17 +1,18 @@
 /* Tags générauxs */
-
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Open Sans', sans-serif;
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 124%;
     height: 100%;
     min-height: 100vh;
 }
+
 a {
     text-decoration: none;
 }
+
+
 /* Header */
 
 header {
