@@ -241,31 +241,3 @@ footer div {
 
 
 /* Stuff */
-.register_link {
-    display: inline;
-    float: right;
-    font-size: 12pt;
-    font-weight: normal;
-    transition: .3s ease;
-}
-
-.register_link:hover {
-    color: #51f6ab;
-}
-
-#content {
-    max-width: 1000px;
-    margin: 65px auto;
-    background: #fff;
-    padding: 20px 40px 20px 40px;
-}
-
-.form_title {
-    display: block;
-    font-size: 1.5em;
-    -webkit-margin-before: 0.83em;
-    -webkit-margin-after: 0.83em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    font-weight: bold;
-}
