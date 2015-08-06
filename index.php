@@ -79,11 +79,6 @@
                 }
             ?>
 		</footer>
-<!--
-"On l'a fait", se réjouissait ce matin le président Obama, en observant le convoi de péniches décoller.
- Sa réaction a conduit à l'indignation du côté républicain, qui réclame désormais des excuses pour "propos
- racistes" et "calomnies". En effet, les péniches étaient noires et d'une taille indécente.
--->
 		<!-- A FAIRE: METTRE LE SCRIPT DANS UN FICHIER EXTERNE -->
 		<script type="text/javascript" async defer>
 		// Initialise les variables
