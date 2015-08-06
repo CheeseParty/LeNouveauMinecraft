@@ -52,6 +52,10 @@ header h1 {
     box-shadow: 0 6px 32px -10px #000;
 }
 
+.g-recaptcha {
+    margin: 15px 100px;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -70,7 +74,7 @@ input[type="checkbox"] {
 }
 
 input[type="submit"] {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     background: #3e3e3e;
     border: 0;
     color: #fff;
@@ -108,6 +112,7 @@ footer {
     text-align: center;
     width: 100%;
     padding: 15px 0;
+    font-size: 13pt;
 }
 
 footer div {

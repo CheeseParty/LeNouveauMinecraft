@@ -46,6 +46,7 @@ if(isset($_SESSION['AUTH'])) {
                 <input type="password" name="password" placeholder="Mot de passe" required>
                 <input type="password" name="password2" placeholder="Répétez le mot de passe" required>
                 <input type="email" name="email" placeholder="Adresse e-mail valide" required>
+                <div class="g-recaptcha" data-sitekey="6LcW5AoTAAAAAEJC_qyBzoLoM_YV-vMumXJroN59"></div>
                 <input type="submit" class="form_btn2" value="Inscription">
             </form>
             <footer>
@@ -95,5 +96,6 @@ if(isset($_SESSION['AUTH'])) {
         ?>
         }       
         </script>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </body>
 </html>
