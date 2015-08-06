@@ -1,0 +1,67 @@
+.reinit_title {
+    font-size: 28pt;
+    font-family: "Merriweather";
+    color: #696969;
+    text-align: center;
+    margin:0;
+    padding:7.5px;
+     margin-top:150px;
+}
+
+.reinit_info {
+    color:#696969;
+    text-align:center;
+}
+
+#reinit_zone {
+    width:1000px;
+    margin:auto;
+    height: 100%;
+}
+
+body{
+    margin:0;
+    min-height: 100%;
+}
+
+#reinit_zone a{
+    color: #1f8fd3;
+}
+
+#reinit_zone a:hover{
+    color:#1871a7;
+    text-decoration: underline;
+}
+
+#reinit_form {
+    margin:30px auto;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 250px;
+    border: 2px solid #ddd;
+    display: block;
+    padding: 8px 8px;
+    font-size: 15pt;
+}
+input[type="submit"] {
+    margin-bottom: 10px;
+    background: #3e3e3e;
+    border: 0;
+    color: #fff;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 15pt;
+}
+
+input[type="submit"]:hover {
+    background-color: #696969;
+}
+.form_btn {
+    display: block;
+    margin:0 auto;
+}

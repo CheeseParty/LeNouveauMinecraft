@@ -75,7 +75,7 @@ input[type="checkbox"] {
 }
 
 input[type="submit"] {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     background: #3e3e3e;
     border: 0;
     color: #fff;
@@ -123,6 +123,14 @@ footer div {
     font-family: "Merriweather";
 }
 
+.forgotpassword {
+    margin-bottom:20px;
+    font-size:10pt;
+    display: block;
+}
+.forgotpassword:hover {
+    text-decoration: underline;
+}
 @media screen and (max-width: 600px) {
     #loginbox {
         width: 100%;

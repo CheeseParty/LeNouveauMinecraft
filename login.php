@@ -36,7 +36,10 @@ if(isset($_SESSION['AUTH'])) {
                         <input type="checkbox" name="rememberbox" value="1">
                         Se souvenir de moi
                     </label>
-                    <input type="submit" class="form_btn" value="Connexion">
+                   
+                    
+                    <input type="submit" class="form_btn" value="Connexion"><br>
+                    <a class="forgotpassword" href="reinitialisation_mdp.php">Réinitialiser mon mot de passe</a>
                 </div>
             </form>
             <hr>
