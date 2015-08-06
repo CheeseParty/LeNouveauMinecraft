@@ -26,4 +26,19 @@
 #validzone {
     width:1000px;
     margin:auto;
+    height: 100%;
+}
+
+body{
+    margin:0;
+    min-height: 100%;
+}
+
+#validzone a{
+    color: #1f8fd3;
+}
+
+#validzone a:hover{
+    color:#1871a7;
+    text-decoration: underline;
 }

@@ -42,13 +42,15 @@
 		</div>
         
         <section id="validzone">
-            <p class="validtitle">Votre compte a été validé !</p>
-            
             <?php
-                echo"<p class='validsubtitle'>Merci <span>" .$_SESSION['AUTH']. "</span> d'avoir validé votre compte";
+            if(isset($_GET['error'])) {
+                echo'<p class="validtitle">Erreur lors de la validation !</p> <p class="validinfo">Le compte est déjà activé. <a href="index.php">Retour à l\'accueil</a></p>';
+            } else {
+                echo'<p class="validtitle">Votre compte a été validé !</p> <p class="validsubtitle">Merci <span>' .$_SESSION["AUTH"]. '</span> d\'avoir validé votre compte <p class="validinfo">Vous pouvez maintenant naviguer correctement sur notre site, poster des commentaires sur nos articles ou encore accéder au forum et à l\'espace membres.<a href="login.php">Se connecter</a></p>' ;
+            }
             ?>
             
-            <p class="validinfo">Vous pouvez maintenant naviguer correctement sur notre site, poster des commentaires sur nos articles ou encore                accéder au forum et à l'espace membres. Ne dites surtout pas à Jojo que je suis Gilles, 42 ans. Je suis proche des enfants. Je vous                arrête tout de suite, proche ne veut pas dire dedans.</p>
+            
         </section>
         
         <footer>
@@ -84,23 +86,12 @@
 			});
 		}
 
-		// Toogle le login
-		function initLogin() {
-			document.getElementById("login").addEventListener('click', function() {
-				console.log("Login");
-				/* Todo:
-					Initialiser la variable du loginbox
-					Faire apparaitre / disparaitre
-				*/
-			});
-		}
 
 		// Initialisation
 		window.onload = function() {
 			initVars();
 			initMenu();
 			moveMenu();
-			initLogin();
 		}
 		</script>
     </body>
