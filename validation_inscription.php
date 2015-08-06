@@ -1,10 +1,3 @@
-<?php 
-    session_start();
-    if(!isset($_SESSION['AUTH'])) {
-	header("Location: index.php");
-	exit;
-    }
-?>
 <!doctype html>
 <html lang="fr">
 	<head>
@@ -46,10 +39,10 @@
             if(isset($_GET['error'])) {
                 echo'<p class="validtitle">Erreur lors de la validation !</p> <p class="validinfo">Le compte est déjà activé. <a href="index.php">Retour à l\'accueil</a></p>';
             } else {
-                echo'<p class="validtitle">Votre compte a été validé !</p> <p class="validsubtitle">Merci <span>' .$_SESSION["AUTH"]. '</span> d\'avoir validé votre compte <p class="validinfo">Vous pouvez maintenant naviguer correctement sur notre site, poster des commentaires sur nos articles ou encore accéder au forum et à l\'espace membres.<a href="login.php">Se connecter</a></p>' ;
+                echo'<p class="validtitle">Votre compte a été validé !</p> <p class="validsubtitle">Merci <span>' .$_SESSION["AUTH"]. '</span> d\'avoir validé votre compte <p                   class="validinfo">Vous pouvez maintenant naviguer correctement sur notre site, poster des commentaires sur nos articles ou encore accéder au forum et à                         l\'espace membres.<a href="login.php">Se connecter</a></p>' ;
             }
             ?>
-            
+                
             
         </section>
         

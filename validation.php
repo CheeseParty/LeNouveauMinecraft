@@ -9,7 +9,7 @@ $pseudo = $_GET['pseudo'];
 $cle = $_GET['cle'];
 
 // On met à jour la variable actif de l'utilisateur qui vient de valider son compte (actif passe de 0 à 1)
-$activation = $db->prepare('UPDATE membres SET actif=1, key=NULL WHERE pseudo=? AND cle=?');
+$activation = $db->prepare('UPDATE membres SET actif=1, token=NULL WHERE pseudo=? AND cle=?');
 $activation->execute(array(
         'pseudo' => $_GET['pseudo'],
         'cle' => $_GET['cle']
