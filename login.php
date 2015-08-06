@@ -50,8 +50,9 @@ if(isset($_SESSION['AUTH'])) {
                 <input type="submit" class="form_btn2" value="Inscription">
             </form>
             <footer>
+                
                 <div>N</div>
-                © "Copyright" Nether News <?php echo date('Y'); ?>
+                © "Copyright" Nether News <?php echo date('Y');?>
             </footer>
         </div>
         <script type="text/javascript">

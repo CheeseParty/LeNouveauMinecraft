@@ -7,7 +7,7 @@ session_start();
 if(isset($_POST['pseudo']) AND isset($_POST['password'])) {
     require('includes/connexion.php');
 
-    $conn = $db->prepare('SELECT id, rank, hash FROM membres WHERE pseudo=?  actif=1');
+    $conn = $db->prepare('SELECT id, rank, hash FROM membres WHERE pseudo=? AND actif=1');
     $conn->execute(array($_POST['pseudo']));
 
     // Si la requête donne un résultat

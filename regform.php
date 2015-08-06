@@ -72,19 +72,25 @@ if($check->rowCount() > 0) {
     exit;
 }
 
+
 // Sinon on l'inscrit
 else {
-    $register = $db -> prepare('INSERT INTO membres (id, pseudo, hash, email) VALUES (:id, :pseudo, :hash, :email)');
+    // Génération random d'une clé 
+    $cle = md5(uniqid(rand(), true)); 
+
+    $register = $db -> prepare('INSERT INTO membres (id, pseudo, hash, email, key) VALUES (:id, :pseudo, :hash, :email, :key)');
     $register->execute(array(
         "id" => "",
         "pseudo" => $_POST['pseudo'],
         "hash" => password_hash($_POST['password'], CRYPT_BLOWFISH),
-        "email" => $_POST['email']
+        "email" => $_POST['email'],
+        "key" => $cle
+
     ));
     $register->closeCursor();
     // Envoi de l'e-mail de validation
     require('includes/validprocess.php');
-
+    
     //Et on redirige
     header("Location: login.php?message=sent");
     exit;

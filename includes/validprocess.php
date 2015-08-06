@@ -9,25 +9,19 @@ require('includes/connexion.php');
 $email = $_POST['email'];
 $pseudo = $_POST['pseudo'];
 
-// Génération random d'une clé 
-$cle = md5(microtime(TRUE)*100000); 
 
-// Insertion de la clé dans la bdd
-$keyinsert = $db->prepare('INSERT INTO membres (key) VALUES (:key)');
-$keyinsert = $db->execute(array(
-    'key' => $cle
-));
 
 // On prépare le mail qui contient le lien d'activation
 $destinataire = $email;
 $sujet = "Nether News - Activation de votre compte";
 $headers = 'MIME-Version: 1.0'."\r\n".
   'Content-type: text/html; charset=utf-8'."\r\n".
-  'From: noreply@notresite.com'."\r\n".
+  'From: gweedzy@gmail.com'."\r\n".
   'X-Mailer: PHP/' . phpversion();
 
 // Contenu du message qui contient le lien d'activation composé de la clé et du pseudo
-$message = '<!doctype html>
+$message = '
+<!doctype html>
 <html>
     <head>
         <title>Validation de votre compte Nether News</title>
