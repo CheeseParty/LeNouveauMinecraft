@@ -82,6 +82,8 @@ else {
         "email" => $_POST['email']
     ));
     $register->closeCursor();
+    // Envoi de l'e-mail de validation
+    require('includes/validprocess.php');
 
     //Et on redirige
     header("Location: login.php?message=sent");

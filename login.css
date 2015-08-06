@@ -54,6 +54,7 @@ header h1 {
 
 .g-recaptcha {
     margin: 15px 100px;
+    height: 78px;
 }
 
 input[type="text"],

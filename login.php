@@ -32,7 +32,7 @@ if(isset($_SESSION['AUTH'])) {
                 <input type="text" name="pseudo" placeholder="Nom d'utilisateur" required>
                 <input type="password" name="password" placeholder="Mot de passe" required>
                 <div id="loginzone">
-                    <label class="css-label">
+                    <label>
                         <input type="checkbox" name="rememberbox" value="1">
                         Se souvenir de moi
                     </label>
