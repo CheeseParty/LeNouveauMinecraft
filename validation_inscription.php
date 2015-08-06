@@ -43,7 +43,7 @@
             
             // Sinon on affiche le texte de validation completée
             else {
-                echo '<p class="validtitle">Votre compte a été validé !</p> <p class="validsubtitle">Merci d\'avoir validé votre compte <p                                                          class="validinfo">Vous pouvez maintenant naviguer correctement sur notre site, poster des commentaires sur nos articles ou encore accéder au forum et à                         l\'espace membres.<a href="login.php">Se connecter</a></p>' ;
+                echo '<p class="validtitle">Votre compte a été validé !</p> <p class="validsubtitle">Merci d\'avoir validé votre compte <p                                                          class="validinfo">Vous pouvez maintenant naviguer correctement sur notre site, poster des commentaires sur nos articles ou encore accéder au forum et à                         l\'espace membres.<br><a href="login.php">Se connecter</a></p>' ;
             }
             ?>
                 
