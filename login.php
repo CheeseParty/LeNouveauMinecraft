@@ -87,8 +87,12 @@ if(isset($_SESSION['AUTH'])) {
                         $message = "Merci de vous être enregistré. Pour terminer votre inscription, vérifiez votre boite de messagerie pour les instructions d\'activation de votre compte.";
                         break;
 
+                    case 'captcha':
+                        $message = "Veuillez cocher la case \"Je ne suis pas un robot\"";
+                        break;
+
                     default:
-                        $message = "Une errur inconnue est survenue. Veuillez réessayer.";
+                        $message = "Une erreur inconnue est survenue. Veuillez réessayer.";
                         break;
                 }
                 echo "alert('$message');";

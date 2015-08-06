@@ -31,6 +31,23 @@ if($_POST['password'] != $_POST['password2']) {
     $message = "password";
 }
 
+// Vérification du reCAPTCHA
+$url = 'https://www.google.com/recaptcha/api/siteverify';
+$data = array('secret' => '6LcW5AoTAAAAAH3AbWHAfIxp_MkVnAoOm6cLVwa4', 'response' => $_POST['g-recaptcha-response']);
+$options = array(
+    'http' => array(
+        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+        'method'  => 'POST',
+        'content' => http_build_query($data),
+    ),
+);
+$context  = stream_context_create($options);
+$result = utf8_encode(file_get_contents($url, false, $context));
+$json = json_decode($result,true);
+if($json['success'] != "true") {
+    $message = "captcha";
+}
+var_dump($result);
 
 // Si la requête est ok
 if($message != false) {
