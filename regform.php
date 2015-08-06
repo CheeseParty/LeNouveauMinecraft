@@ -73,13 +73,16 @@ if($check->rowCount() > 0) {
 
 // Sinon on l'inscrit
 else {
+    // Déclaration de la variable contenant la clé
+    $cle = md5(microtime(true)*100000);
+    
     $register = $db->prepare('INSERT INTO membres (id, pseudo, hash, email, token) VALUES (:id, :pseudo, :hash, :email, :token)');
     $register->execute(array(
         "id" => "",
         "pseudo" => $_POST['pseudo'],
         "hash" => password_hash($_POST['password'], CRYPT_BLOWFISH),
         "email" => $_POST['email'],
-        "token" => md5(microtime(true)*100000)
+        "token" => $cle
     ));
     $register->closeCursor();
     // Envoi de l'e-mail de validation

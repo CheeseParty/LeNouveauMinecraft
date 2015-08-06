@@ -36,10 +36,14 @@
         
         <section id="validzone">
             <?php
+            // Si il y a le $_GET['error'] de la page validation.php alors on affiche un message d'erreur
             if(isset($_GET['error'])) {
-                echo'<p class="validtitle">Erreur lors de la validation !</p> <p class="validinfo">Le compte est déjà activé. <a href="index.php">Retour à l\'accueil</a></p>';
-            } else {
-                echo'<p class="validtitle">Votre compte a été validé !</p> <p class="validsubtitle">Merci <span>' .$_SESSION["AUTH"]. '</span> d\'avoir validé votre compte <p                   class="validinfo">Vous pouvez maintenant naviguer correctement sur notre site, poster des commentaires sur nos articles ou encore accéder au forum et à                         l\'espace membres.<a href="login.php">Se connecter</a></p>' ;
+                echo '<p class="validtitle">Erreur lors de la validation !</p> <p class="validinfo">Le compte est déjà activé<br><a                                                             href="index.php">Retour à l\'accueil</a></p>';
+            } 
+            
+            // Sinon on affiche le texte de validation completée
+            else {
+                echo '<p class="validtitle">Votre compte a été validé !</p> <p class="validsubtitle">Merci d\'avoir validé votre compte <p                                                          class="validinfo">Vous pouvez maintenant naviguer correctement sur notre site, poster des commentaires sur nos articles ou encore accéder au forum et à                         l\'espace membres.<a href="login.php">Se connecter</a></p>' ;
             }
             ?>
                 

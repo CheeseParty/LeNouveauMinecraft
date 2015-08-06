@@ -9,8 +9,6 @@ require('includes/connexion.php');
 $email = $_POST['email'];
 $pseudo = $_POST['pseudo'];
 
-
-
 // On prépare le mail qui contient le lien d'activation
 $destinataire = $email;
 $sujet = "Nether News - Activation de votre compte";
@@ -146,12 +144,12 @@ $message = '
                 
             <span class="cordialement">Cordialement, l\'équipe Nether News</span>
                 
-                <span class="noreply">Lien : <a href="validation_inscription.php" class="mail-link">http://www.notresite.fr/validation?pseudo='.urlencode($pseudo).'&cle='.urlencode($cle).'</a> 
+                <span class="noreply">Lien : <a href="validation.php?pseudo=?'.urlencode($pseudo).'&cle='.urlencode($cle).'" class="mail-link">http://www.notresite.fr/validation.php?pseudo='.urlencode($pseudo).'&cle='.urlencode($cle).'</a> 
                     <br>
                     Cet e-mail a été envoyé automatiquement, merci de ne pas y répondre. 
                     </span>
             </p>
-                
+                a
                 
         </div>
         <footer>
