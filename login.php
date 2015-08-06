@@ -41,7 +41,6 @@ if(isset($_SESSION['AUTH'])) {
             </form>
             <hr>
             <h2>Inscription</h2>
-            <p class="forminfo">(*) = obligatoires</p>
             <form method="post" action="regform.php">
                 <input type="text" name="pseudo" placeholder="Nom d'utilisateur" required>       
                 <input type="password" name="password" placeholder="Mot de passe" required>
@@ -57,38 +56,42 @@ if(isset($_SESSION['AUTH'])) {
         <script type="text/javascript">
         document.body.onload = function() {
         <?php
-        if(isset($_GET['message'])) {
-            switch ($_GET['message']) {
-                case 'empty':
-                    $message = "Veuillez remplir tous les champs.";
-                    break;
+            if(isset($_GET['message'])) {
+                switch ($_GET['message']) {
+                    case 'empty':
+                        $message = "Veuillez remplir tous les champs.";
+                        break;
 
-                case 'pseudo':
-                    $message = "Pseudo invalide.";
-                    break;
+                    case 'pseudo':
+                        $message = "Pseudo invalide.";
+                        break;
 
-                case 'email':
-                    $message = "Adresse e-mail invalide.";
-                    break;
+                    case 'email':
+                        $message = "Adresse e-mail invalide.";
+                        break;
 
-                case 'password':
-                    $message = "Les deux mots de passe ne correspondent pas.";
-                    break;
+                    case 'password':
+                        $message = "Les deux mots de passe ne correspondent pas.";
+                        break;
 
-                case 'exist':
-                    $message = "Ce pseudo ou cette adresse e-mail est déjà utlisé.";
-                    break;
+                    case 'exist':
+                        $message = "Ce pseudo ou cette adresse e-mail est déjà utilisé.";
+                        break;
 
-                case 'badlogin':
-                    $message = "Mauvais identifiants de connexion.";
-                    break;
+                    case 'badlogin':
+                        $message = "Mauvais identifiants de connexion.";
+                        break;
 
-                default:
-                    $message = "Une errur inconnue est survenue. Veuillez réessayer.";
-                    break;
+                    case 'sent':
+                        $message = "Merci de vous être enregistré. Pour terminer votre inscription, vérifiez votre boite de messagerie pour les instructions d\'activation de votre compte.";
+                        break;
+
+                    default:
+                        $message = "Une errur inconnue est survenue. Veuillez réessayer.";
+                        break;
+                }
+                echo "alert('$message');";
             }
-            echo "alert('$message');";
-        }
         ?>
         }       
         </script>

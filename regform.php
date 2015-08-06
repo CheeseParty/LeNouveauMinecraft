@@ -57,18 +57,16 @@ if($check->rowCount() > 0) {
 
 // Sinon on l'inscrit
 else {
-    $register = $db -> prepare('INSERT INTO membres (id, pseudo, password, email) VALUES (:id, :pseudo, :password, :email)');
+    $register = $db -> prepare('INSERT INTO membres (id, pseudo, hash, email) VALUES (:id, :pseudo, :hash, :email)');
     $register->execute(array(
         "id" => "",
         "pseudo" => $_POST['pseudo'],
-        "password" => $_POST['password'],
+        "hash" => password_hash($_POST['password'], CRYPT_BLOWFISH),
         "email" => $_POST['email']
     ));
     $register->closeCursor();
 
-    $message = "sent";
-
-    //Et on redirige à l'accueil
-    header("Location: index.php");
+    //Et on redirige
+    header("Location: login.php?message=sent");
     exit;
 }
