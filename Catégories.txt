@@ -1,0 +1,8 @@
+0 -> Map
+1 -> Mod
+2 -> Version
+3 -> Plugin
+4 -> Texture
+5 -> Shader
+6 -> Cheats
+7 -> Divers

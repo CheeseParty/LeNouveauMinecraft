@@ -1,6 +1,4 @@
-<?php
-    session_start();
-?>
+<?php session_start(); ?>
 <!doctype html>
 <html lang="fr">
 	<head>
@@ -22,18 +20,17 @@
 						<span></span>
 						<span></span>
 					</div>
-					<a id="title" href="index.php"><h1>Nether News</h1></a>
-                            
-                        <?php 
-                        
-                                if(isset($_SESSION['AUTH'])) {
-                                 echo"<a id='logout' href='logout.php'><img src='logout.svg'><span>Déconnexion</span></a>";
-                                } else {
-                                    echo"<a id='login' href='login.php'><img src='profile.svg'><span>Connexion | Inscription</span></a>";
-                                }
-                              ?>
-                        
-
+					<a id="title" href="index.php"><h1>Nether News</h1></a>       
+					<?php
+						// Si l'utlisateur est connecté
+						if(isset($_SESSION['AUTH'])) {
+							echo"<a id='logout' href='logout.php'><img src='logout.svg'><span>Déconnexion</span></a>";
+						}
+						// Sinon
+						else {
+							echo"<a id='login' href='login.php'><img src='profile.svg'><span>Connexion | Inscription</span></a>";
+						}
+					?>
 					</a>
 				</div>
 			</div>
@@ -44,7 +41,8 @@
 			<a href="#">Plugins</a>
 		</div>
 		<section id="articles">
-			<article class="map">
+			<?php // include('cache/cache.php'); ?>
+		<!--	<article class="map">
 				<a style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
 					<h2>MAP: <span>It's so huge! Ü</span></h2>
 					<span>1.8.7</span>
@@ -67,8 +65,7 @@
 					<h2>MAP: <span>It's so huge! Ü</span></h2>
 					<span>1.8.7</span>
 				</a>
-			</article>
-			
+			</article>-->
 		</section>
 		<footer>
 			<div>N</div>
