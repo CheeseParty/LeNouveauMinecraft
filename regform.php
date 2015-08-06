@@ -47,7 +47,6 @@ $json = json_decode($result,true);
 if($json['success'] != "true") {
     $message = "captcha";
 }
-var_dump($result);
 
 // Si la requête est ok
 if($message != false) {
@@ -72,20 +71,15 @@ if($check->rowCount() > 0) {
     exit;
 }
 
-
 // Sinon on l'inscrit
 else {
-    // Génération random d'une clé 
-    $cle = md5(uniqid(rand(), true)); 
-
-    $register = $db -> prepare('INSERT INTO membres (id, pseudo, hash, email, key) VALUES (:id, :pseudo, :hash, :email, :key)');
+    $register = $db->prepare('INSERT INTO membres (id, pseudo, hash, email, token) VALUES (:id, :pseudo, :hash, :email, :token)');
     $register->execute(array(
         "id" => "",
         "pseudo" => $_POST['pseudo'],
         "hash" => password_hash($_POST['password'], CRYPT_BLOWFISH),
         "email" => $_POST['email'],
-        "key" => $cle
-
+        "token" => md5(microtime(true)*100000)
     ));
     $register->closeCursor();
     // Envoi de l'e-mail de validation
