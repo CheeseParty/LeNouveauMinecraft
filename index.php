@@ -72,7 +72,12 @@
 		</section>
 		<footer>
 			<div>N</div>
-			© "Copyright" Nether News <?php echo date('Y'); ?>
+			© "Copyright" Nether News <?php echo date('Y'); ?><br>
+            <?php 
+                if(isset($_SESSION['AUTH'])) {
+                    echo"<p class='infoauth'>Connecté en tant que <span>".$_SESSION['AUTH']."</span></p>";
+                }
+            ?>
 		</footer>
 <!--
 "On l'a fait", se réjouissait ce matin le président Obama, en observant le convoi de péniches décoller.

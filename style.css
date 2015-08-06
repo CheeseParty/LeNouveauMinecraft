@@ -211,6 +211,15 @@ footer div {
     font-family: "Merriweather";
 }
 
+footer span {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.infoauth {
+    margin:0;
+    font-size:12pt;
+}
 /* Media queries */
 @media screen and (max-width: 700px) {
     #header-container {
