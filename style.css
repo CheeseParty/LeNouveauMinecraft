@@ -20,6 +20,9 @@ header {
     z-index: 99;
     width: 100%;
     top: 0;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 header a {
@@ -45,10 +48,6 @@ header a {
     color: #fff;
     cursor: pointer;
     width: 184px;
-}
-
-.logout {
-    background: #fa4242;
     text-align: center;
 }
 

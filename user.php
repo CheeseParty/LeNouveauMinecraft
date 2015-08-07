@@ -106,9 +106,12 @@
                         <td><?=$date?></td> 
                     </tr>
                 </table>
+                <?php if($same): ?>
+                    <a class="logout" href="../../logout.php">Déconnexion</a>
+                <?php endif ?>
             <?php else: ?>
                 <h2>Désolé, le profil que vous avez demandé n'existe pas.</h2>
-                <a href="../../">Retourner à l'acceuil</a>
+                <a href="../../">Retourner à l'accueil</a>
             <?php endif ?>
         </section>
         <footer>

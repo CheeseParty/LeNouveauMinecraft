@@ -21,6 +21,12 @@ a {
     color: #B3B3B3;
 }
 
+.logout {
+    color: #fff;
+    background: #fa4242;
+    padding: 8px 15px;
+}
+
 header {
     background: #27AE60;
 }
@@ -59,7 +65,7 @@ img {
 }
 
 table {
-    margin: 20px auto;
+    margin: 25px auto;
     text-align: left;
     color: #2d2d2d;
     border-collapse: collapse;
