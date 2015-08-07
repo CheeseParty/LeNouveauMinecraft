@@ -139,7 +139,7 @@ $message = '
             <div id="mailcontent">
             <p class="mailtitle">Veuillez valider votre compte</p>
             
-            <p class="mailinfo">Pour avoir accès à toutes les fonctionnalités de Nether News, merci de valider votre compte en cliquant <a href="validation_inscription.php" class="mail-link">ICI</a> (lien complet en bas de la page)
+            <p class="mailinfo">Pour avoir accès à toutes les fonctionnalités de Nether News, merci de valider votre compte en cliquant <a href="validation.php?pseudo=?'.urlencode($pseudo).'&cle='.urlencode($cle).'" class="mail-link">http://www.notresite.fr/validation.php?pseudo='.urlencode($pseudo).'&cle='.urlencode($cle).'>ICI</a> (lien complet en bas de la page)
 
                 
             <span class="cordialement">Cordialement, l\'équipe Nether News</span>
@@ -149,7 +149,7 @@ $message = '
                     Cet e-mail a été envoyé automatiquement, merci de ne pas y répondre. 
                     </span>
             </p>
-                a
+                
                 
         </div>
         <footer>

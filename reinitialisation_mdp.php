@@ -35,6 +35,30 @@
 		</div>
         
         <div id="reinit_zone">
+            <?php 
+            // Définition des variables à partir des données dans l'url (données par le mail de réinit)
+            $pseudo = $_GET['pseudo'];
+            $tokenurl = $_GET['token'];
+            // On va chercher le token dans la bdd
+            $get_token = $db -> prepare('SELECT token FROM membres WHERE pseudo=?');
+            $get_token->execute(array(
+            'pseudo' => $pseudo
+            ));
+            $token_stock = $get_token->fetchAll();
+            // Le token de l'utilisateur est donc stocké dans $token
+            $token = ($token_stock[0]["token_stock"]);
+            // On ferme la requête bdd
+            $get_token -> closeCursor();
+            
+            if($token === $tokenurl) {
+                echo "<p class='reinit_title'>Changez votre mot de passe</p><br>";
+                
+            }
+            // S'il y a le $_GET d'erreur alors on affiche ce message d'erreur
+            if(isset($_GET['error'])) {
+                echo "<p class='error'>Erreur : L'utilisateur est inconnu</p>";
+            }
+        ?>        
             <p class="reinit_title">Réinitialiser votre mot de passe</p>
             <p class="reinit_info">Vous êtes sur cette page si vous avez oublié votre mot de passe et que vous souhaitez en changer. Merci de remplir le formulaire suivant correctement pour que la procédure se réalise sans problème.</p>
             <div id="reinit_form">
