@@ -1,7 +1,6 @@
 
 RewriteEngine On
 # Rule: non-www to www
-RewriteCond %{HTTP_HOST} !^www\.
-RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
-# Rule: user/name/ to user.php?user=name
+# RewriteCond %{HTTP_HOST} !^www\.
+# RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 RewriteRule ^user/(.*)/$ user.php?user=$1 [NC,L]

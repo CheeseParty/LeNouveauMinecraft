@@ -76,7 +76,7 @@
                 <?php endif ?>
                 <img src="http://www.gravatar.com/avatar/<?=md5(strtolower(trim($mail)))?>?s=200">
                 <?php if($same): ?>
-                    <a href="//fr.gravatar.com" target="_blank">Personnaliser mon avatar</a>
+                    <a href="//fr.gravatar.com" target="_blank">Personnaliser l'avatar</a>
                 <?php endif ?>
                 <table>
                     <caption>Informations</caption>

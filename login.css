@@ -35,7 +35,7 @@ header {
 }
 
 header h1 {
-    font-size: 34pt;
+    font-size: 32pt;
     margin: 0;
     font-family: "Merriweather";
     color: #fff;
@@ -44,8 +44,7 @@ header h1 {
 }
 
 #loginbox {
-    width: 600px;
-    margin: 20px auto 0;
+    margin: 10px auto 0;
     background: #F1F4F9;
     color: #3e3e3e;
     width: 500px;
@@ -53,7 +52,8 @@ header h1 {
 }
 
 .g-recaptcha {
-    margin: 15px 100px;
+    margin: 15px auto;
+    width: 304px;
     height: 78px;
 }
 
@@ -75,7 +75,7 @@ input[type="checkbox"] {
 }
 
 input[type="submit"] {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     background: #3e3e3e;
     border: 0;
     color: #fff;
@@ -126,11 +126,15 @@ footer div {
 .forgotpassword {
     margin-bottom:20px;
     font-size:10pt;
-    display: block;
+    display: inline-block;
+    border: 1px solid transparent;
+    color: #3e3e3e;
 }
+
 .forgotpassword:hover {
-    text-decoration: underline;
+    border-bottom: 1px solid #3e3e3e;
 }
+
 @media screen and (max-width: 600px) {
     #loginbox {
         width: 100%;
