@@ -7,7 +7,7 @@ session_start();
 if(isset($_POST['pseudo']) AND isset($_POST['password'])) {
     require('includes/connexion.php');
 
-    $conn = $db->prepare('SELECT id, rank, hash FROM membres WHERE pseudo=? AND actif=1');
+    $conn = $db->prepare('SELECT rank, email, hash, inscription FROM membres WHERE pseudo=? AND actif=1');
     $conn->execute(array($_POST['pseudo']));
 
     // Si la requête donne un résultat
@@ -23,9 +23,11 @@ if(isset($_POST['pseudo']) AND isset($_POST['password'])) {
                     setcookie('Pseudo', $pseudo, strtotime('+14 days'));
                     setcookie('Password', $password, strtotime('+14 days'));
                 }
-                $_SESSION['UID'] = $data['id'];
                 $_SESSION['RANK'] = $data['rank'];
                 $_SESSION['AUTH'] = $_POST['pseudo'];
+                $_SESSION['MAIL'] = $data['email'];
+                $date = explode('-',$data['inscription']);
+                $_SESSION['DATE'] = "$date[2].$date[1].$date[0]";
                 header("Location: index.php");
                 exit;
             } else {

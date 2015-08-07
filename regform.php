@@ -61,7 +61,7 @@ require('includes/connexion.php');
 $check = $db -> prepare('SELECT id FROM membres WHERE email=? or pseudo=?');
 $check -> execute(array(
     $_POST['email'],
-    $_POST['pseudo']
+    $_POST['pseudo'],
 ));
 
 // S'ils existent déjà
@@ -76,13 +76,14 @@ else {
     // Déclaration de la variable contenant la clé
     $cle = md5(microtime(true)*100000);
     
-    $register = $db->prepare('INSERT INTO membres (id, pseudo, hash, email, token) VALUES (:id, :pseudo, :hash, :email, :token)');
+    $register = $db->prepare('INSERT INTO membres (id, pseudo, hash, email, token, inscription) VALUES (:id, :pseudo, :hash, :email, :token, :inscription)');
     $register->execute(array(
         "id" => "",
         "pseudo" => $_POST['pseudo'],
         "hash" => password_hash($_POST['password'], CRYPT_BLOWFISH),
         "email" => $_POST['email'],
-        "token" => $cle
+        "token" => $cle,
+        "inscription" => date('Y-m-d')
     ));
     $register->closeCursor();
     // Envoi de l'e-mail de validation

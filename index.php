@@ -21,17 +21,15 @@
 						<span></span>
 					</div>
 					<a id="title" href="index.php"><h1>Nether News</h1></a>       
-					<?php
-						// Si l'utlisateur est connecté
-						if(isset($_SESSION['AUTH'])) {
-							echo"<a id='logout' href='logout.php'><img src='logout.svg'><span>Déconnexion</span></a>";
-						}
-						// Sinon
-						else {
-							echo"<a id='login' href='login.php'><img src='profile.svg'><span>Connexion | Inscription</span></a>";
-						}
-					?>
+					<?php if(isset($_SESSION['AUTH'])): ?>
+						<a class='login logout' href='logout.php'><img src='logout.svg'><span>Déconnexion</span></a>
+					<?php else: ?>
+						<a class='login' href='login.php'><img src='login.svg'><span>Connexion | Inscription</span></a>
+					<?php endif ?>
 					</a>
+					<?php if(isset($_SESSION['AUTH'])): ?>
+						<p class='infoauth'>Connecté en tant que <a href="user/<?=$_SESSION['AUTH']?>/"><?=$_SESSION['AUTH']?></a></p>
+		            <?php endif ?>
 				</div>
 			</div>
 		</header>
@@ -42,7 +40,7 @@
 		</div>
 		<section id="articles">
 			<?php // include('cache/cache.php'); ?>
-		<!--	<article class="map">
+			<article class="map">
 				<a style="background:url('http://goo.gl/07BGlB') no-repeat;background-size:cover">
 					<h2>MAP: <span>It's so huge! Ü</span></h2>
 					<span>1.8.7</span>
@@ -65,16 +63,11 @@
 					<h2>MAP: <span>It's so huge! Ü</span></h2>
 					<span>1.8.7</span>
 				</a>
-			</article>-->
+			</article>
 		</section>
 		<footer>
 			<div>N</div>
-			© "Copyright" Nether News <?php echo date('Y'); ?><br>
-            <?php 
-                if(isset($_SESSION['AUTH'])) {
-                    echo"<p class='infoauth'>Connecté en tant que <span>".$_SESSION['AUTH']."</span></p>";
-                }
-            ?>
+			© "Copyright" Nether News <?=date('Y')?>
 		</footer>
 		<!-- A FAIRE: METTRE LE SCRIPT DANS UN FICHIER EXTERNE -->
 		<script type="text/javascript" async defer>
@@ -110,11 +103,11 @@
 			initVars();
 			initMenu();
 			moveMenu();
-			var article = document.querySelector('article');
+		/*	var article = document.querySelector('article');
 			for(var i = 0; i < 5; i++) {
 				var copy = article.cloneNode(true);
 				document.querySelector('#articles').appendChild(copy);
-			}
+			}*/
 		}
 		</script>
 	</body>

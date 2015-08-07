@@ -6,5 +6,5 @@ session_unset();
 session_destroy();
 setcookie('Pseudo', $pseudo, 1);
 setcookie('Password', $password, 1);
-header("Location:login.php");
+header("Location: index.php");
 exit;

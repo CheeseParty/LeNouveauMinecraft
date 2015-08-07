@@ -13,6 +13,7 @@ if(isset($_SESSION['AUTH'])) {
     <head>
         <meta charset="utf-8">
         <title>Nether News - News sur le jeu de type "sandbox"</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="stylesheet" href="login.css">
         <link href='http://fonts.googleapis.com/css?family=Merriweather:700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
@@ -22,8 +23,8 @@ if(isset($_SESSION['AUTH'])) {
     </head>
     <body>  
         <div id="loginbox">
-            <header id="header">
-                <a id="title" href="index.php">
+            <header>
+                <a href="index.php">
                     <h1>Nether News</h1>
                 </a>
             </header>
@@ -36,8 +37,6 @@ if(isset($_SESSION['AUTH'])) {
                         <input type="checkbox" name="rememberbox" value="1">
                         Se souvenir de moi
                     </label>
-                   
-                    
                     <input type="submit" class="form_btn" value="Connexion"><br>
                     <a class="forgotpassword" href="reinitialisation_mdp.php">Réinitialiser mon mot de passe</a>
                 </div>

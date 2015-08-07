@@ -36,9 +36,10 @@ header a {
 
 #header-inner {
     padding: 0 1.6%;
+    position: relative;
 }
 
-#login, #logout {
+.login {
     background: #2ECC71;
     padding: 10px 15px;
     color: #fff;
@@ -46,12 +47,12 @@ header a {
     width: 184px;
 }
 
-#logout {
+.logout {
     background: #fa4242;
     text-align: center;
 }
 
-#login img, #logout img {
+.login img {
     display: none;
 }
 
@@ -62,8 +63,7 @@ header a {
 
 #hamburger,
 #title,
-#login,
-#logout {
+.login {
     display: inline-table;
     vertical-align: middle;
 }
@@ -126,11 +126,11 @@ h1 {
     width: 90%;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 80px 0;
+    padding: 95px 0;
 }
 
 article {
-    margin: 1.6%;
+    margin: 13px 1.6%;
     width: 46.8%;
     float: left;
 }
@@ -218,9 +218,19 @@ footer span {
 }
 
 .infoauth {
-    margin:0;
-    font-size:12pt;
+    position: absolute;
+    margin: 6px -3px;
+    color: #4e4e4e;
+    text-align: right;
+    width: 96.8%;
+    font-size: 12pt;
 }
+
+.infoauth a {
+    color: #4e4e4e;
+    border-bottom: 1px solid #4e4e4e;
+}
+
 /* Media queries */
 @media screen and (max-width: 700px) {
     #header-container {
@@ -233,7 +243,11 @@ footer span {
 
     article {
         width: 100%;
-        margin: 1.6% 0;
+        margin: 13px 0;
+    }
+
+    .infoauth {
+        width: 100%;
     }
 }
 
@@ -242,16 +256,16 @@ footer span {
         width: calc(100% - 106px);
     }
 
-    #login, #logout{
+    .login {
         padding: 7px;
         width: 50px;
     }
     
-    #login span, #logout span{
+    .login span {
         display: none;
     }
     
-    #login img, #logout img{
+    .login img {
         display: block;
         width: 50px;
     }
