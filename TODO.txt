@@ -24,8 +24,8 @@ il valide la publication de l'article. Ce dernier, lorsqu'il pense qu'il est prê
 peut proposer la promotion du rédacteur en essai au rédac chef.
 
 C'est pourquoi le rédacteur en chef doit être objectif, impartial et de confiance.
-Il dispose des outils nécessaires pour constater la progression de ses subalternes,
-et de faire son choix de manière réfléchie.
+Il dispose des outils nécessaires pour constater la progression de ses subalternes 
+et faire son choix de manière réfléchie.
 
 Il faudra penser à un sytème pour qu'on puisse avoir plusieurs fonctions en même temps.
 
