@@ -25,7 +25,7 @@ if(isset($_POST['pseudo']) AND isset($_POST['password'])) {
                 }
                 $_SESSION['RANK'] = $data['rank'];
                 $_SESSION['AUTH'] = $_POST['pseudo'];
-                $_SESSION['MAIL'] = $data['email'];
+                $_SESSION['MD5'] = md5(strtolower(trim($data['email'])));
                 $date = explode('-',$data['inscription']);
                 $_SESSION['DATE'] = "$date[2].$date[1].$date[0]";
                 header("Location: index.php");

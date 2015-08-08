@@ -13,7 +13,6 @@
         $same = true;
         $rank = $_SESSION['RANK'];
         $date = $_SESSION['DATE'];
-        $mail = $_SESSION['MAIL'];
     }
     // Sinon, aller chercher dans la bdd
     else {
@@ -74,7 +73,7 @@
                 <?php else: ?>
                     <h2>Profil de <?=$_GET['user']?></h2>
                 <?php endif ?>
-                <img src="http://www.gravatar.com/avatar/<?=md5(strtolower(trim($mail)))?>?s=200">
+                <img src="http://www.gravatar.com/avatar/<?=$_SESSION['MD5']?>?s=200">
                 <?php if($same): ?>
                     <a href="//fr.gravatar.com" target="_blank">Personnaliser l'avatar</a>
                 <?php endif ?>
@@ -107,7 +106,11 @@
                     </tr>
                 </table>
                 <?php if($same): ?>
-                    <a class="logout" href="../../logout.php">Déconnexion</a>
+                    <p>TODO: Rajouter d'autres options personnalisées?</p>
+                    <a class="btn logout" href="../../logout.php">Déconnexion</a>
+                <?php endif ?>
+                <?php if($same AND $_SESSION['RANK'] > 0): ?>
+                    <br><a class="btn write" href="../../write.php">Ecrire un article</a>
                 <?php endif ?>
             <?php else: ?>
                 <h2>Désolé, le profil que vous avez demandé n'existe pas.</h2>

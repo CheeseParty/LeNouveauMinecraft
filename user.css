@@ -21,10 +21,19 @@ a {
     color: #B3B3B3;
 }
 
-.logout {
-    color: #fff;
-    background: #fa4242;
+.btn {
     padding: 8px 15px;
+    color: #fff;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.write {
+    background: #2E93CC;
+}
+
+.logout {
+    background: #fa4242;
 }
 
 header {
