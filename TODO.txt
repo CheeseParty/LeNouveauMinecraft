@@ -14,24 +14,32 @@ Rangs (bdd -> Rang)
 2 -> Rédacteur à l'essai
 3 -> Rédacteur
 4 -> Rédacteur en chef
+5 -> Administrateur
 
 Ils ne sont pas tous mis dans l'ordre par rapport à leur "valeur".
 En effet, un modérateur "vaut" bien plus qu'un rédacteur à l'essai.
 
 Les rédacteurs relisent et suggèrent des modifications aux rédacteurs à l'essai.
-Une fois que le rédacteurs assigné au rédacteur à l'essai est satisfait, 
-il valide la publication de l'article. Ce dernier, lorsqu'il pense qu'il est prêt,
-peut proposer la promotion du rédacteur en essai au rédac chef.
+Une fois que le rédacteur assigné au rédacteur à l'essai est satisfait, 
+il valide la publication de l'article. Ce dernier, lorsqu'il pense que son
+apprenti est prêt, peut proposer sa promotion au rédac chef.
 
 C'est pourquoi le rédacteur en chef doit être objectif, impartial et de confiance.
 Il dispose des outils nécessaires pour constater la progression de ses subalternes 
 et faire son choix de manière réfléchie.
 
+Evidemment, les rédacteurs qui ne sont pas à l'essai peuvent publier leurs articles
+sans confirmation d'une personne plus haut-gradée.
+
+Les rédacteurs ne peuvent pas gérer les articles des autres rédacteurs.
+Le rédac chef doit lire chaque article publié pour s'assurer de la qualité du contenu.
+C'est aussi comme ça qu'il décidera de la promotion des rédacteurs à l'essai.
+
 Il faudra penser à un sytème pour qu'on puisse avoir plusieurs fonctions en même temps.
 
 
 TODO:
-mettre la balise 
+mettre la balise responsive
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 partout sauf dans les e-mails
 
