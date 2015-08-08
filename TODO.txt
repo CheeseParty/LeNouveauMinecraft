@@ -1,4 +1,4 @@
-Catégories (bdd -> Catégorie)
+ï»¿CatÃ©gories (bdd -> CatÃ©gorie)
 0 -> Map
 1 -> Mod
 2 -> Version
@@ -10,32 +10,32 @@ Catégories (bdd -> Catégorie)
 
 Rangs (bdd -> Rang)
 0 -> Membre
-1 -> Modérateur
-2 -> Rédacteur à l'essai
-3 -> Rédacteur
-4 -> Rédacteur en chef
+1 -> ModÃ©rateur
+2 -> RÃ©dacteur Ã  l'essai
+3 -> RÃ©dacteur
+4 -> RÃ©dacteur en chef
 5 -> Administrateur
 
-Ils ne sont pas tous mis dans l'ordre par rapport à leur "valeur".
-En effet, un modérateur "vaut" bien plus qu'un rédacteur à l'essai.
+Ils ne sont pas tous mis dans l'ordre par rapport Ã  leur "valeur".
+En effet, un modÃ©rateur "vaut" bien plus qu'un rÃ©dacteur Ã  l'essai.
 
-Les rédacteurs relisent et suggèrent des modifications aux rédacteurs à l'essai.
-Une fois que le rédacteur assigné au rédacteur à l'essai est satisfait, 
+Les rÃ©dacteurs relisent et suggÃ¨rent des modifications aux rÃ©dacteurs Ã  l'essai.
+Une fois que le rÃ©dacteur assignÃ© au rÃ©dacteur Ã  l'essai est satisfait, 
 il valide la publication de l'article. Ce dernier, lorsqu'il pense que son
-apprenti est prêt, peut proposer sa promotion au rédac chef.
+apprenti est prÃªt, peut proposer sa promotion au rÃ©dac chef.
 
-C'est pourquoi le rédacteur en chef doit être objectif, impartial et de confiance.
-Il dispose des outils nécessaires pour constater la progression de ses subalternes 
-et faire son choix de manière réfléchie.
+C'est pourquoi le rÃ©dacteur en chef doit Ãªtre objectif, impartial et de confiance.
+Il dispose des outils nÃ©cessaires pour constater la progression de ses subalternes 
+et faire son choix de maniÃ¨re rÃ©flÃ©chie.
 
-Evidemment, les rédacteurs qui ne sont pas à l'essai peuvent publier leurs articles
-sans confirmation d'une personne plus haut-gradée.
+Evidemment, les rÃ©dacteurs qui ne sont pas Ã  l'essai peuvent publier leurs articles
+sans confirmation d'une personne plus haut-gradÃ©e.
 
-Les rédacteurs ne peuvent pas gérer les articles des autres rédacteurs.
-Le rédac chef doit lire chaque article publié pour s'assurer de la qualité du contenu.
-C'est aussi comme ça qu'il décidera de la promotion des rédacteurs à l'essai.
+Les rÃ©dacteurs ne peuvent pas gÃ©rer les articles des autres rÃ©dacteurs.
+Le rÃ©dac chef doit lire chaque article publiÃ© pour s'assurer de la qualitÃ© du contenu.
+C'est aussi comme Ã§a qu'il dÃ©cidera de la promotion des rÃ©dacteurs Ã  l'essai.
 
-Il faudra penser à un sytème pour qu'on puisse avoir plusieurs fonctions en même temps.
+Il faudra penser Ã  un sytÃ¨me pour qu'on puisse avoir plusieurs fonctions en mÃªme temps.
 
 
 TODO:
@@ -45,6 +45,6 @@ partout sauf dans les e-mails
 
 REFAIRE LA REINITIALISATION
 
-faire une page "promotion.php" accessible seulement avec le rang d'admin où on peut 
-changer le rang en fournissant un pseudo et le rang voulu. Envoie également un e-mail
-à la personne promue, dont le contenu varie en fonction de la promotion
+faire une page "promotion.php" accessible seulement avec le rang d'admin oÃ¹ on peut 
+changer le rang en fournissant un pseudo et le rang voulu. Envoie Ã©galement un e-mail
+Ã  la personne promue, dont le contenu varie en fonction de la promotion
