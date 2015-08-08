@@ -13,6 +13,7 @@
         $same = true;
         $rank = $_SESSION['RANK'];
         $date = $_SESSION['DATE'];
+        $md5 = $_SESSION['MD5'];
     }
     // Sinon, aller chercher dans la bdd
     else {
@@ -25,6 +26,7 @@
                 $mail = $data['email'];
                 $rank = $data['rank'];
                 $date = $data['inscription'];
+                $md5 = md5(strtolower(trim($data['email'])));
             }
         } else {
             $exist = false;
@@ -73,7 +75,7 @@
                 <?php else: ?>
                     <h2>Profil de <?=$_GET['user']?></h2>
                 <?php endif ?>
-                <img src="http://www.gravatar.com/avatar/<?=$_SESSION['MD5']?>?s=200">
+                <img src="http://www.gravatar.com/avatar/<?=$md5?>?s=200">
                 <?php if($same): ?>
                     <a href="//fr.gravatar.com" target="_blank">Personnaliser l'avatar</a>
                 <?php endif ?>
