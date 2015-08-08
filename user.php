@@ -90,10 +90,22 @@
                                     break;
 
                                 case '1':
-                                    echo "Rédacteur";
+                                    echo "Modérateur";
                                     break;
 
                                 case '2':
+                                    echo "Rédacteur à l'essai";
+                                    break;
+
+                                case '3':
+                                    echo "Rédacteur";
+                                    break;
+
+                                case '4':
+                                    echo "Rédacteur en chef";
+                                    break;
+
+                                case '5':
                                     echo "Administrateur";
                                     break;
                             }
