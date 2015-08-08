@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>Validation de compte | Nether News - News sur le jeu de type "sandbox"</title>
 		<link rel="stylesheet" href="style.css">
-		<link rel="stylesheet" href="reinit_mdp.css">
+		<link rel="stylesheet" href="changepassword.css">
 		<link href='http://fonts.googleapis.com/css?family=Merriweather:700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
 		<!-- Favicons -->
@@ -43,6 +43,11 @@
                     <input type="email" name="email" placeholder="E-mail" required>
                     <input type="submit" value="Envoyer l'email" class="form_btn">
                 </form>
+                <?php 
+                    if(isset($_GET['error'])) {
+                        echo '<p class="error">Le pseudo ne correspond pas à l\'adresse mail.</p>';
+                    }
+                ?>
             </div>
         </div>
         

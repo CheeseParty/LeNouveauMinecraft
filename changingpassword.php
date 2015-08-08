@@ -6,8 +6,9 @@
 $pseudo = $_GET['pseudo'];
 $token = $_GET['token'];
 
+require('includes/connexion.php');
 // On compare les deux tokens (bdd et $_GET)
-$comparetoken = $db -> prepare('SELECT changepasskey FROM membres WHERE pseudo=?');
+$comparetoken = $db -> prepare('SELECT changepasskey FROM membres WHERE pseudo=:pseudo');
 $comparetoken -> execute(array('pseudo' => $pseudo));
 
 // S'ils sont bons
@@ -53,7 +54,7 @@ if($comparetoken->rowCount() > 0) {
             <p class="reinit_title">Réinitialiser votre mot de passe </p>
             <p class="reinit_info">Vous êtes sur cette page si vous avez oublié votre mot de passe et que vous souhaitez en changer. Merci de remplir le formulaire suivant                 correctement pour que la procédure se réalise sans problème.</p>
             <div id="reinit_form">
-                <form action="changingpassword.php" method="post">
+                <form action="yournewpassword.php" method="post">
                     <input type="password" name="newpass" placeholder="Entrez votre nouveau mot de passe" required>
                     <input type="password" name="newpass2" placeholder="Entrez le à nouveau" required>
                     <input type="submit" value="Changer de mdp" class="form_btn">
@@ -191,18 +192,5 @@ if($comparetoken->rowCount() > 0) {
 </html>';
 }
 
-                        // On passe au changement (update bdd)
-// Si les 2 nouveaux pass entrés correspondent
-if(isset($_POST['newpass']) && isset($_POST['newpass2']) && if($_POST['newpass'] === $_POST['newpass2'])) {
-    // Alors on change le mot de passe
-    $changemdp = $db -> prepare('UPDATE membres SET hash=? WHERE token=?');
-    $changemdp -> execute(array(
-        'hash' => password_hash($_POST['newpass'], CRYPT_BLOWFISH),
-        'token' => $token
-    ));
-    $changemdp -> closeCursor();
-}
 
-    
-    
     
