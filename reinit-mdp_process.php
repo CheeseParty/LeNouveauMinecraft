@@ -3,7 +3,7 @@
 // Page qui change le password
 
 // Si les champs sont bien remplis
-if(isset($_POST['pseudo']) && isset($_POST['password'])) {
+if(isset($_POST['pseudo']) && isset($_POST['email'])) {
     // Alors on va chercher l'email de l'utilisateur dans la bdd
     $getemail = $db -> prepare('SELECT email FROM membres WHERE pseudo=?');
     $getemail -> execute(array(
@@ -38,8 +38,11 @@ if(isset($_POST['pseudo']) && isset($_POST['password'])) {
           'X-Mailer: PHP/' . phpversion();
         $date = date('d-m-Y');
         $heure = date('H:i');
-    // MESSAGE A FAIRE AVEC LE DESIGN DE LAUTRE  (valid compte)     
+    // MESSAGE A FAIRE AVEC LE DESIGN DE LAUTRE  (valid compte)
+        $pseudo = $_POST['pseudo'];
         $message = "Vous avez demandé la réinitialisation de votre mot de passe le $date à $heure, cliquez sur ce lien pour le réinitialiser : <a href='reinitialisation_mdp?pseudo=".urlencode($pseudo)."&cle=".urlencode($token)." Si ce n'est pas vous, merci d'ignorez ce message.";
+        // Et on redirige vers la page avec "un e-mail a été envoyé"
+        header('Location: reinitialisation_mdp?email=sent');
     } else {
         // Sinon on redirige sur la page de réinit mais avec un $_GET d'erreur
         header('Location: reinitialisation_mdp?error=true');

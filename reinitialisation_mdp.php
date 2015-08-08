@@ -36,9 +36,11 @@
         
         <div id="reinit_zone">
             <?php 
+            // On se connecte à la db
+            require('includes/connexion.php');
             // Définition des variables à partir des données dans l'url (données par le mail de réinit)
             $pseudo = $_GET['pseudo'];
-            $tokenurl = $_GET['token'];
+            $tokenurl = $_GET['cle'];
             // On va chercher le token dans la bdd
             $get_token = $db -> prepare('SELECT token FROM membres WHERE pseudo=?');
             $get_token->execute(array(
@@ -58,15 +60,17 @@
             if(isset($_GET['error'])) {
                 echo "<p class='error'>Erreur : L'utilisateur est inconnu</p>";
             }
-        ?>        
-            <p class="reinit_title">Réinitialiser votre mot de passe</p>
+            else{     
+            echo '<p class="reinit_title">Réinitialiser votre mot de passe</p>
             <p class="reinit_info">Vous êtes sur cette page si vous avez oublié votre mot de passe et que vous souhaitez en changer. Merci de remplir le formulaire suivant correctement pour que la procédure se réalise sans problème.</p>
             <div id="reinit_form">
                 <form action="reinit-mdp_process.php" method="post">
-                    <input type="text" name="pseudo" placeholder="Nom d'utilisateur" required>
+                    <input type="text" name="pseudo" placeholder="Nom d\'utilisateur" required>
                     <input type="email" name="email" placeholder="E-mail" required>
-                    <input type="submit" value="Envoyer l'email" class="form_btn">
-                </form>
+                    <input type="submit" value="Envoyer l\'email" class="form_btn">
+                </form>';
+            }
+            ?>
             </div>
         </div>
         
