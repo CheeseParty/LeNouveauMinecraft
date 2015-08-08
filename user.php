@@ -117,13 +117,6 @@
                         <td><?=$date?></td> 
                     </tr>
                 </table>
-                <?php if($same): ?>
-                    <p>TODO: Rajouter d'autres options personnalisées?</p>
-                    <a class="btn logout" href="../../logout.php">Déconnexion</a>
-                <?php endif ?>
-                <?php if($same AND $_SESSION['RANK'] > 0): ?>
-                    <br><a class="btn write" href="../../write.php">Ecrire un article</a>
-                <?php endif ?>
             <?php else: ?>
                 <h2>Désolé, le profil que vous avez demandé n'existe pas.</h2>
                 <a href="../../">Retourner à l'accueil</a>

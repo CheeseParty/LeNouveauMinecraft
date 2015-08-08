@@ -51,7 +51,7 @@
                     <img src="http://www.gravatar.com/avatar/<?=$_SESSION['MD5']?>?s=160">
                     Mon compte
                 </a>
-                <?php if($_SESSION['RANK'] > 0): ?>
+                <?php if($_SESSION['RANK'] > 1): ?>
                     <a href="write.php">Rédaction</a>
                 <?php endif ?>
                 <a href="logout.php">Déconnexion</a>
@@ -106,7 +106,7 @@
             <div>N</div>
             © "Copyright" Nether News <?=date('Y')?>
         </footer>
-        <?php if(isset($_SESSION['RANK']) AND $_SESSION['RANK'] > 0): ?>
+        <?php if(isset($_SESSION['RANK']) AND $_SESSION['RANK'] > 1): ?>
             <style>
                 #settings {
                     top: -280px;
@@ -118,7 +118,7 @@
             </style>
         <?php endif ?>
         <script type="text/javascript">
-            <?php if(isset($_SESSION['AUTH']) AND $_SESSION['RANK'] > 0): ?>
+            <?php if(isset($_SESSION['AUTH']) AND $_SESSION['RANK'] > 1): ?>
                 var offset = "-280px";
                 var logged = true;
                 var rotate = false;
