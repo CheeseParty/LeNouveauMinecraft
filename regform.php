@@ -16,7 +16,7 @@ function check($var) {
 }
 
 if(check($_POST['pseudo'])) {
-    if(!preg_match('#^[A-Za-z][A-Za-z0-9]{5,31}$#', $_POST['pseudo'])) {
+    if(!preg_match('#^[A-Za-z][A-Za-z0-9]{5,11}$#', $_POST['pseudo'])) {
         $message = "pseudo";
     }
 }

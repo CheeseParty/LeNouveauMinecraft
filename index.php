@@ -22,7 +22,7 @@
                     </div>
                     <a id="title" href="index.php"><h1>Nether News</h1></a>       
                     <?php if(isset($_SESSION['AUTH'])): ?>
-                        <a id="settings-btn" class='login'><img src='settings.svg'><span>Paramètres</span></a>
+                        <a id="settings-btn" class='login'><img src='settings.svg'><span><?=$_SESSION['AUTH']?></span></a>
                     <?php else: ?>
                         <a class='login' href='login.php'><img src='login.svg'><span>Connexion | Inscription</span></a>
                     <?php endif ?>
@@ -48,9 +48,12 @@
             <div id="settings" class="dropdown">
                 <a></a>
                 <a href="user/<?=$_SESSION['AUTH']?>/">
-                    <img src="http://www.gravatar.com/avatar/<?=$_SESSION['MD5']?>?s=150">
+                    <img src="http://www.gravatar.com/avatar/<?=$_SESSION['MD5']?>?s=160">
                     Mon compte
                 </a>
+                <?php if($_SESSION['RANK'] > 0): ?>
+                    <a href="write.php">Rédaction</a>
+                <?php endif ?>
                 <a href="logout.php">Déconnexion</a>
             </div>
         <?php endif ?>
@@ -103,10 +106,26 @@
             <div>N</div>
             © "Copyright" Nether News <?=date('Y')?>
         </footer>
+        <?php if(isset($_SESSION['RANK']) AND $_SESSION['RANK'] > 0): ?>
+            <style>
+                #settings {
+                    top: -280px;
+                }
+
+                #settings a:nth-child(3) {
+                    background: #008CFF;
+                }
+            </style>
+        <?php endif ?>
         <script type="text/javascript">
-            <?php if(isset($_SESSION['AUTH'])): ?>
+            <?php if(isset($_SESSION['AUTH']) AND $_SESSION['RANK'] > 0): ?>
+                var offset = "-280px";
                 var logged = true;
                 var rotate = false;
+            <?php elseif(isset($_SESSION['AUTH'])): ?>
+                var logged = true;
+                var rotate = false;
+                var offset = "-240px";
             <?php else: ?>
                 var logged = false;
             <?php endif ?>
@@ -137,9 +156,11 @@
                 if(window.getComputedStyle(menu).top == "-350px") {
                     menu.style.top = "55px";
                     burger.style.transform = "rotate(90deg)";
+                    document.getElementById("articles").style.opacity = 0.5;
                 } else {
                     menu.style.top = "-350px";
                     burger.style.transform = "rotate(0)";
+                    document.getElementById("articles").style.opacity = 1;
                 }
             });
         }
@@ -149,18 +170,20 @@
             var settings = document.getElementById("settings");
             var cog = document.querySelector("#settings-btn img");
             document.getElementById("settings-btn").addEventListener('click', function() {
-                if(window.getComputedStyle(settings).top == "-240px") {
+                if(window.getComputedStyle(settings).top == offset) {
                     settings.style.top = "55px";
                     if(rotate) {
                         cog.style.transform = "rotate(45deg)";
                         console.log("90");
                     }
+                    document.getElementById("articles").style.opacity = 0.5;
                 } else {
-                    settings.style.top = "-240px";
+                    settings.style.top = offset;
                     if(rotate) {
                         cog.style.transform = "rotate(0)";
                         console.log("0");
                     }
+                    document.getElementById("articles").style.opacity = 1;
                 }
             });
         }

@@ -15,7 +15,7 @@
         <meta charset="utf-8">
         <title>Nether News - Votre profil</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link rel="stylesheet" href="user.css">
+        <link rel="stylesheet" href="write.css">
         <link href='http://fonts.googleapis.com/css?family=Merriweather:700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
         <!-- Favicons -->
@@ -29,7 +29,8 @@
             </a>
         </header>
         <section>
-            aWDAWDAWDWDDDD!
+            <!-- Faire selon les rangs -->
+            <?php ?>
         </section>
         <footer>
             <div>N</div>

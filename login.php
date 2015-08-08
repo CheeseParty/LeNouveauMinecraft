@@ -30,7 +30,7 @@ if(isset($_SESSION['AUTH'])) {
             </header>
             <h2>Connexion</h2>
             <form method="post" action="logform.php">
-                <input type="text" name="pseudo" placeholder="Nom d'utilisateur" required>
+                <input type="text" name="pseudo" placeholder="Nom d'utilisateur" maxlength="11" required>
                 <input type="password" name="password" placeholder="Mot de passe" required>
                 <div id="loginzone">
                     <label>
