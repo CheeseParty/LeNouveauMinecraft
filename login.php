@@ -38,7 +38,7 @@ if(isset($_SESSION['AUTH'])) {
                         Se souvenir de moi
                     </label>
                     <input type="submit" class="form_btn" value="Connexion"><br>
-                    <a class="forgotpassword" href="reinitialisation_mdp.php">Réinitialiser mon mot de passe</a>
+                    <a class="forgotpassword" href="changer_mdp.php">Réinitialiser mon mot de passe</a>
                 </div>
             </form>
             <hr>

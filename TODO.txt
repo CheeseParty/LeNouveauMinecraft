@@ -43,7 +43,6 @@ mettre la balise responsive
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 partout sauf dans les e-mails
 
-REFAIRE LA REINITIALISATION
 
 faire une page "promotion.php" accessible seulement avec le rang d'admin où on peut 
 changer le rang en fournissant un pseudo et le rang voulu. Envoie également un e-mail
