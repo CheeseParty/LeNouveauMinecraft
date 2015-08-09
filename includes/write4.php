@@ -12,13 +12,19 @@ $publies->execute();
         <td>Retirer</td>
     </tr>
 <?php
-while($data = $publies->fetch()) {
-    echo "<tr>";
-    echo "<td>".$data['auteur']."</td>";
-    echo "<td>".$data['titre']."</td>";
-    echo "<td><a href='read.php?id=".$data['id']."'>Lecture</a></td>";
-    echo "<td><button onclick='remove(".$data['auteur'].")'>Retirer</button></td>";
-    echo "</tr>";
+if($publies->rowCount() > 0) {
+    while($data = $publies->fetch()) {
+        echo "<tr>";
+        echo "<td>".$data['auteur']."</td>";
+        echo "<td>".$data['titre']."</td>";
+        echo "<td><a href='read.php?id=".$data['id']."'>Lecture</a></td>";
+        echo "<td><button onclick='remove(".$data['auteur'].")'>Retirer</button></td>";
+        echo "</tr>";
+    }
+}
+# Pas de résultats
+else {
+    echo "Aucun article n'a été publié";
 }
 ?>
 </table><br>
@@ -37,12 +43,18 @@ $non_publies->execute();
         <td>Lecture</td>
     </tr>
 <?php
-while($data = $non_publies->fetch()) {
-    echo "<tr>";
-    echo "<td>".$data['auteur']."</td>";
-    echo "<td>".$data['titre']."</td>";
-    echo "<td><a href='read.php?id=".$data['id']."'>Lecture</a></td>";
-    echo "</tr>";
+if($non_publies->rowCount() > 0) {
+    while($non_ = $non_publies->fetch()) {
+        echo "<tr>";
+        echo "<td>".$data['auteur']."</td>";
+        echo "<td>".$data['titre']."</td>";
+        echo "<td><a href='read.php?id=".$data['id']."'>Lecture</a></td>";
+        echo "</tr>";
+    }
+}
+# Pas de résultats
+else {
+    echo "Aucun articles non-publiés";
 }
 ?>
 </table><br>
@@ -61,14 +73,44 @@ $essais->execute();
         <td>Lecture</td>
     </tr>
 <?php
-while($data = $essais->fetch()) {
-    echo "<tr>";
-    echo "<td>".$data['auteur']."</td>";
-    echo "<td>".$data['titre']."</td>";
-    echo "<td><a href='read.php?id=".$data['id']."'>Lecture</a></td>";
-    echo "</tr>";
+if($essais->rowCount() > 0) {
+    while($data = $essais->fetch()) {
+        echo "<tr>";
+        echo "<td>".$data['auteur']."</td>";
+        echo "<td>".$data['titre']."</td>";
+        echo "<td><a href='read.php?id=".$data['id']."'>Lecture</a></td>";
+        echo "</tr>";
+    }
 }
-?>
-</table><br>
-<?php
+# Pas de résultats
+else {
+    echo "Aucun articles des rédacteurs à l'essai";
+}
+echo "</table><br>";
 $essais->closeCursor();
+
+# Brouillons de l'utilisateur
+$brouillons = $db->prepare('SELECT id, auteur, titre FROM articles WHERE publie=0 AND auteur=? ORDER BY publication LIMIT 0, 10');
+$brouillons->execute(array($_SESSION['AUTH']));
+?>
+<table>
+    <caption>Mes brouillons</caption>
+    <tr>
+        <td>Titre</td>
+        <td>Edition</td>
+    </tr>
+<?php
+if($brouillons->rowCount() > 0) {
+    while($data = $brouillons->fetch()) {
+        echo "<tr>";
+        echo "<td>".$data['titre']."</td>";
+        echo "<td><button onclick='edit(".$data['id'].")'>Lecture</button></td>";
+        echo "</tr>";
+    }
+}
+# Pas de résultats
+else {
+    echo "Vous n'avez aucun brouillon";
+}
+echo "</table><br>";
+$brouillons->closeCursor();

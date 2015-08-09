@@ -46,7 +46,49 @@
                 else {
                     require('includes/write2.php');
                 }
-            ?>
+
+                # Pour tous les rangs, on peut écrire un article
+                ?>
+                <form action="" method="post">
+                    <input type="text" name="titre" placeholder="Titre">
+                    <textarea name="contenu" placeholder="Contenu" rows="20" onkeyup="countWords(this.value)"></textarea>
+                    <input type="hidden" name="mode">
+                    <input type="hidden" name="id">
+                </form>
+                <div id="wcount">
+                    Nombre de mots: 
+                    <span>0</span>
+                </div><br>
+                <button onclick="save()">Sauvegarder</button>
+                <button onclick="publish()">Publier</button>
+                <script type="text/javascript" async defer>
+                var form = document.querySelector("form");
+                var mode = document.getElementsByName("mode")[0];
+                var id = document.getElementsByName("id")[0];
+
+                // Save: AJAX / publish -> form.submit()
+                function save() {
+                    form.action = "save_article.php";
+                    mode.value = "save";
+                    id.value = "";
+                    form.submit();
+                }
+
+                function publish() {
+                    form.action = "save_article.php";
+                    mode.value = "publish";
+                    id.value = "";
+                    form.submit();
+                }
+
+                var wcount = document.querySelector("#wcount span");
+                function countWords(s){
+                    s = s.replace(/(^\s*)|(\s*$)/gi,"");//exclude  start and end white-space
+                    s = s.replace(/[ ]{2,}/gi," ");//2 or more space to 1
+                    s = s.replace(/\n /,"\n"); // exclude newline with a start spacing
+                    wcount.innerHTML = s.split(' ').length; 
+                }
+                </script>
         </section>
         <footer>
             <div>N</div>
