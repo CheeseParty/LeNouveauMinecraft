@@ -29,8 +29,24 @@
             </a>
         </header>
         <section>
-            <!-- Faire selon les rangs -->
-            <?php ?>
+            <?php require('includes/connexion.php'); ?>
+
+            <?php
+                # Rang: rédacteur en chef, administrateur
+                if($_SESSION['RANK'] >= 4) {
+                    require('includes/write4.php');
+                } 
+
+                # Rang: rédacteur
+                elseif($_SESSION['RANK'] == 3) {
+                    require('includes/write3.php');
+                }
+
+                # Rang: rédacteur à l'essai
+                else {
+                    require('includes/write2.php');
+                }
+            ?>
         </section>
         <footer>
             <div>N</div>
