@@ -39,7 +39,7 @@ if(isset($_POST['pseudo']) && isset($_POST['email'])) {
           'Content-type: text/html; charset=utf-8'."\r\n".
           'From: gweedzy@gmail.com'."\r\n".
           'X-Mailer: PHP/' . phpversion();
-        $message = "Vous avez demandé la réinitialisation du mot de passe de votre compte Nether News le $date à $heure. Cliquez sur ce lien ou copiez le dans votre barre de                 navigation : <a href='nouveaumdp.php' target='_blank'>http://notresite/nouveaumdp?pseudo=".urlencode($pseudo)."&token=".urlencode($token)."";
+        $message = "Vous avez demandé la réinitialisation du mot de passe de votre compte Nether News le $date à $heure. Cliquez sur ce lien ou copiez le dans votre barre de                 navigation : <a href='changingpassword.php' target='_blank'>http://notresite/changingpassword.php?pseudo=".urlencode($pseudo)."&token=".urlencode($token)."";
 
         // On envoie le mail
         mail($destinataire, $sujet, $message, $headers);

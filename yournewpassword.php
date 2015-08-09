@@ -3,7 +3,7 @@
 // Si les 2 nouveaux pass entrés correspondent
 require('includes/connexion.php');
 
-if(isset($_POST['newpass']) && isset($_POST['newpass2']) && if($_POST['newpass'] === $_POST['newpass2'])) {
+if(isset($_POST['newpass']) && isset($_POST['newpass2']) && ($_POST['newpass'] === $_POST['newpass2'])) {
     // Alors on change le mot de passe
     $changemdp = $db -> prepare('UPDATE membres SET hash=? WHERE token=?');
     $changemdp -> execute(array(
