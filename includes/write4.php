@@ -6,10 +6,10 @@ $publies->execute();
 <table>
     <caption>Articles publiés</caption>
     <tr>
-        <td>Auteur</td>
-        <td>Titre</td>
-        <td>Lecture</td>
-        <td>Retirer</td>
+        <th>Auteur</th>
+        <th>Titre</th>
+        <th>Lecture</th>
+        <th>Retirer</th>
     </tr>
 <?php
 if($publies->rowCount() > 0) {
@@ -17,7 +17,7 @@ if($publies->rowCount() > 0) {
         echo "<tr>";
         echo "<td>".$data['auteur']."</td>";
         echo "<td>".$data['titre']."</td>";
-        echo "<td><a href='read.php?id=".$data['id']."'>Lire</a></td>";
+        echo "<td><button onclick='read(".$data['id'].")'>Lire</button></td>";
         echo "<td><button onclick='remove(".$data['auteur'].")'>Retirer</button></td>";
         echo "</tr>";
     }
@@ -38,9 +38,9 @@ $non_publies->execute();
 <table>
     <caption>Articles non-publiés</caption>
     <tr>
-        <td>Auteur</td>
-        <td>Titre</td>
-        <td>Lecture</td>
+        <th>Auteur</th>
+        <th>Titre</th>
+        <th>Lecture</th>
     </tr>
 <?php
 if($non_publies->rowCount() > 0) {
@@ -48,7 +48,7 @@ if($non_publies->rowCount() > 0) {
         echo "<tr>";
         echo "<td>".$data['auteur']."</td>";
         echo "<td>".$data['titre']."</td>";
-        echo "<td><a href='read.php?id=".$data['id']."'>Lire</a></td>";
+        echo "<td><button onclick='read(".$data['id'].")'>Lire</button></td>";
         echo "</tr>";
     }
 }
@@ -68,9 +68,9 @@ $essais->execute();
 <table>
     <caption>Articles des rédacteurs à l'essai</caption>
     <tr>
-        <td>Auteur</td>
-        <td>Titre</td>
-        <td>Lecture</td>
+        <th>Auteur</th>
+        <th>Titre</th>
+        <th>Lecture</th>
     </tr>
 <?php
 if($essais->rowCount() > 0) {
@@ -78,7 +78,7 @@ if($essais->rowCount() > 0) {
         echo "<tr>";
         echo "<td>".$data['auteur']."</td>";
         echo "<td>".$data['titre']."</td>";
-        echo "<td><a href='read.php?id=".$data['id']."'>Lire</a></td>";
+        echo "<td><button onclick='read(".$data['id'].")'>Lire</button></td>";
         echo "</tr>";
     }
 }
@@ -96,8 +96,8 @@ $brouillons->execute(array($_SESSION['AUTH']));
 <table>
     <caption>Mes brouillons</caption>
     <tr>
-        <td>Titre</td>
-        <td>Edition</td>
+        <th>Titre</th>
+        <th>Edition</th>
     </tr>
 <?php
 if($brouillons->rowCount() > 0) {
