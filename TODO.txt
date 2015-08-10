@@ -56,9 +56,8 @@ changer le rang en fournissant un pseudo et le rang voulu. Envoie également un 
 à la personne promue, dont le contenu varie en fonction de la promotion
 
 
-Utiliser les $_COOKIE pour le logform (sur index.php -> si user est pas co, verifier s'il a les cookies, s'il les a on check s'ils sont valides, si oui on connecte, sinon on connecte pas) si les cookies sont pas valides on les supprime
-
+Utiliser les $_COOKIE pour le logform
 Messages d'erreur avec les $_GET
-
-Ordre dans les fichiers (fichiers CSS dans dossier css, JS dans dossier JS..)Aussi utiliser cette procédure de reconnexion sur les pages seulement accessibles
+Ordre dans les fichiers (fichiers CSS dans dossier css, JS dans dossier JS..)
+Aussi utiliser cette procédure de reconnexion sur les pages seulement accessibles
 aux utilisateurs connectés fréquemment visitées. (login.php, write.php, autre?)
