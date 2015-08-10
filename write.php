@@ -97,19 +97,16 @@
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
                             document.getElementsByName("id")[0].value = xhr.responseText;
-                            document.getElementById("test").innerHTML = xhr.responseText;
                         }
                     }
                     xhr.open("POST", url, true);
                     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=UTF-8");
                     xhr.send(params);
-                    console.log(params);
                 }
 
                 function publish() {
                     form.action = "save_article.php";
                     mode.value = "publish";
-                    id.value = "";
                     form.submit();
                 }
 
@@ -119,6 +116,20 @@
                     s = s.replace(/[ ]{2,}/gi," ");//2 or more space to 1
                     s = s.replace(/\n /,"\n"); // exclude newline with a start spacing
                     wcount.innerHTML = s.split(' ').length; 
+                }
+
+                function edit(id) {
+                    var xhr = newXHR();
+                    var url = "read_article.php";
+                    var params = "id="+id;
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+                            console.log(xhr.responseText);
+                        }
+                    }
+                    xhr.open("POST", url, true);
+                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=UTF-8");
+                    xhr.send(params);
                 }
                 </script>
         </section>
