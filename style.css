@@ -12,6 +12,25 @@ a {
     text-decoration: none;
 }
 
+.error {
+    background: #F32121;
+    padding: 4px;
+    width:auto;
+    margin:0 auto;
+    color:#fff;
+    font-size:12pt;
+    display: inline-block;
+}
+
+.true {
+    background: #27AE60;
+    padding: 4px 20px;
+    width:auto;
+    margin:0 auto;
+    color:#fff;
+    font-size:12pt;
+    display: inline-block;
+}
 /* Header */
 header {
     transition: background .3s ease;

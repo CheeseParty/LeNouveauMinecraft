@@ -2,6 +2,10 @@
 // CHANGEPROCESS.PHP 
 // Envoi de l'email pour le changement de mdp
 
+// On refuse l'accès à ceux qui essaient d'accéder par l'url
+if(!isset($_POST['pseudo']) && !isset($_POST['email'])) {
+    header('Location: index.php');
+}
 // On inclut la page de connexion à la bdd
 require('includes/connexion.php');
 

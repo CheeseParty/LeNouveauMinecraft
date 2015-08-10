@@ -47,6 +47,9 @@
                     if(isset($_GET['error'])) {
                         echo '<p class="error">Le pseudo ne correspond pas à l\'adresse mail.</p>';
                     }
+                    if(isset($_GET['passwordchanged'])) {
+                        echo '<p class="true">Le mot de passe a bien été changé</p>';
+                    }
                 ?>
             </div>
         </div>

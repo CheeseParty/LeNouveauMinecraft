@@ -2,6 +2,10 @@
 // CHANGINGPASSWORD.PHP 
 // Page sur laquelle se termine le changement de mot de passe
 
+// On refuse l'accès à ceux qui n'ont pas cliqué sur le lien du mail
+if(!isset($_GET['pseudo']) && !isset($_GET['token'])) {
+    header('Location: index.php');
+}
 // On récupère les variables nécessaires
 $pseudo = $_GET['pseudo'];
 $token = $_GET['token'];

@@ -48,4 +48,7 @@ faire une page "promotion.php" accessible seulement avec le rang d'admin où on 
 changer le rang en fournissant un pseudo et le rang voulu. Envoie également un e-mail
 à la personne promue, dont le contenu varie en fonction de la promotion
 
-FINIR LA REINITIALISATION
+
+Utiliser les $_COOKIE pour le logform
+Messages d'erreur avec les $_GET
+Ordre dans les fichiers (fichiers CSS dans dossier css, JS dans dossier JS..)
