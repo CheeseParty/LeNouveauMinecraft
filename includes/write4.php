@@ -17,17 +17,17 @@ if($publies->rowCount() > 0) {
         echo "<tr>";
         echo "<td>".$data['auteur']."</td>";
         echo "<td>".$data['titre']."</td>";
-        echo "<td><a href='read.php?id=".$data['id']."'>Lecture</a></td>";
+        echo "<td><a href='read.php?id=".$data['id']."'>Lire</a></td>";
         echo "<td><button onclick='remove(".$data['auteur'].")'>Retirer</button></td>";
         echo "</tr>";
     }
 }
 # Pas de résultats
 else {
-    echo "Aucun article n'a été publié";
+    echo "<tr><td colspan='4'>Aucun article n'a été publié</td></tr>";
 }
 ?>
-</table><br>
+</table>
 <?php
 $publies->closeCursor();
 
@@ -44,20 +44,20 @@ $non_publies->execute();
     </tr>
 <?php
 if($non_publies->rowCount() > 0) {
-    while($non_ = $non_publies->fetch()) {
+    while($data = $non_publies->fetch()) {
         echo "<tr>";
         echo "<td>".$data['auteur']."</td>";
         echo "<td>".$data['titre']."</td>";
-        echo "<td><a href='read.php?id=".$data['id']."'>Lecture</a></td>";
+        echo "<td><a href='read.php?id=".$data['id']."'>Lire</a></td>";
         echo "</tr>";
     }
 }
 # Pas de résultats
 else {
-    echo "Aucun articles non-publiés";
+    echo "<tr><td colspan='3'>Aucun articles non-publiés</td></tr>";
 }
 ?>
-</table><br>
+</table>
 <?php
 $non_publies->closeCursor();
 
@@ -78,15 +78,15 @@ if($essais->rowCount() > 0) {
         echo "<tr>";
         echo "<td>".$data['auteur']."</td>";
         echo "<td>".$data['titre']."</td>";
-        echo "<td><a href='read.php?id=".$data['id']."'>Lecture</a></td>";
+        echo "<td><a href='read.php?id=".$data['id']."'>Lire</a></td>";
         echo "</tr>";
     }
 }
 # Pas de résultats
 else {
-    echo "Aucun articles des rédacteurs à l'essai";
+    echo "<tr><td colspan='3'>Aucun articles des rédacteurs à l'essai</td></tr>";
 }
-echo "</table><br>";
+echo "</table>";
 $essais->closeCursor();
 
 # Brouillons de l'utilisateur
@@ -104,13 +104,13 @@ if($brouillons->rowCount() > 0) {
     while($data = $brouillons->fetch()) {
         echo "<tr>";
         echo "<td>".$data['titre']."</td>";
-        echo "<td><button onclick='edit(".$data['id'].")'>Lecture</button></td>";
+        echo "<td><button onclick='edit(".$data['id'].")'>Editer</button></td>";
         echo "</tr>";
     }
 }
 # Pas de résultats
 else {
-    echo "Vous n'avez aucun brouillon";
+    echo "<tr><td colspan='2'>Vous n'avez aucun brouillon</td></tr>";
 }
-echo "</table><br>";
+echo "</table>";
 $brouillons->closeCursor();

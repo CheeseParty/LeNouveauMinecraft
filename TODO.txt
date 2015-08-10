@@ -1,4 +1,4 @@
-Catégories (bdd -> Catégorie)
+﻿Catégories (bdd -> Catégorie)
 0 -> Map
 1 -> Mod
 2 -> Version
@@ -10,11 +10,18 @@ Catégories (bdd -> Catégorie)
 
 Rangs (bdd -> Rang)
 0 -> Membre
-1 -> Modérateur
+1 -> VIP
 2 -> Rédacteur à l'essai
 3 -> Rédacteur
 4 -> Rédacteur en chef
 5 -> Administrateur
+
+Edit: Pour qu'on puisse faire modo + qqchose d'autre, on rajoutera une 
+colonne "moderateur".
+
+Les VIPs sont des membres généreux qui payent une certaine somme (ou un abbo?) pour
+ne plus avoir de pubs sur le site. (Si la formule a du succès, on pourrait proposer des
+options de personnalisation en + et augmenter le prix de l'abbo? A voir.)
 
 Ils ne sont pas tous mis dans l'ordre par rapport à leur "valeur".
 En effet, un modérateur "vaut" bien plus qu'un rédacteur à l'essai.
@@ -41,7 +48,7 @@ Il faudra penser à un sytème pour qu'on puisse avoir plusieurs fonctions en m�
 TODO:
 mettre la balise responsive
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-partout sauf dans les e-mails
+partout sauf dans les e-mails, et dans la page write.php
 
 
 faire une page "promotion.php" accessible seulement avec le rang d'admin où on peut 
@@ -52,3 +59,5 @@ changer le rang en fournissant un pseudo et le rang voulu. Envoie également un 
 Utiliser les $_COOKIE pour le logform
 Messages d'erreur avec les $_GET
 Ordre dans les fichiers (fichiers CSS dans dossier css, JS dans dossier JS..)
+Aussi utiliser cette procédure de reconnexion sur les pages seulement accessibles
+aux utilisateurs connectés fréquemment visitées. (login.php, write.php, autre?)

@@ -49,7 +49,21 @@
 
                 # Pour tous les rangs, on peut écrire un article
                 ?>
+                <h2>Zone d'édition</h2>
                 <form action="" method="post">
+                    <label>
+                        Catégorie:
+                        <select name="categorie">
+                            <option value="0">Map</option>
+                            <option value="1">Mod</option>
+                            <option value="2">Version</option>
+                            <option value="3">Plugin</option>
+                            <option value="4">Texture</option>
+                            <option value="5">Shader</option>
+                            <option value="6">Cheats</option>
+                            <option value="7">Divers</option>
+                        </select>
+                    </label>
                     <input type="text" name="titre" placeholder="Titre">
                     <textarea name="contenu" placeholder="Contenu" rows="20" onkeyup="countWords(this.value)"></textarea>
                     <input type="hidden" name="mode">
@@ -60,18 +74,36 @@
                     <span>0</span>
                 </div><br>
                 <button onclick="save()">Sauvegarder</button>
-                <button onclick="publish()">Publier</button>
+                <button onclick="publish()">Sauver et publier</button>
+
+
+                <br><br><div id="test"></div>
+
+                <!-- Ne pas déplacer ces scripts! En cours d'édition-->
+                <script type="text/javascript" src="xhr.js"></script>
                 <script type="text/javascript" async defer>
                 var form = document.querySelector("form");
                 var mode = document.getElementsByName("mode")[0];
-                var id = document.getElementsByName("id")[0];
 
                 // Save: AJAX / publish -> form.submit()
                 function save() {
-                    form.action = "save_article.php";
-                    mode.value = "save";
-                    id.value = "";
-                    form.submit();
+                    var xhr = newXHR();
+                    var url = "save_article.php";
+                    var categorie = document.getElementsByName("categorie")[0].value;
+                    var titre = document.getElementsByName("titre")[0].value;
+                    var contenu = document.getElementsByName("contenu")[0].value;
+                    var id = document.getElementsByName("id")[0].value;
+                    var params = encodeURI("id="+id+"&mode=save&titre="+titre+"&contenu="+contenu+"&categorie="+categorie);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+                            document.getElementsByName("id")[0].value = xhr.responseText;
+                            document.getElementById("test").innerHTML = xhr.responseText;
+                        }
+                    }
+                    xhr.open("POST", url, true);
+                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=UTF-8");
+                    xhr.send(params);
+                    console.log(params);
                 }
 
                 function publish() {

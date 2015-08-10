@@ -50,6 +50,11 @@ section {
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 3em;
+}
+
+table button {
+    background: transparent;
 }
 
 table tr td {
@@ -58,6 +63,26 @@ table tr td {
 
 #wcount {
     text-align: left;
+}
+
+h2, caption {
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: left;
+    font-size: 27pt;
+    border-bottom: 2px solid #fff;
+}
+
+label {
+    float: left;
+}
+
+select {
+    border: 0;
+    background: #fff;
+    font-size: 14pt;
+    padding: 3px;
+    margin: 13px 5px;
 }
 
 textarea {
