@@ -60,7 +60,7 @@
                             <option value="3">Plugin</option>
                             <option value="4">Texture</option>
                             <option value="5">Shader</option>
-                            <option value="6">Cheats</option>
+                            <option value="6">Cheat</option>
                             <option value="7">Divers</option>
                         </select>
                     </label>
@@ -73,9 +73,9 @@
                     Nombre de mots: 
                     <span>0</span>
                 </div><br>
+                <button onclick="newArticle()">Nouvel article</button>
                 <button onclick="save()">Sauvegarder</button>
                 <button onclick="publish()">Sauver et publier</button>
-
 
                 <br><br><div id="test"></div>
 
@@ -83,17 +83,21 @@
                 <script type="text/javascript" src="xhr.js"></script>
                 <script type="text/javascript" async defer>
                 var form = document.querySelector("form");
+                var categorie = document.getElementsByName("categorie")[0];
+                var titre = document.getElementsByName("titre")[0];
                 var mode = document.getElementsByName("mode")[0];
+                var contenu = document.getElementsByName("contenu")[0];
+                var id = document.getElementsByName("id")[0];
 
                 // Save: AJAX / publish -> form.submit()
                 function save() {
                     var xhr = newXHR();
                     var url = "save_article.php";
-                    var categorie = document.getElementsByName("categorie")[0].value;
-                    var titre = document.getElementsByName("titre")[0].value;
-                    var contenu = document.getElementsByName("contenu")[0].value;
-                    var id = document.getElementsByName("id")[0].value;
-                    var params = encodeURI("id="+id+"&mode=save&titre="+titre+"&contenu="+contenu+"&categorie="+categorie);
+                    var ca = categorie.value;
+                    var co = contenu.value;
+                    var i = id.value;
+                    var t = titre.value;
+                    var params = encodeURI("id="+i+"&mode=save&titre="+t+"&contenu="+co+"&categorie="+ca);
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
                             document.getElementsByName("id")[0].value = xhr.responseText;
@@ -118,18 +122,34 @@
                     wcount.innerHTML = s.split(' ').length; 
                 }
 
-                function edit(id) {
+                function edit(i) {
                     var xhr = newXHR();
                     var url = "read_article.php";
-                    var params = "id="+id;
+                    var params = "id="+i;
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-                            console.log(xhr.responseText);
+                            if(xhr.responseText != "") {
+                                var json = JSON.parse(xhr.responseText);
+                                id.value = i;
+                                categorie.value = json.categorie;
+                                titre.value = json.titre;
+                                contenu.value = json.contenu;
+                                countWords(contenu.value);
+                            }
                         }
                     }
                     xhr.open("POST", url, true);
                     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=UTF-8");
                     xhr.send(params);
+                }
+
+                function newArticle() {
+                    if(confirm('En êtes-vous sûr? Tout contenu non-sauvegardé sera perdu.')) {
+                        id.value = "";
+                        categorie.value = "0";
+                        titre.value = "";
+                        contenu.value = "";
+                    }
                 }
                 </script>
         </section>

@@ -129,8 +129,7 @@ button {
     line-height: 50px;
     font-size: 20pt;
     cursor: pointer;
-    width: 40%;
-    padding: 0;
+    padding: 0 15px;
     color: #fff;
     background: #2B81B5;
     border: 0;
