@@ -20,8 +20,8 @@ if(isset($_POST['pseudo']) AND isset($_POST['password'])) {
                     $pseudo = $_POST['pseudo'];
                     $password = $data['hash'];
                     // On met ses données en cookie    
-                    setcookie('Pseudo', $pseudo, strtotime('+14 days'));
-                    setcookie('Password', $password, strtotime('+14 days'));
+                    setcookie('AUTH', $pseudo, strtotime('+14 days'));
+                    setcookie('HASH', $password, strtotime('+14 days'));
                 }
                 $_SESSION['RANK'] = $data['rank'];
                 $_SESSION['AUTH'] = $_POST['pseudo'];

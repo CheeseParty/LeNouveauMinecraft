@@ -2,7 +2,7 @@
 // On passe au changement (update bdd)
 
 // On refuse l'accès à ceux qui essaient d'acceder par l'url
-if(!isset($_POST['newpass']) && !isset($_POST['newpass2']) {
+if(!isset($_POST['newpass']) && !isset($_POST['newpass2'])) {
     header('Location: index.php');
 }
 // On inclut ce qui est nécessaire à la connexion à la bdd
