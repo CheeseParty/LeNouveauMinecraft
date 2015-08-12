@@ -10,20 +10,21 @@ if(!isset($_SESSION['AUTH'])) {
         // On inclut le nécessaire à la connexion à la db
         require('includes/connexion.php');
         // On vérifie s'il y a un compte qui existe avec les données en cookie
-        $checkvars = $db -> prepare('SELECT rank, email, hash, inscription FROM membres WHERE pseudo=? AND hash=?');
+        $checkvars = $db -> prepare('SELECT rank, email, hash, inscription FROM membres WHERE pseudo=:pseudo AND hash=:hash');
         $checkvars -> execute(array(
             'pseudo' => $auth,
             'hash' => $hash
         ));
         // Si oui, on connecte
         if($checkvars -> rowCount() > 0) {
+            while($data = $checkvars->fetch()) {
             // On définit les variables nécessaires au site (rang, pseudo, email pour gravatar, date d'inscription)
             $_SESSION['RANK'] = $data['rank'];
             $_SESSION['AUTH'] = $auth;
             $_SESSION['MD5'] = md5(strtolower(trim($data['email'])));
             $date = explode('-',$data['inscription']);
             $_SESSION['DATE'] = "$date[2].$date[1].$date[0]";
-        } else {
+        }} else {
             // Sinon on destroy les cookies 
             setcookie('AUTH', $_COOKIE['AUTH'], 1);
             setcookie('HASH', $_COOKIE['HASH'], 1);

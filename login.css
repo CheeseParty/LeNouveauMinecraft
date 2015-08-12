@@ -10,7 +10,17 @@ body {
     height: 100%;
     min-height: 100%;
 }
-
+.error {
+    background: #F32121;
+    padding: 4px;
+    width:260px;
+    margin:0 auto;
+    color:#fff;
+    font-size:12pt;
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+}
 a {
     text-decoration: none;
 }
@@ -21,6 +31,7 @@ h2 {
     margin: 30px 0 5px;
     text-align: center;
 }
+
 
 hr {
     width: 60%;
@@ -48,6 +59,7 @@ header h1 {
     background: #F1F4F9;
     color: #3e3e3e;
     width: 500px;
+    opacity:1;
     box-shadow: 0 6px 32px -10px #000;
 }
 
@@ -135,6 +147,57 @@ footer div {
     border-bottom: 1px solid #3e3e3e;
 }
 
+/* POPUP */
+.noerror {
+    color:#43c42d;
+    margin:0;
+    padding:0;
+}
+#popuperror {
+    width:400px;
+    height:200px;
+    z-index: -10;
+    opacity: 0;
+    top: 0; right:0; bottom:0; left:0;
+    margin: auto;
+    position: absolute;
+    border: 1px solid black;
+    box-shadow: 0 6px 32px -10px #8a8584;
+    background: #edf1f7;
+    padding:20px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+
+#popuperror img{
+    width:50px;
+    display:block;
+    margin:0 auto;
+}
+.separator-popup {
+    margin:5px auto;
+    background: #ff5722;
+}
+
+#errormessage-popup {
+    text-align:center;
+    color:#ff5722;
+    
+}
+
+.error_btn {
+    display: block;
+    background: #ff5722;
+    border: 0;
+    color: #fff;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 15pt;
+    text-align: center;
+    width:80px;
+    margin:0 auto;
+}
 @media screen and (max-width: 600px) {
     #loginbox {
         width: 100%;
