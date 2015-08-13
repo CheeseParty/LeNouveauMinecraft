@@ -53,7 +53,7 @@ if(isset($_GET['message'])) {
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>Nether News - News sur le jeu de type "sandbox"</title>
+        <title>Connexion | Nether News - News sur le jeu de type "sandbox"</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="stylesheet" href="login.css">
         <link href='http://fonts.googleapis.com/css?family=Merriweather:700' rel='stylesheet' type='text/css'>

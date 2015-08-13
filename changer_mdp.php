@@ -2,7 +2,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Validation de compte | Nether News - News sur le jeu de type "sandbox"</title>
+		<title>Réinitialisez votre mot de passe | Nether News - News sur le jeu de type "sandbox"</title>
 		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="changepassword.css">
 		<link href='http://fonts.googleapis.com/css?family=Merriweather:700' rel='stylesheet' type='text/css'>

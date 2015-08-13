@@ -161,9 +161,8 @@ footer div {
     top: 0; right:0; bottom:0; left:0;
     margin: auto;
     position: absolute;
-    border: 1px solid black;
-    box-shadow: 0 6px 32px -10px #8a8584;
-    background: #edf1f7;
+    box-shadow: 0 6px 32px -10px black;
+    background: #EDEDED;
     padding:20px;
     padding-top: 10px;
     text-align: center;

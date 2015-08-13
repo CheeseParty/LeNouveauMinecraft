@@ -78,6 +78,7 @@ if(!isset($_SESSION['AUTH'])) {
             <a href="shaders/">Shaders</a>
             <a href="cheats/">Cheats</a>
         </div>
+        
         <?php if(isset($_SESSION['AUTH'])): ?>
             <div id="settings" class="dropdown">
                 <a></a>

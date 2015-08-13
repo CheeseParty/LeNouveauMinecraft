@@ -8,8 +8,8 @@ require('includes/connexion.php');
 $pseudo = $_GET['pseudo'];  
 $cle = $_GET['cle'];
 
-// On met à jour la variable actif de l'utilisateur qui vient de valider son compte (actif passe de 0 à 1)
-$activation = $db->prepare('UPDATE membres SET actif=1 WHERE pseudo=:pseudo AND token=:token');
+// On met à jour la variable actif de l'utilisateur qui vient de valider son compte (actif passe de 0 à 1) et on supprime le token
+$activation = $db->prepare('UPDATE membres SET actif=1, token=0 WHERE pseudo=:pseudo AND token=:token');
 $activation->execute(array(
         'pseudo' => $pseudo,
         'token' => $cle
