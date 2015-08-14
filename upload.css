@@ -46,52 +46,7 @@ section {
     max-width: 1000px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 3em;
-}
-
-table tr:first-child {
-    border-bottom: 2px solid #525252;
-    background: transparent;
-}
-
-table tr {
-    background: #D6D6D6;
-    color: #4A4A4A;
-}
-
-table tr:nth-child(even) {
-    background: #EFEFEF;
-}
-
-table button {
-    font-size: 16pt;
-    width: 100%;
-    background: transparent;
-    padding: 3px;
-    line-height: 100%;
-    margin: 0;
-    color: #4A4A4A;
-}
-
-table tr th {
-    font-size: 18pt;
-    font-weight: normal;
-    color: #C7C7C7;
-    padding: 5px 0;
-}
-
-table tr td {
-    line-height: 2em;
-}
-
-#wcount {
-    text-align: left;
-}
-
-h2, caption {
+h2 {
     margin-bottom: 0;
     font-weight: normal;
     text-align: left;
@@ -99,32 +54,7 @@ h2, caption {
     border-bottom: 2px solid #fff;
 }
 
-label {
-    float: left;
-}
-
-select {
-    border: 0;
-    background: #fff;
-    font-size: 14pt;
-    padding: 3px;
-    margin: 13px 5px;
-}
-
-textarea {
-    resize: vertical;
-}
-
-textarea, input[type="text"] {
-    padding: 10px;
-    margin: 15px auto;
-    border: 0;
-    font-size: 19pt;
-    width: calc(100% - 20px);
-    display: block;
-}
-
-button {
+input[type="submit"] {
     line-height: 50px;
     font-size: 20pt;
     cursor: pointer;
