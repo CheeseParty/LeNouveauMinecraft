@@ -63,13 +63,12 @@
                             <option value="6">Cheat</option>
                             <option value="7">Divers</option>
                         </select>
+                    </label>                
+                    <label id="choose-pic">
+                        <span>Thumbnail de l'article: </span>
+                        <input placeholder="fichier" type="text" name="thumbnail">
+                        <button type="button" onclick="choosePic()">Choisir</button>
                     </label>
-                    <label>
-                        Thumbnail de l'article
-                        <input type="text" name="thumbnail">
-                        <button onclick="javascript:alert()">Choisir</button>
-                    </label>
-                    <iframe id="myFrame" src=""></iframe>
                     <input type="text" name="titre" placeholder="Titre">
                     <textarea name="contenu" placeholder="Contenu" rows="20" onkeyup="countWords(this.value)"></textarea>
                     <input type="hidden" name="mode">
@@ -82,6 +81,15 @@
                 <button onclick="newArticle()">Nouvel article</button>
                 <button onclick="save()">Sauvegarder</button>
                 <button onclick="publish()">Sauver et publier</button>
+                <section id="gallery">
+                    <form action="upload_process.php" method="post" enctype="multipart/form-data">
+                        <h2>Choisissez une image ou uploadez celle(s) de votre choix</h2>
+                        Image(s) à uploader
+                        <input required type="file" name="fileToUpload[]" multiple>
+                        <input type="submit" value="Valider" name="submit">
+                    </form>
+                    <div id="container"></div>
+                </section>
 
                 <script type="text/javascript" src="xhr.js"></script>
                 <script type="text/javascript" async defer>
@@ -154,9 +162,17 @@
                         contenu.value = "";
                     }
                 }
-                  
+                
+                var gallery = document.getElementById("gallery");
+                var shown = false;
                 function choosePic() {
-                    iframe.src = "upload.php";
+                    if(shown) {
+                        gallery.style.zIndex = -1;
+                    } else {
+                        gallery.style.zIndex = 99;
+                    }
+                    shown = !shown;
+                    console.log("choosePic");
                 }
                 </script>
         </section>

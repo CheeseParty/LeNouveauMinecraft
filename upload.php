@@ -6,6 +6,7 @@ session_start();
 
 # Vérification du rang
 if(!isset($_SESSION['RANK']) OR  $_SESSION['RANK'] < 2) {
+    exit("redirect");
     header('Location: index.php');
     exit;
 }
