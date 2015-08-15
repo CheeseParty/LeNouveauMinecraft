@@ -24,12 +24,13 @@ if(!isset($_SESSION['RANK']) OR  $_SESSION['RANK'] < 2) {
     </head>
     <body>
         <section>
+            <button type="button" id="close-button" onclick="parent.choosePic()">X</button>
             <form action="upload_process.php" method="post" enctype="multipart/form-data">
                 <h2>Choisissez une image ou uploadez celle(s) de votre choix</h2>
                 Image(s) à uploader
                 <input required type="file" name="fileToUpload[]" multiple>
-                <input type="submit" value="Valider" name="submit">
-            </form>
+                <input type="submit" value="Upload" name="submit">
+            </form><br>
             <div id="container"></div>
         </section>
     <?php

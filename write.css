@@ -36,9 +36,16 @@ a {
 #gallery {
     position: fixed;
     width: 90%;
-    max-width: 1000px;
+    padding: 5%;
+    top: -50px;
+    left: 0;
+    background: #fff;
+    transition: opacity .3s ease;
+    opacity: 0;
+    max-width: 90%;
     min-height: 100%;
     z-index: -1;
+    text-align: center;
 }
 
 header {

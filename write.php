@@ -81,104 +81,109 @@
                 <button onclick="newArticle()">Nouvel article</button>
                 <button onclick="save()">Sauvegarder</button>
                 <button onclick="publish()">Sauver et publier</button>
-                <section id="gallery">
-                    <form action="upload_process.php" method="post" enctype="multipart/form-data">
-                        <h2>Choisissez une image ou uploadez celle(s) de votre choix</h2>
-                        Image(s) à uploader
-                        <input required type="file" name="fileToUpload[]" multiple>
-                        <input type="submit" value="Valider" name="submit">
-                    </form>
-                    <div id="container"></div>
-                </section>
-
-                <script type="text/javascript" src="xhr.js"></script>
-                <script type="text/javascript" async defer>
-                var form = document.querySelector("form");
-                var categorie = document.getElementsByName("categorie")[0];
-                var titre = document.getElementsByName("titre")[0];
-                var mode = document.getElementsByName("mode")[0];
-                var contenu = document.getElementsByName("contenu")[0];
-                var id = document.getElementsByName("id")[0];
-
-                // Save: AJAX / publish -> form.submit()
-                function save() {
-                    var xhr = newXHR();
-                    var url = "save_article.php";
-                    var ca = categorie.value;
-                    var co = contenu.value;
-                    var i = id.value;
-                    var t = titre.value;
-                    var params = encodeURI("id="+i+"&mode=save&titre="+t+"&contenu="+co+"&categorie="+ca);
-                    xhr.onreadystatechange = function() {
-                        if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-                            document.getElementsByName("id")[0].value = xhr.responseText;
-                        }
-                    }
-                    xhr.open("POST", url, true);
-                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=UTF-8");
-                    xhr.send(params);
-                }
-
-                function publish() {
-                    form.action = "save_article.php";
-                    mode.value = "publish";
-                    form.submit();
-                }
-
-                var wcount = document.querySelector("#wcount span");
-                function countWords(s){
-                    s = s.replace(/(^\s*)|(\s*$)/gi,"");//exclude  start and end white-space
-                    s = s.replace(/[ ]{2,}/gi," ");//2 or more space to 1
-                    s = s.replace(/\n /,"\n"); // exclude newline with a start spacing
-                    wcount.innerHTML = s.split(' ').length; 
-                }
-
-                function edit(i) {
-                    var xhr = newXHR();
-                    var url = "read_article.php";
-                    var params = "id="+i;
-                    xhr.onreadystatechange = function() {
-                        if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-                            if(xhr.responseText != "") {
-                                var json = JSON.parse(xhr.responseText);
-                                id.value = i;
-                                categorie.value = json.categorie;
-                                titre.value = json.titre;
-                                contenu.value = json.contenu;
-                                countWords(contenu.value);
-                            }
-                        }
-                    }
-                    xhr.open("POST", url, true);
-                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=UTF-8");
-                    xhr.send(params);
-                }
-
-                function newArticle() {
-                    if(confirm('En êtes-vous sûr? Tout contenu non-sauvegardé sera perdu.')) {
-                        id.value = "";
-                        categorie.value = "0";
-                        titre.value = "";
-                        contenu.value = "";
-                    }
-                }
-                
-                var gallery = document.getElementById("gallery");
-                var shown = false;
-                function choosePic() {
-                    if(shown) {
-                        gallery.style.zIndex = -1;
-                    } else {
-                        gallery.style.zIndex = 99;
-                    }
-                    shown = !shown;
-                    console.log("choosePic");
-                }
-                </script>
         </section>
+        <iframe id="gallery" src="upload.php"></iframe>
+        <!--<section id="gallery">
+            <form action="upload_process.php" method="post" enctype="multipart/form-data">
+                <h2>Choisissez une image ou uploadez celle(s) de votre choix</h2>
+                Image(s) à uploader
+                <input required type="file" name="fileToUpload[]" multiple>
+                <input type="submit" value="Valider" name="submit">
+            </form>
+            <div id="container"></div>
+        </section>-->
         <footer>
             <div>N</div>
             © "Copyright" Nether News <?=date('Y')?>
         </footer>
+        <!-- Scripts -->
+        <script type="text/javascript" src="xhr.js"></script>
+        <script type="text/javascript" async defer>
+        var form = document.querySelector("form");
+        var categorie = document.getElementsByName("categorie")[0];
+        var titre = document.getElementsByName("titre")[0];
+        var mode = document.getElementsByName("mode")[0];
+        var contenu = document.getElementsByName("contenu")[0];
+        var id = document.getElementsByName("id")[0];
+
+        // Save: AJAX / publish -> form.submit()
+        function save() {
+            var xhr = newXHR();
+            var url = "save_article.php";
+            var ca = categorie.value;
+            var co = contenu.value;
+            var i = id.value;
+            var t = titre.value;
+            var params = encodeURI("id="+i+"&mode=save&titre="+t+"&contenu="+co+"&categorie="+ca);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+                    document.getElementsByName("id")[0].value = xhr.responseText;
+                }
+            }
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=UTF-8");
+            xhr.send(params);
+        }
+
+        function publish() {
+            form.action = "save_article.php";
+            mode.value = "publish";
+            form.submit();
+        }
+
+        var wcount = document.querySelector("#wcount span");
+        function countWords(s){
+            s = s.replace(/(^\s*)|(\s*$)/gi,"");//exclude  start and end white-space
+            s = s.replace(/[ ]{2,}/gi," ");//2 or more space to 1
+            s = s.replace(/\n /,"\n"); // exclude newline with a start spacing
+            wcount.innerHTML = s.split(' ').length; 
+        }
+
+        function edit(i) {
+            var xhr = newXHR();
+            var url = "read_article.php";
+            var params = "id="+i;
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+                    if(xhr.responseText != "") {
+                        var json = JSON.parse(xhr.responseText);
+                        id.value = i;
+                        categorie.value = json.categorie;
+                        titre.value = json.titre;
+                        contenu.value = json.contenu;
+                        countWords(contenu.value);
+                    }
+                }
+            }
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=UTF-8");
+            xhr.send(params);
+        }
+
+        function newArticle() {
+            if(confirm('En êtes-vous sûr? Tout contenu non-sauvegardé sera perdu.')) {
+                id.value = "";
+                categorie.value = "0";
+                titre.value = "";
+                contenu.value = "";
+            }
+        }
+
+        var gallery = document.getElementById("gallery");
+        var shown = false;
+        function choosePic() {
+            if(shown) {
+                document.body.style.overflowY = "visible";
+                gallery.style.zIndex = -1;
+                gallery.style.opacity = 0;
+            } else {
+                document.body.style.overflowY = "hidden";
+                gallery.style.zIndex = 99;
+                gallery.style.opacity = 1;
+            }
+            shown = !shown;
+            console.log("choosePic");
+        }
+        </script>
     </body>
 </html>

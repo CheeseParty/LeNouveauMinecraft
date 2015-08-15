@@ -1,6 +1,15 @@
-/* Tags généraux */
 * {
     font-family: 'Roboto Condensed', sans-serif;
+}
+
+#close-button {
+    float: right;
+    cursor: pointer;
+    border: 0;
+    font-size: 25pt;
+    padding: 3px 14px;
+    color: #fff;
+    background: #CC3232;
 }
 
 body {
@@ -10,7 +19,6 @@ body {
     min-height: 100%;
 }
 
-/* Section */
 section {
     margin: 50px auto 200px;
     text-align: center;
@@ -21,11 +29,15 @@ h2 {
     font-weight: normal;
 }
 
+#container img {
+    float: left;
+}
+
 input[type="submit"] {
-    line-height: 50px;
-    font-size: 20pt;
+    line-height: 40px;
+    font-size: 15pt;
     cursor: pointer;
-    padding: 0 15px;
+    padding: 0 10px;
     color: #fff;
     background: #2B81B5;
     border: 0;
