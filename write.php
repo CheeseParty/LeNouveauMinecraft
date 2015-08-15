@@ -64,6 +64,12 @@
                             <option value="7">Divers</option>
                         </select>
                     </label>
+                    <label>
+                        Thumbnail de l'article
+                        <input type="text" name="thumbnail">
+                        <button onclick="javascript:alert()">Choisir</button>
+                    </label>
+                    <iframe id="myFrame" src=""></iframe>
                     <input type="text" name="titre" placeholder="Titre">
                     <textarea name="contenu" placeholder="Contenu" rows="20" onkeyup="countWords(this.value)"></textarea>
                     <input type="hidden" name="mode">
@@ -77,9 +83,6 @@
                 <button onclick="save()">Sauvegarder</button>
                 <button onclick="publish()">Sauver et publier</button>
 
-                <br><br><div id="test"></div>
-
-                <!-- Ne pas déplacer ces scripts! En cours d'édition-->
                 <script type="text/javascript" src="xhr.js"></script>
                 <script type="text/javascript" async defer>
                 var form = document.querySelector("form");
@@ -150,6 +153,10 @@
                         titre.value = "";
                         contenu.value = "";
                     }
+                }
+                  
+                function choosePic() {
+                    iframe.src = "upload.php";
                 }
                 </script>
         </section>
