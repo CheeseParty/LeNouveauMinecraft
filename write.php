@@ -51,7 +51,7 @@
                 ?>
                 <h2>Zone d'édition</h2>
                 <form action="" method="post">
-                    <label>
+                    <label class="categorie">
                         Catégorie :
                         <select name="categorie">
                             <option value="0">Map</option>
@@ -91,6 +91,7 @@
         <!-- Scripts -->
         <script type="text/javascript" src="xhr.js"></script>
         <script type="text/javascript" async defer>
+        // Vars générales
         var form = document.querySelector("form");
         var categorie = document.getElementsByName("categorie")[0];
         var titre = document.getElementsByName("titre")[0];
@@ -99,7 +100,7 @@
         var id = document.getElementsByName("id")[0];
         var thumbnail = document.getElementById("thumbnail");
         var thumbimg = document.getElementById("thumbimg");
-
+        
         // Save: AJAX / publish -> form.submit()
         function save() {
             var xhr = newXHR();
@@ -113,6 +114,18 @@
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
                     document.getElementsByName("id")[0].value = xhr.responseText;
+                    // Nouveau ligne dans le tableau des brouillons
+                    var el_ligne = document.createElement("tr");
+                    var el_titre = document.createElement("td");
+                    el_titre.innerHTML = titre.value;
+                    var el_edition = document.createElement("td");
+                    var el_button = document.createElement("button");
+                    el_button.innerHTML = "Editer";
+                    el_button.setAttribute("onclick","edit("+xhr.response+")");
+                    el_edition.appendChild(el_button);
+                    el_ligne.appendChild(el_titre);
+                    el_ligne.appendChild(el_button);
+                    document.getElementById("brouillons").appendChild(el_ligne);
                 }
             }
             xhr.open("POST", url, true);

@@ -21,9 +21,9 @@ a {
 }
 
 #choose-pic {
-    text-align: left;
-    width: 100%;
     cursor: pointer;
+    position: relative;
+    bottom: 5px;
 }
 
 #choose-pic img {
@@ -42,6 +42,11 @@ a {
     background: #2B81B5;
     border: 0;
     margin: 0 0 15px;
+}
+
+.categorie {
+    width: 100%;
+    text-align: left;
 }
 
 #gallery {

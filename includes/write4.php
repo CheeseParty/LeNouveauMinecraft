@@ -93,7 +93,7 @@ $essais->closeCursor();
 $brouillons = $db->prepare('SELECT id, auteur, titre FROM articles WHERE publie=0 AND auteur=? ORDER BY publication LIMIT 0, 10');
 $brouillons->execute(array($_SESSION['AUTH']));
 ?>
-<table>
+<table id="brouillons">
     <caption>Mes brouillons</caption>
     <tr>
         <th>Titre</th>
