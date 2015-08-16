@@ -23,6 +23,7 @@ section {
     margin: 50px auto 200px;
     text-align: center;
     width: 90%;
+    max-width: 1000px;
 }
 
 h2 {
@@ -30,7 +31,9 @@ h2 {
 }
 
 #container img {
-    float: left;
+    margin: 5px;
+    box-shadow: 1px 1px 16px -5px #666;
+    cursor: pointer;
 }
 
 input[type="submit"] {

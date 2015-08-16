@@ -66,7 +66,7 @@
                     </label>                
                     <label id="choose-pic">
                         <span>Thumbnail de l'article: </span>
-                        <input placeholder="fichier" type="text" name="thumbnail">
+                        <input placeholder="fichier" id="thumbnail" type="text" name="thumbnail">
                         <button type="button" onclick="choosePic()">Choisir</button>
                     </label>
                     <input type="text" name="titre" placeholder="Titre">
@@ -83,15 +83,6 @@
                 <button onclick="publish()">Sauver et publier</button>
         </section>
         <iframe id="gallery" src="upload.php"></iframe>
-        <!--<section id="gallery">
-            <form action="upload_process.php" method="post" enctype="multipart/form-data">
-                <h2>Choisissez une image ou uploadez celle(s) de votre choix</h2>
-                Image(s) à uploader
-                <input required type="file" name="fileToUpload[]" multiple>
-                <input type="submit" value="Valider" name="submit">
-            </form>
-            <div id="container"></div>
-        </section>-->
         <footer>
             <div>N</div>
             © "Copyright" Nether News <?=date('Y')?>
@@ -105,16 +96,18 @@
         var mode = document.getElementsByName("mode")[0];
         var contenu = document.getElementsByName("contenu")[0];
         var id = document.getElementsByName("id")[0];
+        var thumbnail = document.getElementById("thumbnail");
 
         // Save: AJAX / publish -> form.submit()
         function save() {
             var xhr = newXHR();
             var url = "save_article.php";
-            var ca = categorie.value;
-            var co = contenu.value;
-            var i = id.value;
-            var t = titre.value;
-            var params = encodeURI("id="+i+"&mode=save&titre="+t+"&contenu="+co+"&categorie="+ca);
+            var params = encodeURI( "id="+id.value+
+                                    "&mode=save&titre="+titre.value+
+                                    "&contenu="+contenu.value+
+                                    "&categorie="+categorie.value+
+                                    "&thumbnail="+thumbnail.value
+                                  );
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
                     document.getElementsByName("id")[0].value = xhr.responseText;
@@ -151,6 +144,7 @@
                         categorie.value = json.categorie;
                         titre.value = json.titre;
                         contenu.value = json.contenu;
+                        thumbnail.value = json.thumbnail;
                         countWords(contenu.value);
                     }
                 }
@@ -182,7 +176,6 @@
                 gallery.style.opacity = 1;
             }
             shown = !shown;
-            console.log("choosePic");
         }
         </script>
     </body>

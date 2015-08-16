@@ -25,11 +25,23 @@ a {
     width: 100%;
 }
 
+#choose-pic button {
+    line-height: 40px;
+    font-size: 17pt;
+    cursor: pointer;
+    padding: 0 10px;
+    color: #fff;
+    background: #2B81B5;
+    border: 0;
+    margin: 0 5px;
+}
+
 #choose-pic input[type="text"] {
     display: inline;
-    padding: 10px;
+    padding: 5px;
+    font-size: 17pt;
     width: 140px;
-    margin: 0 0 10px;
+    margin: 0 0 10px 5px;
     color: grey;
 }
 
@@ -131,10 +143,14 @@ label {
     float: left;
 }
 
+button {
+    outline: 0;
+}
+
 select {
     border: 0;
     background: #fff;
-    font-size: 14pt;
+    font-size: 16pt;
     padding: 3px;
     margin: 13px 5px;
 }

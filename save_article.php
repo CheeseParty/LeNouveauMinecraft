@@ -22,27 +22,29 @@ if(isset($_POST['mode']) AND $_POST['mode'] == "save") {
 
 	# Si un id est fourni, on update
 	if(!empty($_POST['id'])) {
-		$update = $db->prepare('UPDATE articles SET titre = :titre, contenu = :contenu, categorie = :categorie WHERE id = :id AND auteur = :auteur');
+		$update = $db->prepare('UPDATE articles SET titre = :titre, contenu = :contenu, categorie = :categorie, thumbnail = :thumbnail WHERE id = :id AND auteur = :auteur');
 		$update->execute(array(
 			'titre' => $_POST['titre'],
 			'contenu' => $_POST['contenu'],
 			'id' => $_POST['id'],
 			'auteur' => $_SESSION['AUTH'],
-			'categorie' => $_POST['categorie']
+			'categorie' => $_POST['categorie'],
+            'thumbnail' => $_POST['thumbnail']
 			));
 		$update->closeCursor();
 	}
 
 	# Sinon, on insert
 	else {
-		$insert = $db->prepare('INSERT INTO articles (id, categorie, titre, contenu, auteur, rang) VALUES (:id, :categorie, :titre, :contenu, :auteur, :rang)');
+		$insert = $db->prepare('INSERT INTO articles (id, categorie, titre, contenu, auteur, rang, thumbnail) VALUES (:id, :categorie, :titre, :contenu, :auteur, :rang, :thumbnail)');
 		$insert->execute(array(
 			'id' => '',
 			'categorie' => $_POST['categorie'],
 			'titre' => $_POST['titre'],
 			'contenu' => $_POST['contenu'],
 			'auteur' => $_SESSION['AUTH'],
-			'rang' => $_SESSION['RANK']
+			'rang' => $_SESSION['RANK'],
+            'thumbnail' => $_POST['thumbnail']
 			));
 		echo $db->lastInsertId();
 		$insert->closeCursor();

@@ -51,12 +51,15 @@ if(!isset($_SESSION['RANK']) OR  $_SESSION['RANK'] < 2) {
             img.style.opacity = 1;
         }
         
+        function usePic(name) {
+            window.parent.document.getElementById("thumbnail").value = name;
+            window.parent.choosePic();
+        }
+        
         // Création de la galerie
         var img_array = [<?=$array_str?>];
-        console.log(img_array);
         
         var img_obj = document.createElement("img");
-        img_obj.className = "img";
         img_obj.setAttribute("onload","displayThumb(this)");
 
         var container = document.getElementById("container");
@@ -80,7 +83,7 @@ if(!isset($_SESSION['RANK']) OR  $_SESSION['RANK'] < 2) {
                 var img = img_obj.cloneNode(true);
                 img.src = "upload/thumb/"+img_array[i];
                 img.id = "img-"+count;
-                img.setAttribute("onclick","copyName("+img_array[count]+")");
+                img.setAttribute("onclick","usePic('"+img_array[i]+"')");
                 container.appendChild(img);
                 count++;
             }
@@ -92,12 +95,7 @@ if(!isset($_SESSION['RANK']) OR  $_SESSION['RANK'] < 2) {
             }
             first_load = false;
         }
-        
         document.body.onload = createGallery();
-        
-        function copyName(src) {
-            window.prompt("Copier le nom de l'image: Ctrl+C, Enter", src);
-        }
     </script>
     </body>
 </html>
