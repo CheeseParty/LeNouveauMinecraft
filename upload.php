@@ -53,6 +53,7 @@ if(!isset($_SESSION['RANK']) OR  $_SESSION['RANK'] < 2) {
         
         function usePic(name) {
             window.parent.document.getElementById("thumbnail").value = name;
+            window.parent.document.getElementById("thumbimg").src = "upload/thumb/"+name;
             window.parent.choosePic();
         }
         

@@ -52,7 +52,7 @@
                 <h2>Zone d'édition</h2>
                 <form action="" method="post">
                     <label>
-                        Catégorie:
+                        Catégorie :
                         <select name="categorie">
                             <option value="0">Map</option>
                             <option value="1">Mod</option>
@@ -65,8 +65,9 @@
                         </select>
                     </label>                
                     <label id="choose-pic">
-                        <span>Thumbnail de l'article: </span>
-                        <input placeholder="fichier" id="thumbnail" type="text" name="thumbnail">
+                        <span>Thumbnail de l'article :</span>
+                        <input type="hidden" id="thumbnail" name="thumbnail">
+                        <img id="thumbimg">
                         <button type="button" onclick="choosePic()">Choisir</button>
                     </label>
                     <input type="text" name="titre" placeholder="Titre">
@@ -97,6 +98,7 @@
         var contenu = document.getElementsByName("contenu")[0];
         var id = document.getElementsByName("id")[0];
         var thumbnail = document.getElementById("thumbnail");
+        var thumbimg = document.getElementById("thumbimg");
 
         // Save: AJAX / publish -> form.submit()
         function save() {
@@ -145,6 +147,7 @@
                         titre.value = json.titre;
                         contenu.value = json.contenu;
                         thumbnail.value = json.thumbnail;
+                        thumbimg.src = "upload/thumb/"+json.thumbnail;
                         countWords(contenu.value);
                     }
                 }
@@ -160,6 +163,8 @@
                 categorie.value = "0";
                 titre.value = "";
                 contenu.value = "";
+                thumbnail.value = "";
+                thumbimg.src = "";
             }
         }
 
