@@ -52,8 +52,16 @@ if(!isset($_SESSION['RANK']) OR  $_SESSION['RANK'] < 2) {
         }
         
         function usePic(name) {
-            window.parent.document.getElementById("thumbnail").value = name;
-            window.parent.document.getElementById("thumbimg").src = "upload/thumb/"+name;
+            if(window.parent.mode == false) {
+                window.parent.document.getElementById("thumbnail").value = name;
+                window.parent.document.getElementById("thumbimg").src = "upload/thumb/"+name;
+            } else {
+                var contenu = window.parent.document.getElementsByName("contenu")[0];
+                var img = "[img]upload/"+name+"[/img]";
+                var cursor_pos = window.parent.cursor_pos;
+                var prev_contenu = contenu.value;
+                contenu.value = prev_contenu.substr(0,cursor_pos)+img+prev_contenu.substr(cursor_pos);
+            }
             window.parent.choosePic();
         }
         

@@ -7,13 +7,11 @@ session_start();
 if(isset($_POST['mode']) AND $_POST['mode'] == "save") {
 	# Vérification de l'utilisateur
 	if(!isset($_SESSION['RANK']) OR $_SESSION['RANK'] < 2) {
-		echo $_SESSION['RANK'];
 		exit;
 	}
 
 	# Vérification de la requête
 	if(!isset($_POST['titre']) OR !isset($_POST['contenu'])) {
-		echo 2;
 		exit;
 	}
 
@@ -59,6 +57,5 @@ elseif(isset($_POST['mode']) AND $_POST['mode'] == "publish") {
 
 # Si la requête est invalide
 else {
-	echo 3;
 	exit;
 }

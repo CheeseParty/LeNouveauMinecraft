@@ -64,6 +64,14 @@ a {
     text-align: center;
 }
 
+#insert-img {
+    padding: 0 7px;
+    line-height: 40px;
+    font-size: 16pt;
+    margin: 0;
+    float: right;
+}
+
 header {
     background: #27AE60;
 }

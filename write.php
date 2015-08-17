@@ -68,16 +68,17 @@
                         <span>Thumbnail de l'article :</span>
                         <input type="hidden" id="thumbnail" name="thumbnail">
                         <img id="thumbimg">
-                        <button type="button" onclick="choosePic()">Choisir</button>
+                        <button type="button" onclick="choosePic(false)">Choisir</button>
                     </label>
                     <input type="text" name="titre" placeholder="Titre">
-                    <textarea name="contenu" placeholder="Contenu" rows="20" onkeyup="countWords(this.value)"></textarea>
+                    <textarea name="contenu" placeholder="Contenu" rows="20" onclick="contentChange(this)" onkeyup="contentChange(this)"></textarea>
                     <input type="hidden" name="mode">
                     <input type="hidden" name="id">
                 </form>
                 <div id="wcount">
                     Nombre de mots: 
                     <span>0</span>
+                    <button id="insert-img" onclick="choosePic(true)">Insérer une image</button>
                 </div><br>
                 <button onclick="newArticle()">Nouvel article</button>
                 <button onclick="save()">Sauvegarder</button>
@@ -180,10 +181,40 @@
                 thumbimg.src = "";
             }
         }
+                                    
+        function cursorPos(oField) {
+            // Initialize
+            var iCaretPos = 0;
+            // IE Support
+            if(document.selection) {
+                // Set focus on the element
+                oField.focus ();
+                // To get cursor position, get empty selection range
+                var oSel = document.selection.createRange ();
+                // Move selection start to 0 position
+                oSel.moveStart ('character', -oField.value.length);
+                // The caret position is selection length
+                iCaretPos = oSel.text.length;
+            }
+            // Firefox support
+            else if(oField.selectionStart || oField.selectionStart == '0') {
+                iCaretPos = oField.selectionStart;
+            }
+            // Return results
+            return (iCaretPos);
+        }
+        
+        var cursor_pos = 0;
+        function contentChange(el) {
+            countWords(el.value);
+            cursor_pos = cursorPos(el);
+        }
 
         var gallery = document.getElementById("gallery");
         var shown = false;
-        function choosePic() {
+        var mode = false;
+        function choosePic(m) {
+            mode = m;
             if(shown) {
                 document.body.style.overflowY = "visible";
                 gallery.style.zIndex = -1;
