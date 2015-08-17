@@ -49,7 +49,7 @@
 
                 # Pour tous les rangs, on peut écrire un article
                 ?>
-                <h2>Zone d'édition</h2>
+                <h2 id="edit-zone">Zone d'édition et de lecture</h2>
                 <form action="" method="post">
                     <label class="categorie">
                         Catégorie :
@@ -81,8 +81,8 @@
                     <button id="insert-img" onclick="choosePic(true)">Insérer une image</button>
                 </div><br>
                 <button onclick="newArticle()">Nouvel article</button>
-                <button onclick="save()">Sauvegarder</button>
-                <button onclick="publish()">Sauver et publier</button>
+                <button class="save-btn" onclick="save()">Sauvegarder</button>
+                <button class="publish-btn" onclick="publish()">Sauver et publier</button>
         </section>
         <iframe id="gallery" src="upload.php"></iframe>
         <footer>
@@ -114,26 +114,31 @@
                                   );
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-                    document.getElementsByName("id")[0].value = xhr.responseText;
                     // Nouveau ligne dans le tableau des brouillons
-                    var el_ligne = document.createElement("tr");
-                    var el_titre = document.createElement("td");
-                    el_titre.innerHTML = titre.value;
-                    var el_edition = document.createElement("td");
-                    var el_button = document.createElement("button");
-                    el_button.innerHTML = "Editer";
-                    el_button.setAttribute("onclick","edit("+xhr.response+")");
-                    el_edition.appendChild(el_button);
-                    el_ligne.appendChild(el_titre);
-                    el_ligne.appendChild(el_button);
-                    document.getElementById("brouillons").appendChild(el_ligne);
+                    if(document.getElementsByName("id")[0].value == "") {
+                        var el_ligne = document.createElement("tr");
+                        var el_titre = document.createElement("td");
+                        el_titre.innerHTML = titre.value;
+                        var el_edition = document.createElement("td");
+                        var el_button = document.createElement("button");
+                        el_button.innerHTML = "Editer";
+                        el_button.setAttribute("onclick","edit("+xhr.response+")");
+                        el_edition.appendChild(el_button);
+                        el_ligne.appendChild(el_titre);
+                        el_ligne.appendChild(el_button);
+                        document.getElementById("brouillons").appendChild(el_ligne);
+                        document.getElementsByName("id")[0].value = xhr.responseText;
+                    } else {
+                        var col_title = document.getElementsByClassName("titre-"+id.value)[0];
+                        col_title.innerHTML = titre.value;
+                    }
                 }
             }
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=UTF-8");
             xhr.send(params);
         }
-
+            
         function publish() {
             form.action = "save_article.php";
             mode.value = "publish";
@@ -148,27 +153,42 @@
             wcount.innerHTML = s.split(' ').length; 
         }
 
-        function edit(i) {
+        function edit(i,mode) {
             var xhr = newXHR();
             var url = "read_article.php";
             var params = "id="+i;
+            id.value = i;
             xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+                if(xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
                     if(xhr.responseText != "") {
                         var json = JSON.parse(xhr.responseText);
-                        id.value = i;
                         categorie.value = json.categorie;
                         titre.value = json.titre;
                         contenu.value = json.contenu;
                         thumbnail.value = json.thumbnail;
-                        thumbimg.src = "upload/thumb/"+json.thumbnail;
+                        if(json.thumbnail != "") {
+                            thumbimg.src = "upload/thumb/"+json.thumbnail;
+                        }
                         countWords(contenu.value);
+                        if(mode == true) {
+                            titre.readOnly = true;
+                            contenu.readOnly = true;
+                            document.getElementsByClassName("save-btn")[0].disabled = true;
+                            document.getElementsByClassName("publish-btn")[0].disabled = true;
+                        } else {
+                            titre.readOnly = false;
+                            contenu.readOnly = false;
+                            document.getElementsByClassName("save-btn")[0].disabled = false;
+                            document.getElementsByClassName("publish-btn")[0].disabled = false;
+                        }
+                        location.hash = "#edit-zone";
                     }
                 }
             }
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=UTF-8");
             xhr.send(params);
+            location.hash = "#edit-zone";
         }
 
         function newArticle() {

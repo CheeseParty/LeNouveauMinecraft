@@ -17,7 +17,7 @@ if($publies->rowCount() > 0) {
         echo "<tr>";
         echo "<td>".$data['auteur']."</td>";
         echo "<td>".$data['titre']."</td>";
-        echo "<td><button onclick='read(".$data['id'].")'>Lire</button></td>";
+        echo "<td><button onclick='edit(".$data['id'].",true)'>Lire</button></td>";
         echo "<td><button onclick='remove(".$data['auteur'].")'>Retirer</button></td>";
         echo "</tr>";
     }
@@ -32,8 +32,8 @@ else {
 $publies->closeCursor();
 
 # Articles non-publiés
-$non_publies = $db->prepare('SELECT id, auteur, titre FROM articles WHERE publie=0 ORDER BY publication LIMIT 0, 10');
-$non_publies->execute();
+$non_publies = $db->prepare('SELECT id, auteur, titre FROM articles WHERE publie=0 AND auteur!=? ORDER BY publication LIMIT 0, 10');
+$non_publies->execute(array($_SESSION['AUTH']));
 ?>
 <table>
     <caption>Articles non-publiés</caption>
@@ -48,7 +48,7 @@ if($non_publies->rowCount() > 0) {
         echo "<tr>";
         echo "<td>".$data['auteur']."</td>";
         echo "<td>".$data['titre']."</td>";
-        echo "<td><button onclick='read(".$data['id'].")'>Lire</button></td>";
+        echo "<td><button onclick='edit(".$data['id'].",true)'>Lire</button></td>";
         echo "</tr>";
     }
 }
@@ -78,7 +78,7 @@ if($essais->rowCount() > 0) {
         echo "<tr>";
         echo "<td>".$data['auteur']."</td>";
         echo "<td>".$data['titre']."</td>";
-        echo "<td><button onclick='read(".$data['id'].")'>Lire</button></td>";
+        echo "<td><button onclick='edit(".$data['id'].",true)'>Lire</button></td>";
         echo "</tr>";
     }
 }
@@ -103,8 +103,8 @@ $brouillons->execute(array($_SESSION['AUTH']));
 if($brouillons->rowCount() > 0) {
     while($data = $brouillons->fetch()) {
         echo "<tr>";
-        echo "<td>".$data['titre']."</td>";
-        echo "<td><button onclick='edit(".$data['id'].")'>Editer</button></td>";
+        echo "<td class='titre-".$data['id']."'>".$data['titre']."</td>";
+        echo "<td><button onclick='edit(".$data['id'].",false)'>Editer</button></td>";
         echo "</tr>";
     }
 }

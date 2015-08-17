@@ -44,7 +44,7 @@ if(isset($_POST['mode']) AND $_POST['mode'] == "save") {
 			'rang' => $_SESSION['RANK'],
             'thumbnail' => $_POST['thumbnail']
 			));
-		echo $db->lastInsertId();
+        echo $db->lastInsertId();
 		$insert->closeCursor();
 	}
 	
