@@ -59,3 +59,5 @@ changer le rang en fournissant un pseudo et le rang voulu. Envoie également un 
 Ordre dans les fichiers (fichiers CSS dans dossier css, JS dans dossier JS..) NON - ON LE FERA QUAND ON SERA HEBERGÉS
 Aussi utiliser cette procédure de reconnexion sur les pages seulement accessibles
 aux utilisateurs connectés fréquemment visitées. (login.php, write.php, autre?)
+
+Faire un systeme de commentaires sur les articles
