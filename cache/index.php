@@ -15,7 +15,7 @@
     </article>
         
     <article class="mod">
-        <a href="" style="background:url('upload/full/3.jpg') no-repeat;background-size:cover">
+        <a href="" style="background:url('upload/full/4.jpg') no-repeat;background-size:cover">
             <h2>mod :
                 <span>Hello World</span>
             </h2>
