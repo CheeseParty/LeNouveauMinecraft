@@ -76,7 +76,7 @@ else {
     // Déclaration de la variable contenant la clé
     $cle = md5(microtime(true)*100000);
     
-    $register = $db->prepare('INSERT INTO membres (id, pseudo, hash, email, token, inscription) VALUES (:id, :pseudo, :hash, :email, :token, :inscription)');
+    $register = $db -> prepare('INSERT INTO membres (id, pseudo, hash, email, token, inscription) VALUES (:id, :pseudo, :hash, :email, :token, :inscription)');
     $register->execute(array(
         "id" => "",
         "pseudo" => $_POST['pseudo'],
@@ -85,7 +85,7 @@ else {
         "token" => $cle,
         "inscription" => date('Y-m-d')
     ));
-    $register->closeCursor();
+    $register -> closeCursor();
     // Envoi de l'e-mail de validation
     require('includes/validprocess.php');
     

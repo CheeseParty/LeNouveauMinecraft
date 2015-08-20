@@ -1,53 +1,92 @@
-html,body {
-    width:100%;
-    height:100%;
-    margin:0;
-    padding: 0;
+body {
+    margin: 0;
+    background:#f9f9f9;
+}
+#commentaires, #postcommentaire {
+    width:1000px;
+    margin:5px auto 10px auto;
+    padding:20px 40px;
     font-family: sans-serif;
 }
-
-li {
-    list-style-type: none;
+    
+.comment-title {
+    font-size: 20px;
+    margin:0;
+    padding-bottom: 20px;
 }
 
-ul li {
-     display: inline-block;
+.comment-title span {
+    font-size: 15px;
 }
 
-ul {
-    display: inline;
+textarea {
+    width:100%;
+    font-size:12pt;
+    padding:10px;
+    display: block;
+    font-family: sans-serif;
+    resize:none;
 }
 
-a { 
-    text-decoration: none;
+textarea:focus {
+    outline-color:#2C8607;
+}
+
+.form_btn {
+    background-color:#329609;
+    border:0;
+    padding:10px 20px;
+    display:block;
     color:#fff;
+    font-size:12pt;
+    cursor:pointer;
+    transition:all 0.3s ease;
+    margin: 20px auto;
 }
 
-header {
-    background-color:#2F353A;
-    padding:0;
-    margin: 0;
-    line-height: 50px;  
+.form_btn:hover{
+    background-color:#38A70A;
 }
 
-.sitename {
-    font-size:30pt;
+.true {
+    color:#329609;
+    text-align: center;
+    padding: 4px;
+
+}
+
+.commentaire {
+    width: 90%;
+    margin: 0px auto 20px auto;
+    background-color:#fff;
+    padding:20px;
+    border:1px solid #ededed;
     
 }
+.commentaire img {
+    width:80px;
+}
+.pseudo {
+    font-size:15pt;
+    display:inline-block;
+    position:absolute;
+    margin-left:15px;
+}
 
-
-.loginlink, .registerlink{
-    margin:0;
-    padding:0;
-    display:inline;
+.date {
+    display: inline-block;
+    margin-top:5px;
     float:right;
-    margin-left:10px;
-    margin-right: 10px;
-    color:#EEEEEE;
-    transition:all 0.3s ease;
+    font-size:9pt;
+    color:#848484;
 }
 
-.loginlink:hover, .registerlink:hover {
-    color:#23E293;
+.contenu {
+    font-size:14px;
+    display:inline-block;
+    margin: 30px 0 0 22px;
+    position:absolute;
+    width:800px;
+    line-height:20px;
+    
 }
-
