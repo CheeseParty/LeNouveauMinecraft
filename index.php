@@ -18,13 +18,14 @@ if(!isset($_SESSION['AUTH'])) {
         // Si oui, on connecte
         if($checkvars -> rowCount() > 0) {
             while($data = $checkvars->fetch()) {
-            // On définit les variables nécessaires au site (rang, pseudo, email pour gravatar, date d'inscription)
-            $_SESSION['RANK'] = $data['rank'];
-            $_SESSION['AUTH'] = $auth;
-            $_SESSION['MD5'] = md5(strtolower(trim($data['email'])));
-            $date = explode('-',$data['inscription']);
-            $_SESSION['DATE'] = "$date[2].$date[1].$date[0]";
-        }} else {
+                // On définit les variables nécessaires au site (rang, pseudo, email pour gravatar, date d'inscription)
+                $_SESSION['RANK'] = $data['rank'];
+                $_SESSION['AUTH'] = $auth;
+                $_SESSION['MD5'] = md5(strtolower(trim($data['email'])));
+                $date = explode('-',$data['inscription']);
+                $_SESSION['DATE'] = "$date[2].$date[1].$date[0]";
+            }
+        } else {
             // Sinon on destroy les cookies 
             setcookie('AUTH', $_COOKIE['AUTH'], 1);
             setcookie('HASH', $_COOKIE['HASH'], 1);
@@ -254,11 +255,6 @@ if(!isset($_SESSION['AUTH'])) {
                 initSettings();
             }
             initResize();
-        /*  var article = document.querySelector('article');
-            for(var i = 0; i < 5; i++) {
-                var copy = article.cloneNode(true);
-                document.querySelector('#articles').appendChild(copy);
-            }*/
         }
         </script>
     </body>

@@ -26,6 +26,11 @@ a {
     bottom: 5px;
 }
 
+button:disabled {
+    background: grey;
+    cursor: auto;
+}
+
 #choose-pic img {
     width: 40px;
     top: 12px;
@@ -47,6 +52,19 @@ a {
 .categorie {
     width: 100%;
     text-align: left;
+}
+
+.version {
+    width: 100%;
+    text-align: left;
+}
+
+.version input[type] {
+    width: 50px;
+    display: inline;
+    font-size: 17pt;
+    margin: 5px;
+    padding: 5px;
 }
 
 #gallery {

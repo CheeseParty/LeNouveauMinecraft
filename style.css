@@ -191,10 +191,12 @@ article a h2 {
     margin: 0;
     padding: 6px 10px;
     color: #fff;
+    text-transform: uppercase;
 }
 
 article a h2 span {
     font-weight: normal;
+    text-transform: none;
 }
 
 article > a > span {

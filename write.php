@@ -50,7 +50,7 @@
                 # Pour tous les rangs, on peut écrire un article
                 ?>
                 <h2 id="edit-zone">Zone d'édition et de lecture</h2>
-                <form action="" method="post">
+                <form action="save_article.php" method="post">
                     <label class="categorie">
                         Catégorie :
                         <select name="categorie">
@@ -63,7 +63,11 @@
                             <option value="6">Cheat</option>
                             <option value="7">Divers</option>
                         </select>
-                    </label>                
+                    </label>  
+                    <label class="version">
+                        Version :
+                        <input type="text" name="version">
+                    </label>
                     <label id="choose-pic">
                         <span>Thumbnail de l'article :</span>
                         <input type="hidden" id="thumbnail" name="thumbnail">
@@ -72,7 +76,7 @@
                     </label>
                     <input type="text" name="titre" placeholder="Titre">
                     <textarea name="contenu" placeholder="Contenu" rows="20" onclick="contentChange(this)" onkeyup="contentChange(this)"></textarea>
-                    <input type="hidden" name="mode">
+                    <input type="hidden" name="mode" value="publish">
                     <input type="hidden" name="id">
                 </form>
                 <div id="wcount">
@@ -101,6 +105,7 @@
         var id = document.getElementsByName("id")[0];
         var thumbnail = document.getElementById("thumbnail");
         var thumbimg = document.getElementById("thumbimg");
+        var version = document.getElementsByName("version")[0];
         
         // Save: AJAX / publish -> form.submit()
         function save() {
@@ -110,7 +115,8 @@
                                     "&mode=save&titre="+titre.value+
                                     "&contenu="+contenu.value+
                                     "&categorie="+categorie.value+
-                                    "&thumbnail="+thumbnail.value
+                                    "&thumbnail="+thumbnail.value+
+                                    "&version="+version.value
                                   );
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
@@ -141,7 +147,6 @@
             
         function publish() {
             form.action = "save_article.php";
-            mode.value = "publish";
             form.submit();
         }
 
@@ -153,7 +158,7 @@
             wcount.innerHTML = s.split(' ').length; 
         }
 
-        function edit(i,mode) {
+        function edit(i,mode,publie) {
             var xhr = newXHR();
             var url = "read_article.php";
             var params = "id="+i;
@@ -166,11 +171,12 @@
                         titre.value = json.titre;
                         contenu.value = json.contenu;
                         thumbnail.value = json.thumbnail;
+                        version.value = json.version;
                         if(json.thumbnail != "") {
                             thumbimg.src = "upload/thumb/"+json.thumbnail;
                         }
                         countWords(contenu.value);
-                        if(mode == true) {
+                        if(mode) {
                             titre.readOnly = true;
                             contenu.readOnly = true;
                             document.getElementsByClassName("save-btn")[0].disabled = true;
@@ -180,6 +186,11 @@
                             contenu.readOnly = false;
                             document.getElementsByClassName("save-btn")[0].disabled = false;
                             document.getElementsByClassName("publish-btn")[0].disabled = false;
+                        }
+                        if(publie) {
+                            document.getElementsByClassName("save-btn")[0].disabled = true;
+                        } else {
+                            document.getElementsByClassName("save-btn")[0].disabled = false;
                         }
                         location.hash = "#edit-zone";
                     }
@@ -199,6 +210,9 @@
                 contenu.value = "";
                 thumbnail.value = "";
                 thumbimg.src = "";
+                version.value = "";
+                document.getElementsByClassName("save-btn")[0].disabled = false;
+                document.getElementsByClassName("publish-btn")[0].disabled = false;
             }
         }
                                     

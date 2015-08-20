@@ -9,7 +9,7 @@ $publies->execute();
         <th>Auteur</th>
         <th>Titre</th>
         <th>Lecture</th>
-        <th>Retirer</th>
+        <th>Editer</th>
     </tr>
 <?php
 if($publies->rowCount() > 0) {
@@ -17,8 +17,8 @@ if($publies->rowCount() > 0) {
         echo "<tr>";
         echo "<td>".$data['auteur']."</td>";
         echo "<td>".$data['titre']."</td>";
-        echo "<td><button onclick='edit(".$data['id'].",true)'>Lire</button></td>";
-        echo "<td><button onclick='remove(".$data['auteur'].")'>Retirer</button></td>";
+        echo "<td><button onclick='edit(".$data['id'].",true,false)'>Lire</button></td>";
+        echo "<td><button onclick='edit(".$data['id'].",false,true)'>Editer</button></td>";
         echo "</tr>";
     }
 }
@@ -31,12 +31,12 @@ else {
 <?php
 $publies->closeCursor();
 
-# Articles non-publiés
+# Brouillons des autres
 $non_publies = $db->prepare('SELECT id, auteur, titre FROM articles WHERE publie=0 AND auteur!=? ORDER BY publication LIMIT 0, 10');
 $non_publies->execute(array($_SESSION['AUTH']));
 ?>
 <table>
-    <caption>Articles non-publiés</caption>
+    <caption>Brouillons des autres rédacteurs</caption>
     <tr>
         <th>Auteur</th>
         <th>Titre</th>
@@ -48,7 +48,7 @@ if($non_publies->rowCount() > 0) {
         echo "<tr>";
         echo "<td>".$data['auteur']."</td>";
         echo "<td>".$data['titre']."</td>";
-        echo "<td><button onclick='edit(".$data['id'].",true)'>Lire</button></td>";
+        echo "<td><button onclick='edit(".$data['id'].",true,false)'>Lire</button></td>";
         echo "</tr>";
     }
 }
@@ -78,7 +78,7 @@ if($essais->rowCount() > 0) {
         echo "<tr>";
         echo "<td>".$data['auteur']."</td>";
         echo "<td>".$data['titre']."</td>";
-        echo "<td><button onclick='edit(".$data['id'].",true)'>Lire</button></td>";
+        echo "<td><button onclick='edit(".$data['id'].",true,false)'>Lire</button></td>";
         echo "</tr>";
     }
 }
@@ -104,7 +104,7 @@ if($brouillons->rowCount() > 0) {
     while($data = $brouillons->fetch()) {
         echo "<tr>";
         echo "<td class='titre-".$data['id']."'>".$data['titre']."</td>";
-        echo "<td><button onclick='edit(".$data['id'].",false)'>Editer</button></td>";
+        echo "<td><button onclick='edit(".$data['id'].",false,false)'>Editer</button></td>";
         echo "</tr>";
     }
 }
