@@ -14,7 +14,7 @@
     <body>
          <div id="postcommentaire">
             <p class="comment-title">Donnez votre avis ! <span>(300 caractères maximum)</span></p>
-                <textarea name="commentaire" rows="5" maxlength="300" placeholder="Ecrivez votre commentaire ici.." required></textarea>
+                <textarea name="commentaire" rows="5" maxlength="300" placeholder="Ecrivez votre commentaire ici.." ></textarea>
                   <?php 
                 if(isset($_GET['posted'])) {
                     echo "<p class='true'>Votre commentaire a été posté.</p>";
@@ -36,9 +36,9 @@
                     $default = urlencode('http://www.hostingpics.net/thumbs/16/63/21/mini_166321defaultavatar.jpg');
                     echo "<div class='commentaire'>";
                     echo    "<img class='avatar' src='http://www.gravatar.com/avatar/".$data['gravatar']."?d=$default'/>";
-                    echo    "<span class='pseudo'><a class='userlink' href='user/".$data['pseudo']."/'>".$data['pseudo']."</a></span>";
-                    echo    "<span class='date'> ".date('d-m-Y G:i:s', strtotime($data['date']))."</span>";
-                    echo    "<span class='contenu'>".$data['contenu']."</span>";
+                    echo    "<p class='pseudo'><a class='userlink' href='user/".$data['pseudo']."/'>".$data['pseudo']."</a></p>";
+                    echo    "<p class='date'> ".date('d/m/Y G:i', strtotime($data['date']))."</p>";
+                    echo    "<p class='contenu'>".$data['contenu']."</p>";
                     echo    "<div class='btns'>";
                     if(isset($_SESSION['AUTH'])) {
                         if($_SESSION['RANK'] == 5) {
@@ -57,8 +57,13 @@
             var md5 = "<?=$_SESSION['MD5']?>";
             var auth = "<?=$_SESSION['AUTH']?>";
             // Utiliser JS pour générer la date
-            var datecontent = "<?=date('d-m-Y G:i:s', strtotime($data['date']))?>";
-            var content = "<?=$data['contenu']?>";
+            var datecontent = new Date();
+            console.log(datecontent.getDate());
+            console.log(datecontent.getMonth());
+            console.log(datecontent.getFullYear());
+            console.log(datecontent.getHours());
+            console.log(datecontent.getMinutes());
+            console.log(datecontent.getSeconds());
             var admin = "<?=$_SESSION['RANK'] == 5?>";
         </script>
         
@@ -70,56 +75,66 @@
                 var img = document.createElement("IMG");
                 img.src = "http://www.gravatar.com/avatar/"+md5+"?d="+encodeURI('http://www.hostingpics.net/thumbs/16/63/21/mini_166321defaultavatar.jpg');
                 img.className = 'avatar';
-
-                var pseudo = document.createElement("a");
-                pseudo.href = "user/"+auth+"/";
-                pseudo.className = 'userlink';
-                pseudo.innerHTML = auth;
-
+                
+                var pseudo = document.createElement("p");
+                pseudo.className = 'pseudo';
+                
+                var user = document.createElement("a");
+                user.href = "user/"+auth+"/";
+                user.className = 'userlink';
+                user.innerHTML = auth;
+                
                 var date = document.createElement("p");
                 date.className = 'date';
                 date.innerHTML = datecontent;
 
                 var commentaire = document.createElement("p");
                 commentaire.className = 'contenu';
-                commentaire.innerHTML = content;
-
+                commentaire.innerHTML = document.getElementsByTagName('textarea')[0].value;
+                
+                var btns = document.createElement("DIV");
+                btns.className = 'btns';
+                
                 if(admin) {
                     var delbtn = document.createElement("button");
                     delbtn.className = "del_btn";
                     delbtn.innerHTML = "Supprimer ♥";
-                    commentairediv.appendChild(delbtn); 
+                    btns.appendChild(delbtn); 
                 }
 
                 var repbtn = document.createElement("button");
                 repbtn.className = "rep_btn";
                 repbtn.innerHTML = "Répondre";
-
+                
+                pseudo.appendChild(user);
                 commentairediv.appendChild(img); 
                 commentairediv.appendChild(pseudo); 
                 commentairediv.appendChild(date); 
                 commentairediv.appendChild(commentaire); 
-                commentairediv.appendChild(repbtn);
+                commentairediv.appendChild(btns);
+                btns.appendChild(repbtn);
                 
                 return commentairediv;
             }
             
             function postComment() {
+                
+                
                 var comment = document.getElementsByTagName('textarea')[0].value;
-                var postcomment;
-                if (window.XMLHttpRequest) {
-                    postcomment = new XMLHttpRequest();
-                } else {
-                    postcomment = ActiveXObject('Microsoft.XMLHTTP');
-                }
-                
-                postcomment.open("POST","postacomment.php",true);
-                postcomment.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-                postcomment.send("contenu="+comment);
-                
-                document.getElementById("commentaires").appendChild(insertComment());
+                if(comment !== "") {
+                    var postcomment;
+                    if (window.XMLHttpRequest) {
+                        postcomment = new XMLHttpRequest();
+                    } else {
+                        postcomment = ActiveXObject('Microsoft.XMLHTTP');
+                    }
+
+                    postcomment.open("POST","postacomment.php",true);
+                    postcomment.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                    postcomment.send("contenu="+comment);
+                    document.getElementById("commentaires").insertBefore(insertComment(), document.querySelector('.commentaire:first-child'));                     
             }            
-            
+            }
         </script>
         
     </body>
