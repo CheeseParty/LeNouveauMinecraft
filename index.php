@@ -170,6 +170,11 @@ if(!isset($_SESSION['AUTH'])) {
 
         <!-- A FAIRE: METTRE CE SCRIPT DANS UN FICHIER EXTERNE -->
         <script type="text/javascript" async defer>
+        // Anime les thumbnails des articles
+        function animateBg(a) {
+            a.style.backgroundSize = "120%";
+        }
+            
         // Place le menu au bon endroit
         function moveMenu() {
             var margin = parseFloat(window.getComputedStyle(document.getElementById("header-container")).marginLeft);

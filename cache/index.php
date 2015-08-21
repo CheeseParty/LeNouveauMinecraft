@@ -14,6 +14,7 @@
                     </a>
     </article>
         
+<<<<<<< HEAD
     <article class="map">
         <a href="" style="background:url('upload/full/6.jpg') no-repeat;background-size:cover">
             <h2>map :
@@ -43,6 +44,12 @@
         <a href="" style="background:url('upload/full/') no-repeat;background-size:cover">
             <h2>map :
                 <span></span>
+=======
+    <article class="mod">
+        <a href="" style="background:url('upload/full/4.jpg') no-repeat;background-size:cover">
+            <h2>mod :
+                <span>Hello World</span>
+>>>>>>> origin/master2
             </h2>
                     </a>
     </article>

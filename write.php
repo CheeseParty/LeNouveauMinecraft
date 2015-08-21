@@ -211,6 +211,8 @@
                 thumbnail.value = "";
                 thumbimg.src = "";
                 version.value = "";
+                titre.readOnly = false;
+                contenu.readOnly = false;
                 document.getElementsByClassName("save-btn")[0].disabled = false;
                 document.getElementsByClassName("publish-btn")[0].disabled = false;
             }
