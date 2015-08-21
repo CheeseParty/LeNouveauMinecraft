@@ -43,7 +43,7 @@ while($data = $select -> fetch()) {
     }    
 ?>
     <article class="<?=$data['categorie']?>">
-        <a href="" style="background:url('upload/full/<?=$data['thumbnail']?>') no-repeat;background-size:cover">
+        <a onlick="displayArticle(<?=$awd?>)" style="background:url('upload/full/<?=$data['thumbnail']?>') no-repeat;background-size:cover">
             <h2><?=$data['categorie']?> :
                 <span><?=$data['titre']?></span>
             </h2>

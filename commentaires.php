@@ -1,6 +1,6 @@
 <?php 
 #commentaires.php
-#Commentaires pour chaque article avec possibilité d'en écrire bien évidemment
+#Commentaires pour chaque article avec possibilité d'en écrire bien évidemment lel
 
     session_start();
 ?>
@@ -53,14 +53,57 @@
                     
         </div>
         <script>
+            // Si on mettait certaines de ces variables en cookie, on pourrait les utiliser en JS.
             var md5 = "<?=$_SESSION['MD5']?>";
             var auth = "<?=$_SESSION['AUTH']?>";
+            // Utiliser JS pour générer la date
             var datecontent = "<?=date('d-m-Y G:i:s', strtotime($data['date']))?>";
             var content = "<?=$data['contenu']?>";
             var admin = "<?=$_SESSION['RANK'] == 5?>";
         </script>
         
         <script type="text/javascript">
+            function insertComment() {
+                var commentairediv = document.createElement("DIV");
+                commentairediv.className = 'commentaire';
+
+                var img = document.createElement("IMG");
+                img.src = "http://www.gravatar.com/avatar/"+md5+"?d="+encodeURI('http://www.hostingpics.net/thumbs/16/63/21/mini_166321defaultavatar.jpg');
+                img.className = 'avatar';
+
+                var pseudo = document.createElement("a");
+                pseudo.href = "user/"+auth+"/";
+                pseudo.className = 'userlink';
+                pseudo.innerHTML = auth;
+
+                var date = document.createElement("p");
+                date.className = 'date';
+                date.innerHTML = datecontent;
+
+                var commentaire = document.createElement("p");
+                commentaire.className = 'contenu';
+                commentaire.innerHTML = content;
+
+                if(admin) {
+                    var delbtn = document.createElement("button");
+                    delbtn.className = "del_btn";
+                    delbtn.innerHTML = "Supprimer ♥";
+                    commentairediv.appendChild(delbtn); 
+                }
+
+                var repbtn = document.createElement("button");
+                repbtn.className = "rep_btn";
+                repbtn.innerHTML = "Répondre";
+
+                commentairediv.appendChild(img); 
+                commentairediv.appendChild(pseudo); 
+                commentairediv.appendChild(date); 
+                commentairediv.appendChild(commentaire); 
+                commentairediv.appendChild(repbtn);
+                
+                return commentairediv;
+            }
+            
             function postComment() {
                 var comment = document.getElementsByTagName('textarea')[0].value;
                 var postcomment;
@@ -74,45 +117,8 @@
                 postcomment.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                 postcomment.send("contenu="+comment);
                 
-                document.getElementById('commentaires').appendChild(commentairediv);
-                commentairediv.appendChild(img); 
-                commentairediv.appendChild(pseudo); 
-                commentairediv.appendChild(date); 
-                commentairediv.appendChild(commentaire); 
-                commentairediv.appendChild(repbtn); 
-            }
-            
-            var commentairediv = document.createElement("DIV");
-            commentairediv.className = 'commentaire';
-            
-            var img = document.createElement("IMG");
-            img.src = "http://www.gravatar.com/avatar/"+md5+"?d="+encodeURI('http://www.hostingpics.net/thumbs/16/63/21/mini_166321defaultavatar.jpg');
-            img.className = 'avatar';
-           
-            var pseudo = document.createElement("A");
-            pseudo.href = "user/"+auth+"/";
-            pseudo.className = 'userlink';
-            pseudo.innerHTML = auth;
-          
-            var date = document.createElement("P");
-            date.className = 'date';
-            date.innerHTML = datecontent;
-          
-            var commentaire = document.createElement("P");
-            commentaire.className = 'contenu';
-            commentaire.innerHTML = content;
-            
-            if(admin) {
-                var delbtn = document.createElement("BUTTON");
-                delbtn.className = "del_btn";
-                delbtn.innerHTML = "Supprimer ♥";
-                commentairediv.appendChild(delbtn); 
-            }
-            
-            var repbtn = document.createElement("BUTTON");
-            repbtn.className = "rep_btn";
-            repbtn.innerHTML = "Répondre";
-            
+                document.getElementById("commentaires").appendChild(insertComment());
+            }            
             
         </script>
         
