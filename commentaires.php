@@ -56,14 +56,7 @@
             // Si on mettait certaines de ces variables en cookie, on pourrait les utiliser en JS.
             var md5 = "<?=$_SESSION['MD5']?>";
             var auth = "<?=$_SESSION['AUTH']?>";
-            // Utiliser JS pour générer la date
-            var datecontent = new Date();
-            console.log(datecontent.getDate());
-            console.log(datecontent.getMonth());
-            console.log(datecontent.getFullYear());
-            console.log(datecontent.getHours());
-            console.log(datecontent.getMinutes());
-            console.log(datecontent.getSeconds());
+            
             var admin = "<?=$_SESSION['RANK'] == 5?>";
         </script>
         
@@ -84,9 +77,10 @@
                 user.className = 'userlink';
                 user.innerHTML = auth;
                 
+                var datecontent = new Date();
                 var date = document.createElement("p");
                 date.className = 'date';
-                date.innerHTML = datecontent;
+                date.innerHTML = datecontent.getDate()+"/"+datecontent.getMonth()+"/"+datecontent.getFullYear()+" "+datecontent.getHours()+":"+datecontent.getMinutes();
 
                 var commentaire = document.createElement("p");
                 commentaire.className = 'contenu';
