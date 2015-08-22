@@ -1,6 +1,6 @@
 <?php 
-#commentaires.php
-#Commentaires pour chaque article avec possibilité d'en écrire bien évidemment lel
+# COMMENTAIRE.PHP
+# Commentaires pour chaque article avec possibilité d'en écrire bien évidemment
 
     session_start();
 ?>
@@ -21,34 +21,66 @@
                 }
             ?>
                 <button class="form_btn" onclick="postComment()">Commenter</button>
-             <?php //$ip = $_SERVER['REMOTE_ADDR']; echo"$ip";?>
+             <?php // $ip = $_SERVER['REMOTE_ADDR']; echo"$ip";?>
         </div>
         <div id="commentaires">
             <?php 
                 require('includes/connexion.php');
-                #On va chercher le contenu de la bdd des commentaires pour l'article concerné ($_GET['article'])
-                $selectcomms = $db -> prepare('SELECT contenu, pseudo, date, gravatar FROM commentaires WHERE idarticle=:idarticle ORDER BY date DESC');
+                # On va chercher le contenu de la bdd des commentaires pour l'article concerné ($_GET['article'])
+                $selectcomms = $db -> prepare('SELECT id, answer_to, contenu, pseudo, date, gravatar FROM commentaires WHERE idarticle=:idarticle ORDER BY date DESC');
                 $selectcomms->execute(array(
                     'idarticle' => $_GET['article']
                 ));
-                #On affiche tous les commentaires
-                while($data = $selectcomms -> fetch()) {
-                    $default = urlencode('http://www.hostingpics.net/thumbs/16/63/21/mini_166321defaultavatar.jpg');
-                    echo "<div class='commentaire'>";
-                    echo    "<img class='avatar' src='http://www.gravatar.com/avatar/".$data['gravatar']."?d=$default'/>";
-                    echo    "<p class='pseudo'><a class='userlink' href='user/".$data['pseudo']."/'>".$data['pseudo']."</a></p>";
-                    echo    "<p class='date'> ".date('d/m/Y G:i', strtotime($data['date']))."</p>";
-                    echo    "<p class='contenu'>".$data['contenu']."</p>";
-                    echo    "<div class='btns'>";
-                    if(isset($_SESSION['AUTH'])) {
-                        if($_SESSION['RANK'] == 5) {
-                        echo    "<button class='del_btn'>Supprimer ♥</button>";
-                    } }
-                    echo        "<button class='rep_btn'>Répondre</button>";
-                    echo    "</div>";
-                    echo "</div>";
-                }
-                    
+
+                # On fetch tous les commentaires
+                $data = $selectcomms -> fetchAll();
+                $answers = array_column($data, "answer_to");
+                print_r($answers);
+                
+                # On fait la boucle
+                foreach($data as $value) {
+                    # Si le commentaire n'est pas une réponse
+                    if(empty($value['answer_to'])) {
+                        # On l'affiche
+                        $default = urlencode('http://www.hostingpics.net/thumbs/16/63/21/mini_166321defaultavatar.jpg');
+                        echo "<div class='commentaire'>";
+                        echo    "<img class='avatar' src='http://www.gravatar.com/avatar/".$value['gravatar']."?d=$default'/>";
+                        echo    "<p class='pseudo'><a class='userlink' href='user/".$value['pseudo']."/'>".$value['pseudo']."</a></p>";
+                        echo    "<p class='date'> ".date('d/m/Y G:i', strtotime($value['date']))."</p>";
+                        echo    "<p class='contenu'>".$value['contenu']."</p>";
+                        echo    "<div class='btns'>";
+                        if(isset($_SESSION['AUTH'])) {
+                            if($_SESSION['RANK'] == 5) {
+                                echo    "<button class='del_btn'>Supprimer ♥</button>";
+                            }
+                        }
+                        echo        "<button class='rep_btn'>Répondre</button>";
+                        echo    "</div>";
+                        echo "</div>";
+                        
+                        # Et on affiche ses réponses                        
+                        $keys = array_keys($answers, $value['id']);
+                        if(!empty($keys)) {
+                            foreach($keys as $key) {
+                                $default = urlencode('http://www.hostingpics.net/thumbs/16/63/21/mini_166321defaultavatar.jpg');
+                                echo "<div class='commentaire'>";
+                                echo    "<img class='avatar' src='http://www.gravatar.com/avatar/".$data[$key]['gravatar']."?d=$default'/>";
+                                echo    "<p class='pseudo'><a class='userlink' href='user/".$data[$key]['pseudo']."/'>".$data[$key]['pseudo']."</a></p>";
+                                echo    "<p class='date'> ".date('d/m/Y G:i', strtotime($data[$key]['date']))."</p>";
+                                echo    "<p class='contenu'>".$data[$key]['contenu']."</p>";
+                                echo    "<div class='btns'>";
+                                if(isset($_SESSION['AUTH'])) {
+                                    if($_SESSION['RANK'] == 5) {
+                                        echo    "<button class='del_btn'>Supprimer ♥</button>";
+                                    }
+                                }
+                                echo        "<button class='rep_btn'>Répondre</button>";
+                                echo    "</div>";
+                                echo "</div>";
+                            }
+                        }
+                    }
+                }                    
             ?>
                     
         </div>
@@ -112,8 +144,6 @@
             }
             
             function postComment() {
-                
-                
                 var comment = document.getElementsByTagName('textarea')[0].value;
                 if(comment !== "") {
                     var postcomment;
@@ -127,7 +157,7 @@
                     postcomment.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                     postcomment.send("contenu="+comment);
                     document.getElementById("commentaires").insertBefore(insertComment(), document.querySelector('.commentaire:first-child'));                     
-            }            
+                }            
             }
         </script>
         
