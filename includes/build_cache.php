@@ -9,7 +9,7 @@ ob_start();
 require('includes/connexion.php');
 
 # Construction du cache principal
-$select = $db -> prepare('SELECT categorie, titre, thumbnail, version FROM articles WHERE publie=1 LIMIT 0,20');
+$select = $db -> prepare('SELECT id, categorie, titre, thumbnail, version FROM articles WHERE publie=1 LIMIT 0,20');
 $select -> execute();
 while($data = $select -> fetch()) {
     switch($data['categorie']) {
@@ -43,7 +43,7 @@ while($data = $select -> fetch()) {
     }    
 ?>
     <article class="<?=$data['categorie']?>">
-        <a onlick="displayArticle(<?=$awd?>)" style="background:url('upload/full/<?=$data['thumbnail']?>') no-repeat;background-size:cover">
+        <a href="articles/<?=$data['id']?>/" style="background:url('upload/full/<?=$data['thumbnail']?>') no-repeat;background-size:cover">
             <h2><?=$data['categorie']?> :
                 <span><?=$data['titre']?></span>
             </h2>
@@ -73,7 +73,7 @@ ob_end_clean();
 ob_start();
 
 # Construction du cache de catégorie
-$select = $db -> prepare('SELECT categorie, titre, thumbnail, version FROM articles WHERE publie=1 LIMIT 0,20');
+$select = $db -> prepare('SELECT id, categorie, titre, thumbnail, version FROM articles WHERE publie=1 LIMIT 0,20');
 $select -> execute();
 
 switch($_POST['categorie']) {
@@ -109,7 +109,7 @@ switch($_POST['categorie']) {
 while($data = $select -> fetch()) {   
 ?>
     <article class="<?=$categorie?>">
-        <a href="" style="background:url('upload/full/<?=$data['thumbnail']?>') no-repeat;background-size:cover">
+        <a href="articles/<?=$data['id']?>/" style="background:url('upload/full/<?=$data['thumbnail']?>') no-repeat;background-size:cover">
             <h2><?=$categorie?> :&nbsp;
                 <span><?=$data['titre']?></span>
             </h2>

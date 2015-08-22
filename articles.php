@@ -1,48 +1,27 @@
-<?php 
-// On démarre la session
+<?php
+# ARTICLES.PHP
+# Inclusion de l'article
+
 session_start();
-// Si l'utilisateur n'est pas connecté
-if(!isset($_SESSION['AUTH'])) {
-    // Et qu'il y a des cookies enregistrés
-    if(isset($_COOKIE['AUTH']) AND isset($_COOKIE['HASH'])) {
-        $auth = $_COOKIE['AUTH'];
-        $hash = $_COOKIE['HASH'];
-        // On inclut le nécessaire à la connexion à la db
-        require('includes/connexion.php');
-        // On vérifie s'il y a un compte qui existe avec les données en cookie
-        $checkvars = $db -> prepare('SELECT rank, email, hash, inscription FROM membres WHERE pseudo=:pseudo AND hash=:hash');
-        $checkvars -> execute(array(
-            'pseudo' => $auth,
-            'hash' => $hash
-        ));
-        // Si oui, on connecte
-        if($checkvars -> rowCount() > 0) {
-            while($data = $checkvars->fetch()) {
-                // On définit les variables nécessaires au site (rang, pseudo, email pour gravatar, date d'inscription)
-                $_SESSION['RANK'] = $data['rank'];
-                $_SESSION['AUTH'] = $auth;
-                $_SESSION['MD5'] = md5(strtolower(trim($data['email'])));
-                $date = explode('-',$data['inscription']);
-                $_SESSION['DATE'] = "$date[2].$date[1].$date[0]";
-            }
-        } else {
-            // Sinon on destroy les cookies
-            setcookie('AUTH', $_COOKIE['AUTH'], -1);
-            setcookie('HASH', $_COOKIE['HASH'], -1);
-        }
-    }
+
+
+
+if((@include('cache/articles/'.$_GET['article'])) === false) {
+    echo "<h2>L'article que vous demandez n'existe pas.</h2>";
+    echo "<a href='../../'>Retourner à l'accueil</a>";
 }
+
 ?>
 <!doctype html>
 <html lang="fr">
     <head>
         <meta charset="utf-8">
         <title>Nether News - News sur le jeu de type "sandbox"</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../style.css">
         <link href='http://fonts.googleapis.com/css?family=Merriweather:700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
         <!-- Favicons -->
-        <?php require('includes/favicons.php'); ?>
+        
         <!-- Métadonnées pour SEO -->
     </head>
     <body>

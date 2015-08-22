@@ -3,6 +3,7 @@ RewriteEngine On
 # RewriteCond %{HTTP_HOST} !^www\.
 # RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 # RewriteRule ^$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+RewriteRule ^articles/([0-9]+)/$ articles.php?article=$1 [NC,L]
 RewriteRule ^user/(.*)/$ user.php?user=$1 [NC,L]
 RewriteRule ^news/ index.php?cache=news [NC,L]
 RewriteRule ^maps/ index.php?cache=maps [NC,L]

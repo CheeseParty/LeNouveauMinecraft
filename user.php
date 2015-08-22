@@ -120,7 +120,7 @@
                     </tr>
                 </table>
             <?php else: ?>
-                <h2>Désolé, le profil que vous avez demandé n'existe pas.</h2>
+                <h2>Le profil que vous demandez n'existe pas.</h2>
                 <a href="../../">Retourner à l'accueil</a>
             <?php endif ?>
         </section>
