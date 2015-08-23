@@ -93,11 +93,12 @@ h1 {
 
 /* Hamburger */
 #hamburger {
-    height: 24px;
-    padding: 8px 0;
-    width: 24px;
-    transition: transform .3s ease;
+    height: 20px;
+    width: 23px;
+    transition: transform .3s cubic-bezier(.35,.93,.54,.99);
     cursor: pointer;
+    position: relative;
+    bottom: 1px;
 }
 
 #hamburger span {
@@ -110,33 +111,67 @@ h1 {
     margin: 6px 0;
 }
 
-/* Menu & settings*/
+/* Menu & profile*/
+#hamburger, .login {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 #menu {
-    top: -350px;
-    width: 200px;
-    left: 0;
+    padding-top: 15px;
+    left: -320px;
+    height: 110%;
+    top: 75px;
+    width: 320px;
+    transition: left .3s cubic-bezier(.35,.93,.54,.99);
 }
 
-#settings {
-    top: -240px;
-    width: 216px;
-    right: 0;
+#menu a {
+    border-bottom: 2px solid #51D489;
+    font-size: 20pt;
 }
 
-#settings a:last-child {
+#menu a:last-child {
+    border-bottom: 0;
+}
+
+#profile {
+    right: -320px;
+    height: 110%;
+    top: 75px;
+    width: 320px;
+    transition: right .3s cubic-bezier(.35,.93,.54,.99);
+}
+
+#profile a:last-child {
     background: #fa4242;
 }
 
-#settings-btn {
+#profile-btn {
     font-size: 17pt;
 }
 
-#settings-btn img {
+#profile-btn img {
     transition: transform .3s ease;
 }
 
+#profile a:nth-child(2) {
+    background-color: #525252;
+}
+
+#profile a img {
+    margin: 25px auto;
+    display: block;
+    box-shadow: 0 1px 6px -2px #000;
+    height: auto;
+    width: 250px;
+}
+
 .dropdown {
-    transition: all .3s ease;
     z-index: 88;
     position: fixed;
     background: #2EBF6B;
@@ -150,18 +185,6 @@ h1 {
     padding: 10px 20px;
     color: #FFF;
     font-size: 17pt;
-}
-
-.dropdown a:last-child {
-    border-bottom: 0;
-}
-
-.dropdown a img {
-    margin: 16px auto 7px;
-    display: block;
-    box-shadow: 0 1px 6px -2px #000;
-    height: 160px;
-    width: 160px;
 }
 
 /* Articles */
