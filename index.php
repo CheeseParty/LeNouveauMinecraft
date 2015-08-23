@@ -44,6 +44,18 @@ if(!isset($_SESSION['AUTH'])) {
         <!-- Favicons -->
         <?php require('includes/favicons.php'); ?>
         <!-- Métadonnées pour SEO -->
+        <?php if(isset($_SESSION['AUTH'])): ?>
+        <style>
+            #title {
+                width: calc(100% - 331px);
+            }
+            @media screen and (max-width: 1000px) {
+                #title {
+                    width: calc(100% - 180px);
+                }
+            }
+        </style>
+        <?php endif ?>
     </head>
     <body>
         <header id="header">
@@ -54,8 +66,9 @@ if(!isset($_SESSION['AUTH'])) {
                         <span></span>
                         <span></span>
                     </div>
-                    <a id="title" href="index.php"><h1>Nether News</h1></a>       
+                    <a id="title" href="index.php"><h1><span>Nether News</span></h1></a>
                     <?php if(isset($_SESSION['AUTH'])): ?>
+                    <a id="notif" onclick="toggleNotif()"><img src="notification.svg"></a>
                         <a class="login" onclick="toggleProfile()"><img src="usercommentaire.svg"><span><?=$_SESSION['AUTH']?></span></a>
                     <?php else: ?>
                         <a class="login" href="login.php"><img src="login.svg"><span>Connexion | Inscription</span></a>
@@ -74,7 +87,7 @@ if(!isset($_SESSION['AUTH'])) {
             <a href="shaders/">Shaders</a>
             <a href="cheats/">Cheats</a>
         </div>
-        
+        <div id="notifs"></div>
         <?php if(isset($_SESSION['AUTH'])): ?>
             <div id="profile" class="dropdown">
                 <a href="user/<?=$_SESSION['AUTH']?>/">
@@ -169,6 +182,11 @@ if(!isset($_SESSION['AUTH'])) {
             profile_shown = !profile_shown;
         }
             
+        // Toggle les notifications
+        function toggleNotif() {
+            
+        }
+            
         document.body.onload = function() {
             menu = document.getElementById("menu");
             menu_shown = false;
@@ -176,6 +194,8 @@ if(!isset($_SESSION['AUTH'])) {
             if(logged) {
                 profile = document.getElementById("profile");
                 profile_shown = false;
+                notif = document.getElementById("notif");
+                notif_shown = false;
             }
         }
             
