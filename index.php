@@ -56,7 +56,7 @@ if(!isset($_SESSION['AUTH'])) {
                     </div>
                     <a id="title" href="index.php"><h1>Nether News</h1></a>       
                     <?php if(isset($_SESSION['AUTH'])): ?>
-                        <a class="login" onclick="toggleProfile()"><img src="login.svg"><span><?=$_SESSION['AUTH']?></span></a>
+                        <a class="login" onclick="toggleProfile()"><img src="usercommentaire.svg"><span><?=$_SESSION['AUTH']?></span></a>
                     <?php else: ?>
                         <a class="login" href="login.php"><img src="login.svg"><span>Connexion | Inscription</span></a>
                     <?php endif ?>
