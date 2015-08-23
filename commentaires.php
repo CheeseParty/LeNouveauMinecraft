@@ -173,12 +173,7 @@
                     
                     repzone.appendChild(reptextarea);
                     repzone.appendChild(sendrep_btn);
-                    console.log(document.querySelector('.commentaire'());
-                   // commentaires.insertBefore(repzone, document.querySelector('#commentaires:nth-child('+previous+')'));
-                    commentaires.insertBefore(repzone, document.querySelector('.commentaire')[previous+1]);
-                    document.querySelector('.commentaire')[previous].style.background = 'pink';
-                    
-                    
+                    commentaires.insertBefore(repzone, document.querySelectorAll('.commentaire')[1+previous]);
                 }
                 
                 function postReply() {
