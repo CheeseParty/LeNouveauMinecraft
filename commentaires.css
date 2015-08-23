@@ -4,8 +4,7 @@ body {
 }
 #commentaires, #postcommentaire {
     width:1000px;
-    margin:5px auto 10px auto;
-    padding:20px 40px;
+    margin:0 auto;
     font-family: sans-serif;
 }
     
@@ -32,7 +31,7 @@ textarea:focus {
     outline-color:#2C8607;
 }
 
-.form_btn {
+.send_btn {
     background-color:#329609;
     border:0;
     padding:10px 20px;
@@ -55,13 +54,22 @@ textarea:focus {
 
 }
 
-.commentaire {
-    width: 90%;
-    margin: 0px auto 20px auto;
+.commentaire,.commentaire_reponse {
     background-color:#fff;
     padding:20px;
     border:1px solid #ededed;
     
+}
+
+.commentaire {
+    width: 100%;
+    margin: 20px auto 0 auto;
+}
+
+.commentaire_reponse {
+    width:90%;
+    margin: 7px 0 0 10%;
+   
 }
 .avatar {
     width:80px;
@@ -83,11 +91,11 @@ textarea:focus {
 }
 
 .contenu {
-    font-size:14px;
+    font-size:12px;
     display:inline-block;
     margin: 30px 0 0 22px;
     position:absolute;
-    width:800px;
+    width:700px;
     line-height:20px;
 }
 
@@ -99,6 +107,7 @@ textarea:focus {
 .btns{
     width:100%;
     text-align:right;
+    margin-top:-10px;
 }
 .rep_btn, .del_btn {
     display:inline-block;
