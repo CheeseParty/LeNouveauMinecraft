@@ -193,7 +193,6 @@ h1 {
     max-width: 1400px;
     margin: 0 auto;
     padding: 85px 0;
-    transition: opacity .3s ease;
 }
 
 article {
