@@ -68,7 +68,7 @@ if(!isset($_SESSION['AUTH'])) {
                     </div>
                     <a id="title" href="index.php"><h1><span>Nether News</span></h1></a>
                     <?php if(isset($_SESSION['AUTH'])): ?>
-                    <a id="notif" onclick="toggleNotif()"><img src="notification.svg"></a>
+                    <a id="notif" onclick="toggleNotif()"><img src="notification.svg"><span></span></a>
                         <a class="login" onclick="toggleProfile()"><img src="usercommentaire.svg"><span><?=$_SESSION['AUTH']?></span></a>
                     <?php else: ?>
                         <a class="login" href="login.php"><img src="login.svg"><span>Connexion | Inscription</span></a>
@@ -87,7 +87,7 @@ if(!isset($_SESSION['AUTH'])) {
             <a href="shaders/">Shaders</a>
             <a href="cheats/">Cheats</a>
         </div>
-        <div id="notifs"></div>
+    <div id="notifs" class="dropdown"><div>NOTIFICATIONS</div></div>
         <?php if(isset($_SESSION['AUTH'])): ?>
             <div id="profile" class="dropdown">
                 <a href="user/<?=$_SESSION['AUTH']?>/">
@@ -184,22 +184,84 @@ if(!isset($_SESSION['AUTH'])) {
                 profile.style.right = 0;
             }
             profile_shown = !profile_shown;
+            if(notifs_shown) {
+                notifs.style.right = "-320px";
+                notifs_shown = false;
+            }
         }
             
         // Toggle les notifications
         function toggleNotif() {
+            if(notifs_shown) {
+                notifs.style.right = "-320px";
+            } else {
+                notifs.style.right = 0;
+            }
+            notifs_shown = !notifs_shown;
+            if(profile_shown) {
+                profile.style.right = "-320px";
+                profile_shown = false;
+            }
             
+            /*var xhr;
+            if(window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    if(xhr.responseText == true) {
+                        var span = document.createElement("span");
+                        notif.appendChild(span);
+                    }
+                }
+            }
+            xhr.open("GET","get_notifs.php",true);
+            xhr.send();*/
+        }
+            
+        // Fait bouger la clochette de notifications
+        function blinkNotif() {
+            red_dot.style.opacity = 1;
+            setTimeout(function() {
+                red_dot.style.opacity = 0;
+            }, 500);
+            setTimeout(function() {
+                red_dot.style.opacity = 1;
+            }, 1000);
         }
             
         document.body.onload = function() {
+            // Variables du burger et du menu
             menu = document.getElementById("menu");
             menu_shown = false;
             burger = document.getElementById("hamburger");
+            // Variables du profil et des notifs (si connecté)
             if(logged) {
                 profile = document.getElementById("profile");
                 profile_shown = false;
                 notif = document.getElementById("notif");
-                notif_shown = false;
+                notifs_shown = false;
+                notifs = document.getElementById("notifs");
+                clochette = document.querySelector("#notif img");
+                red_dot = document.querySelector("#notif span");
+                // Vérifie si l'utilisateur a des notifications
+                var xhr;
+                if(window.XMLHttpRequest) {
+                    xhr = new XMLHttpRequest();
+                } else {
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xhr.onreadystatechange = function() {
+                    if(xhr.readyState == 4 && xhr.status == 200) {
+                        if(xhr.responseText == true) {
+                            blinkNotif();
+                        }
+                    }
+                }
+                xhr.open("GET","check_notif.php",true);
+                xhr.send();
             }
         }
             

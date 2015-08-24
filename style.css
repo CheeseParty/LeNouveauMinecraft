@@ -42,6 +42,12 @@ header {
     -moz-backface-visibility: hidden;
     backface-visibility: hidden;
     box-shadow: 0 4px 11px -7px #000;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 header a {
@@ -73,16 +79,19 @@ header a {
     width: 50px;
     display: block;
     padding: 7px;
+    transition: .2s linear;
 }
 
 #notif span {
     position: absolute;
-    top: 3px;
-    right: 3px;
+    top: 10px;
+    right: 10px;
     background: red;
-    font-size: 12pt;
-    border-radius: 20px;
-    padding: 2px 7px;
+    border-radius: 7px;
+    width: 14px;
+    height: 14px;
+    opacity: 0;
+    transition: opacity .5s linear;
 }
 
 .login {
@@ -136,16 +145,7 @@ h1 {
     margin: 6px 0;
 }
 
-/* Menu & profile*/
-#hamburger, .login {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
+/* Menu & profil*/
 #menu {
     padding-top: 15px;
     left: -320px;
@@ -194,6 +194,20 @@ h1 {
     box-shadow: 0 1px 6px -2px #000;
     height: auto;
     width: 250px;
+}
+
+#notifs {
+    color: #fff;
+    right: -320px;
+    height: 110%;
+    top: 75px;
+    width: 320px;
+    transition: right .3s cubic-bezier(.35,.93,.54,.99);
+}
+
+#notifs div:first-of-type {
+    margin: 10px;
+    background: #ddd;
 }
 
 .dropdown {
