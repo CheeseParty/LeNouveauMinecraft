@@ -27,58 +27,60 @@
             <?php 
                 require('includes/connexion.php');
                 # On va chercher le contenu de la bdd des commentaires pour l'article concerné ($_GET['article'])
-                $selectcomms = $db -> prepare('SELECT id, answer_to, contenu, pseudo, date, gravatar FROM commentaires WHERE idarticle=:idarticle ORDER BY date DESC');
+                $selectcomms = $db -> prepare('SELECT id, answer_to, contenu, pseudo, date, gravatar FROM commentaires WHERE idarticle=:idarticle AND answer_to=0 ORDER BY date DESC');
                 $selectcomms->execute(array(
                     'idarticle' => $_GET['article']
+                    
                 ));
-
+                $selectreps = $db -> prepare('SELECT answer_to, contenu, pseudo, date, gravatar FROM commentaires WHERE idarticle=:idarticle AND answer_to!=0 ORDER BY date ASC');
+                $selectreps -> execute(array(
+                    'idarticle' => $_GET['article']
+                ));
                 # On fetch tous les commentaires
                 $data = $selectcomms -> fetchAll();
-                $answers = array_column($data, "answer_to");
+                $data2 = $selectreps -> fetchAll();
+                $answers = array_column($data2, "answer_to");
                 $count = 0;
                 # On fait la boucle
                 foreach($data as $value) {
-                    # Si le commentaire n'est pas une réponse
-                    if(empty($value['answer_to'])) {
-                        # On l'affiche
-                        $default = urlencode('http://www.hostingpics.net/thumbs/16/63/21/mini_166321defaultavatar.jpg');
-                        echo "<div class='commentaire'>";
-                        echo    "<img class='avatar' src='http://www.gravatar.com/avatar/".$value['gravatar']."?d=$default'/>";
-                        echo    "<p class='pseudo'><a class='userlink' href='user/".$value['pseudo']."/'>".$value['pseudo']."</a></p>";
-                        echo    "<p class='date'> ".date('d/m/Y G:i', strtotime($value['date']))."</p>";
-                        echo    "<p class='contenu'>".$value['contenu']."</p>";
-                        echo    "<div class='btns'>";
-                        if(isset($_SESSION['AUTH'])) {
-                            if($_SESSION['RANK'] == 5) {
-                                echo    "<button class='del_btn'>Supprimer ♥</button>";
-                            }
-                        }
-                        echo        "<button onclick='replyComment(".$value['id'].",$count)' class='rep_btn'>Répondre</button>";
-                        echo    "</div>";
-                        echo "</div>";
-                        $count++;
-                        # Et on affiche ses réponses                        
-                        $keys = array_keys($answers, $value['id']);
-                        if(!empty($keys)) {
-                            foreach($keys as $key) {
-                                $default = urlencode('http://www.hostingpics.net/thumbs/16/63/21/mini_166321defaultavatar.jpg');
-                                echo "<div class='commentaire_reponse'>";
-                                echo    "<img class='avatar' src='http://www.gravatar.com/avatar/".$data[$key]['gravatar']."?d=$default'/>";
-                                echo    "<p class='pseudo'><a class='userlink' href='user/".$data[$key]['pseudo']."/'>".$data[$key]['pseudo']."</a></p>";
-                                echo    "<p class='date'> ".date('d/m/Y G:i', strtotime($data[$key]['date']))."</p>";
-                                echo    "<p class='contenu'>".$data[$key]['contenu']."</p>";
-                                echo    "<div class='btns'>";
-                                if(isset($_SESSION['AUTH'])) {
-                                    if($_SESSION['RANK'] == 5) {
-                                        echo    "<button class='del_btn'>Supprimer ♥</button>";
-                                    }
-                                }
-                                echo    "</div>";
-                                echo "</div>";
-                            }
+                        
+                    $default = urlencode('http://www.hostingpics.net/thumbs/16/63/21/mini_166321defaultavatar.jpg');
+                    echo "<div class='commentaire'>";
+                    echo    "<img class='avatar' src='http://www.gravatar.com/avatar/".$value['gravatar']."?d=$default'/>";
+                    echo    "<p class='pseudo'><a class='userlink' href='user/".$value['pseudo']."/'>".$value['pseudo']."</a></p>";
+                    echo    "<p class='date'> ".date('d/m/Y G:i', strtotime($value['date']))."</p>";
+                    echo    "<p class='contenu'>".$value['contenu']."</p>";
+                    echo    "<div class='btns'>";
+                    if(isset($_SESSION['AUTH'])) {
+                        if($_SESSION['RANK'] == 5) {
+                            echo    "<button class='del_btn'>Supprimer ♥</button>";
                         }
                     }
-                }                    
+                    echo        "<button onclick='replyComment(".$value['id'].",$count)' class='rep_btn'>Répondre</button>";
+                    echo    "</div>";
+                    echo "</div>";
+                    $count++;
+                    # Et on affiche ses réponses                        
+                    $keys = array_keys($answers, $value['id']);
+                    if(!empty($keys)) {
+                        foreach($keys as $key) {
+                            $default = urlencode('http://www.hostingpics.net/thumbs/16/63/21/mini_166321defaultavatar.jpg');
+                            echo "<div class='commentaire_reponse'>";
+                            echo    "<img class='avatar' src='http://www.gravatar.com/avatar/".$data2[$key]['gravatar']."?d=$default'/>";
+                            echo    "<p class='pseudo'><a class='userlink' href='user/".$data2[$key]['pseudo']."/'>".$data2[$key]['pseudo']."</a></p>";
+                            echo    "<p class='date'> ".date('d/m/Y G:i', strtotime($data2[$key]['date']))."</p>";
+                            echo    "<p class='contenu'>".$data2[$key]['contenu']."</p>";
+                            echo    "<div class='btns'>";
+                            if(isset($_SESSION['AUTH'])) {
+                                if($_SESSION['RANK'] == 5) {
+                                    echo    "<button class='del_btn'>Supprimer ♥</button>";
+                                }
+                            }
+                            echo    "</div>";
+                            echo "</div>";
+                        }
+                    }
+                }
             ?>
                     
         </div>
@@ -160,10 +162,18 @@
                 function replyComment(id, previous) {
                     var repzone = document.createElement('DIV');
                     repzone.className = "repzone";
-
+                    
+                    var textinrepzone = document.createElement('p');
+                    textinrepzone.innerHTML = 'Répondez à ce commentaire...';
+                    textinrepzone.className = 'textinrepzone';   
+                    
+                    var reptextabout = document.createElement('p');
+                    reptextabout.innerHTML = "Vous devez être connecté pour répondre";
+                    reptextabout.className = 'reptextabout';
+                    
                     var reptextarea = document.createElement("textarea");
                     reptextarea.className = "reptextarea";
-
+                    
                     var sendrep_btn = document.createElement("button");
                     sendrep_btn.className = "sendrep_btn";
                     sendrep_btn.innerHTML = "Répondre";
@@ -171,8 +181,11 @@
                     
                     var commentaires = document.getElementById("commentaires");
                     
+                    
+                    repzone.appendChild(textinrepzone);
                     repzone.appendChild(reptextarea);
                     repzone.appendChild(sendrep_btn);
+                    repzone.appendChild(reptextabout);
                     commentaires.insertBefore(repzone, document.querySelectorAll('.commentaire')[1+previous]);
                 }
                 

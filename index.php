@@ -100,6 +100,10 @@ if(!isset($_SESSION['AUTH'])) {
                 <a href="logout.php">Déconnexion</a>
             </div>
         <?php endif ?>
+    
+        <div id="slide">
+            
+        </div>
         <section id="articles">
             <?php
             if(!isset($_GET['cache'])) {
