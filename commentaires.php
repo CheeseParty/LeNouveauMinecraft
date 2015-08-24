@@ -160,6 +160,11 @@
                 }
 
                 function replyComment(id, previous) {
+                    var input = document.createElement('input');
+                    input.type = "hidden";
+                    input.name = "answer_to";
+                    input.value = id;
+                    
                     var repzone = document.createElement('DIV');
                     repzone.className = "repzone";
                     
@@ -183,6 +188,7 @@
                     
                     
                     repzone.appendChild(textinrepzone);
+                    repzone.appendChild(input);
                     repzone.appendChild(reptextarea);
                     repzone.appendChild(sendrep_btn);
                     repzone.appendChild(reptextabout);
@@ -201,6 +207,7 @@
 
                         postrep.open("POST","replycomment.php",true);
                         postrep.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                        postrep.send("contenu="+rep);             
                         postrep.send("answer_to="+id);             
                     }            
                 }

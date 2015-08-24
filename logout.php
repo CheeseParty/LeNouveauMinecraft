@@ -4,7 +4,7 @@
 session_start();
 session_unset();
 session_destroy();
-setcookie('AUTH', $_COOKIE['AUTH'], 1);
-setcookie('HASH', $_COOKIE['HASH'], 1);
+setcookie('AUTH', null, -1);
+setcookie('HASH', null, -1);
 header("Location: index.php");
 exit;

@@ -15,7 +15,6 @@ if(isset($_SESSION['AUTH'])) {
         ));
         
     }
-    header('Location: commentaires.php?posted=true');
         
 }
 ?>
