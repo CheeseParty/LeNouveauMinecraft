@@ -27,8 +27,8 @@ if(!isset($_SESSION['AUTH'])) {
             }
         } else {
             // Sinon on destroy les cookies
-            setcookie('AUTH', $_COOKIE['AUTH'], -1);
-            setcookie('HASH', $_COOKIE['HASH'], -1);
+            setcookie('AUTH', null, -1);
+            setcookie('HASH', null, -1);
         }
     }
 }
@@ -44,15 +44,10 @@ if(!isset($_SESSION['AUTH'])) {
         <!-- Favicons -->
         <?php require('includes/favicons.php'); ?>
         <!-- Métadonnées pour SEO -->
-        <?php if(isset($_SESSION['AUTH'])): ?>
+        <?php if(!isset($_SESSION['AUTH'])): ?>
         <style>
             #title {
-                width: calc(100% - 331px);
-            }
-            @media screen and (max-width: 1000px) {
-                #title {
-                    width: calc(100% - 180px);
-                }
+                width: calc(100% - 96px);
             }
         </style>
         <?php endif ?>
@@ -69,9 +64,9 @@ if(!isset($_SESSION['AUTH'])) {
                     <a id="title" href="index.php"><h1><span>Nether News</span></h1></a>
                     <?php if(isset($_SESSION['AUTH'])): ?>
                     <a id="notif" onclick="toggleNotif()"><img src="notification.svg"><span></span></a>
-                        <a class="login" onclick="toggleProfile()"><img src="usercommentaire.svg"><span><?=$_SESSION['AUTH']?></span></a>
+                        <a class="login" onclick="toggleProfile()"><img src="usercommentaire.svg"></a>
                     <?php else: ?>
-                        <a class="login" href="login.php"><img src="login.svg"><span>Connexion | Inscription</span></a>
+                        <a class="login" href="login.php"><img src="login.svg"></a>
                     <?php endif ?>
                     </a>
                 </div>
@@ -87,9 +82,10 @@ if(!isset($_SESSION['AUTH'])) {
             <a href="shaders/">Shaders</a>
             <a href="cheats/">Cheats</a>
         </div>
-    <div id="notifs" class="dropdown"><div>NOTIFICATIONS</div></div>
+    <div id="notifs" class="dropdown"><div>Notifications</div></div>
         <?php if(isset($_SESSION['AUTH'])): ?>
             <div id="profile" class="dropdown">
+                <div><?=$_SESSION['AUTH']?></div>
                 <a href="user/<?=$_SESSION['AUTH']?>/">
                     <img src="http://www.gravatar.com/avatar/<?=$_SESSION['MD5']?>?s=250">
                     Mon compte
@@ -202,23 +198,40 @@ if(!isset($_SESSION['AUTH'])) {
                 profile.style.right = "-320px";
                 profile_shown = false;
             }
-            
-            /*var xhr;
-            if(window.XMLHttpRequest) {
-                xhr = new XMLHttpRequest();
-            } else {
-                xhr = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            xhr.onreadystatechange = function() {
-                if(xhr.readyState == 4 && xhr.status == 200) {
-                    if(xhr.responseText == true) {
-                        var span = document.createElement("span");
-                        notif.appendChild(span);
-                    }
+            if(!notifs_loaded) {
+                // Enlève le point d'alerte
+                red_dot.style.opacity = 0;
+                // Va chercher et affiche les notifications
+                var xhr;
+                if(window.XMLHttpRequest) {
+                    xhr = new XMLHttpRequest();
+                } else {
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
                 }
+                xhr.onreadystatechange = function() {
+                    if(xhr.readyState == 4 && xhr.status == 200) {
+                        notifs_loaded = true;
+                        var json = JSON.parse(xhr.responseText);
+                        for(var i = 0; i < json.length; i++) {
+                            var a = document.createElement("a");
+                            a.href = json[i].lien;
+                            a.innerHTML = json[i].objet;
+                            notifs.appendChild(a);
+                        }
+                    }
+                };
+                xhr.open("GET","get_notifs.php",true);
+                xhr.send();
+                // Définis les notifications comme "lues"
+                var xhr2;
+                if(window.XMLHttpRequest) {
+                    xhr2 = new XMLHttpRequest();
+                } else {
+                    xhr2 = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xhr2.open("GET","notifs_read.php",true);
+                xhr2.send();
             }
-            xhr.open("GET","get_notifs.php",true);
-            xhr.send();*/
         }
             
         // Fait bouger la clochette de notifications
@@ -231,7 +244,8 @@ if(!isset($_SESSION['AUTH'])) {
                 red_dot.style.opacity = 1;
             }, 1000);
         }
-            
+
+        // Au chargement de la page
         document.body.onload = function() {
             // Variables du burger et du menu
             menu = document.getElementById("menu");
@@ -241,6 +255,7 @@ if(!isset($_SESSION['AUTH'])) {
             if(logged) {
                 profile = document.getElementById("profile");
                 profile_shown = false;
+                notifs_loaded = false;
                 notif = document.getElementById("notif");
                 notifs_shown = false;
                 notifs = document.getElementById("notifs");
@@ -259,12 +274,11 @@ if(!isset($_SESSION['AUTH'])) {
                             blinkNotif();
                         }
                     }
-                }
+                };
                 xhr.open("GET","check_notif.php",true);
                 xhr.send();
             }
-        }
-            
+        };
         </script>
     </body>
 </html>

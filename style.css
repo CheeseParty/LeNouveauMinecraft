@@ -69,17 +69,15 @@ header a {
 
 #notif {
     background: #2ECC71;
-    color: #fff;
     cursor: pointer;
     margin-right: 7px;
     position: relative;
 }
 
 #notif img {
-    width: 50px;
+    width: 35px;
     display: block;
-    padding: 7px;
-    transition: .2s linear;
+    padding: 10px;
 }
 
 #notif span {
@@ -96,19 +94,18 @@ header a {
 
 .login {
     background: #2ECC71;
-    padding: 10px 15px;
     color: #fff;
     cursor: pointer;
-    width: 185px;
-    text-align: center;
 }
 
 .login img {
-    display: none;
+    width: 35px;
+    display: block;
+    padding: 10px;
 }
 
 #title {
-    width: calc(100% - 257px);
+    width: calc(100% - 162px);
     padding-left: 8px;
 }
 
@@ -184,7 +181,7 @@ h1 {
     transition: transform .3s ease;
 }
 
-#profile a:nth-child(2) {
+#profile a:nth-child(3) {
     background-color: #525252;
 }
 
@@ -205,9 +202,18 @@ h1 {
     transition: right .3s cubic-bezier(.35,.93,.54,.99);
 }
 
+#notifs a {
+    border-bottom: 1px solid #4BE48B;
+    font-size: 14pt;
+    text-align: left;
+}
+
+#profile div:first-of-type,
 #notifs div:first-of-type {
-    margin: 10px;
-    background: #ddd;
+    padding: 10px 0;
+    font-size: 18pt;
+    background: #2EA962;
+    color: #fff;
 }
 
 .dropdown {
@@ -228,12 +234,13 @@ h1 {
 
 /* Slide */
 #slide {
-    width:80%;
-    max-width: 1000px;
-    background-color: black;
+    width: 86.8%;
+    max-width: 1400px;
+    background-color: #D2D2D2;
     height: 300px;
-    margin:90px auto 0 auto;
+    margin: 105px auto 0 auto;
 }
+
 /* Articles */
 #articles {
     width: 90%;
@@ -350,23 +357,9 @@ footer span {
     #title {
         width: calc(100% - 180px);
     }
-
-    .login {
-        padding: 7px;
-        width: 50px;
-    }
-    
-    .login span {
-        display: none;
-    }
-    
-    .login img {
-        display: block;
-        width: 50px;
-    }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
     h1 span {
         display: none;
     }
