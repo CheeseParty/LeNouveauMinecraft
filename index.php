@@ -38,6 +38,7 @@ if(!isset($_SESSION['AUTH'])) {
     <head>
         <meta charset="utf-8">
         <title>Nether News - News sur le jeu de type "sandbox"</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
         <link href='http://fonts.googleapis.com/css?family=Merriweather:700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
