@@ -359,6 +359,12 @@ footer span {
     }
 }
 
+@media screen and (max-width: 750px) {
+    article {
+        font-size: 2.6vw;
+    }
+}
+
 @media screen and (max-width: 500px) {
     h1 span {
         display: none;
