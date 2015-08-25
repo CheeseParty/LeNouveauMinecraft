@@ -39,7 +39,7 @@ if(!isset($_SESSION['AUTH'])) {
         <meta charset="utf-8">
         <title>Nether News - News sur le jeu de type "sandbox"</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../style.css">
         <link href='http://fonts.googleapis.com/css?family=Merriweather:700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
         <!-- Favicons -->
@@ -62,12 +62,12 @@ if(!isset($_SESSION['AUTH'])) {
                         <span></span>
                         <span></span>
                     </div>
-                    <a id="title" href="index.php"><h1><span>Nether News</span></h1></a>
+                    <a id="title" href="../"><h1><span>Nether News</span></h1></a>
                     <?php if(isset($_SESSION['AUTH'])): ?>
-                    <a id="notif" onclick="toggleNotif()"><img src="notification.svg"><span></span></a>
-                        <a class="login" onclick="toggleProfile()"><img src="usercommentaire.svg"></a>
+                    <a id="notif" onclick="toggleNotif()"><img src="../notification.svg"><span></span></a>
+                        <a class="login" onclick="toggleProfile()"><img src="../usercommentaire.svg"></a>
                     <?php else: ?>
-                        <a class="login" href="login.php"><img src="login.svg"></a>
+                        <a class="login" href="../login.php"><img src="../login.svg"></a>
                     <?php endif ?>
                     </a>
                 </div>
@@ -76,14 +76,14 @@ if(!isset($_SESSION['AUTH'])) {
         <div id="menu" class="dropdown">
             <div>Menu</div>
             <div id="menu_list">
-                <a href="maps/">Maps</a>
-                <a href="mods/">Mods</a>
-                <a href="versions/">Versions</a>
-                <a href="plugins/">Plugins</a>
-                <a href="textures/">Textures</a>
-                <a href="shaders/">Shaders</a>
-                <a href="cheats/">Cheats</a>
-                <a href="divers/">Divers</a>
+                <a href="../maps/">Maps</a>
+                <a href="../mods/">Mods</a>
+                <a href="../versions/">Versions</a>
+                <a href="../plugins/">Plugins</a>
+                <a href="../textures/">Textures</a>
+                <a href="../shaders/">Shaders</a>
+                <a href="../cheats/">Cheats</a>
+                <a href="../divers/">Divers</a>
             </div>
         </div>
     <div id="notifs" class="dropdown">
@@ -94,12 +94,12 @@ if(!isset($_SESSION['AUTH'])) {
             <div id="profile" class="dropdown">
                 <div><?=$_SESSION['AUTH']?></div>
                 <div id="profile_list">
-                    <a href="user/<?=$_SESSION['AUTH']?>/">
+                    <a href="../user/<?=$_SESSION['AUTH']?>/">
                         <img src="http://www.gravatar.com/avatar/<?=$_SESSION['MD5']?>?s=250">
                         Mon compte
                     </a>
                     <?php if($_SESSION['RANK'] > 1): ?>
-                        <a class="redaction" href="write.php">Rédaction</a>
+                        <a class="redaction" href="../write.php">Rédaction</a>
                     <?php endif ?>
                     <a href="logout.php">Déconnexion</a>
                 </div>
@@ -111,7 +111,47 @@ if(!isset($_SESSION['AUTH'])) {
         </div>
         <section id="articles">
             <?php
+            if(!isset($_GET['cache'])) {
                 include('cache/index.php');
+            } else {
+                switch($_GET['cache']) {
+                    case 'maps':
+                        include('cache/map.php');
+                        break;
+
+                    case 'mods':
+                        include('cache/mod.php');
+                        break;
+
+                    case 'versions':
+                        include('cache/version.php');
+                        break;
+
+                    case 'plugins':
+                        include('cache/plugin.php');
+                        break;
+
+                    case 'textures':
+                        include('cache/texture.php');
+                        break;
+
+                    case 'shaders':
+                        include('cache/shader.php');
+                        break;
+
+                    case 'cheats':
+                        include('cache/cheat.php');
+                        break;
+                        
+                    case 'divers':
+                        include('cache/divers.php');
+                        break;
+
+                    default:
+                        header('Location: ../');
+                        break;
+                }
+            }
             ?>
         </section>
         <footer>
@@ -241,7 +281,7 @@ if(!isset($_SESSION['AUTH'])) {
                         }
                     }
                 };
-                xhr.open("GET","get_notifs.php",true);
+                xhr.open("GET","../get_notifs.php",true);
                 xhr.send();
                 // Définis les notifications comme "lues"
                 var xhr2;
@@ -250,7 +290,7 @@ if(!isset($_SESSION['AUTH'])) {
                 } else {
                     xhr2 = new ActiveXObject("Microsoft.XMLHTTP");
                 }
-                xhr2.open("GET","notifs_read.php",true);
+                xhr2.open("GET","../notifs_read.php",true);
                 xhr2.send();
             }
         }
@@ -299,7 +339,7 @@ if(!isset($_SESSION['AUTH'])) {
                         }
                     }
                 };
-                xhr.open("GET","check_notif.php",true);
+                xhr.open("GET","../check_notif.php",true);
                 xhr.send();
             }
         };

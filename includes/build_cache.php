@@ -109,7 +109,7 @@ switch($_POST['categorie']) {
 while($data = $select -> fetch()) {   
 ?>
     <article class="<?=$categorie?>">
-        <a href="articles/<?=$data['id']?>/" style="background:url('upload/full/<?=$data['thumbnail']?>') no-repeat;background-size:cover">
+        <a href="../articles/<?=$data['id']?>/" style="background:url('../upload/full/<?=$data['thumbnail']?>') no-repeat;background-size:cover">
             <h2><?=$categorie?> :&nbsp;
                 <span><?=$data['titre']?></span>
             </h2>
@@ -127,6 +127,27 @@ $select -> closeCursor();
 
 # Ouverture du fichier de cache principal
 $cache = fopen('cache/'.$categorie.'.php', 'w');
+fwrite($cache, ob_get_contents());
+fclose($cache);
+
+# Termine la temporisation et vide le tampon
+ob_end_clean();
+
+# Génération du cache de l'article
+ob_start();
+?>
+
+<h2><?=$_POST['titre']?></h2>
+<p><?=$_POST['contenu']?></p>
+<span>
+    Par
+    <a href="../../user/<?=$_SESSION['AUTH']?>/"><?=$_SESSION['AUTH']?></a>, 
+    le <?=date('d.m.Y à H:i')?>
+</span>
+
+<?php
+# Ouverture du fichier de cache de l'article et inscription du tampon
+$cache = fopen('cache/articles/'.$id.'.php', 'w');
 fwrite($cache, ob_get_contents());
 fclose($cache);
 

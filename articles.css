@@ -1,0 +1,45 @@
+section {
+    padding-top: 75px;
+    max-width: 1000px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+h2 {
+    font-family: "Merriweather";
+    margin-bottom: 0;
+    font-size: 27pt;
+}
+
+span:last-of-type {
+    font-size: 12pt;
+    color: #4E4E4E;
+}
+
+span:last-of-type a {
+    text-decoration: none;
+    color: #4E4E4E;
+    border-bottom: 1px solid #929292;
+}
+
+p {
+    margin: .5em 0 1.5em;
+    text-align: justify;
+    font-size: 16pt;
+    line-height: 1.4;
+}
+
+#title {
+    width: 100%;
+    text-align: center;
+}
+
+footer {
+    color: #525252;
+    background: #EFEFEF;
+}
+
+footer div {
+    color: #27AE60;
+    text-shadow: 5px 0 #197F44;
+}

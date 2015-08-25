@@ -92,6 +92,7 @@ elseif(isset($_POST['mode']) AND $_POST['mode'] == "publish") {
                 'publication' => date('Y-m-d G:i:s'),
                 'id' => $_POST['id']
             ));
+            $id = $_POST['id'];
             
             # S'il y a eu un changement, on met à jour le cache
             if($update -> rowCount() > 0) {
@@ -112,6 +113,7 @@ elseif(isset($_POST['mode']) AND $_POST['mode'] == "publish") {
                 'id' => $_POST['id'],
                 'auteur' => $_SESSION['AUTH']
             ));
+            $id = $_POST['id'];
             
             # S'il y a eu un changement, on met à jour le cache
             if($update -> rowCount() > 0) {
@@ -145,6 +147,7 @@ elseif(isset($_POST['mode']) AND $_POST['mode'] == "publish") {
                 'thumbnail' => $_POST['thumbnail'],
                 'version' => $_POST['version']
             ));
+            $id = $db -> lastInsertId();
             
             # S'il y a eu un changement, on met à jour le cache
             if($insert -> rowCount() > 0) {

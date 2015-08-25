@@ -1,5 +1,5 @@
     <article class="version">
-        <a href="" style="background:url('upload/full/1.jpg') no-repeat;background-size:cover">
+        <a href="../articles/1/" style="background:url('../upload/full/2.jpg') no-repeat;background-size:cover">
             <h2>version :&nbsp;
                 <span>Elle est si grosse!</span>
             </h2>
@@ -7,7 +7,7 @@
     </article>
 
     <article class="version">
-        <a href="" style="background:url('upload/full/3.jpg') no-repeat;background-size:cover">
+        <a href="../articles/3/" style="background:url('../upload/full/5.jpg') no-repeat;background-size:cover">
             <h2>version :&nbsp;
                 <span>Elle est si large!</span>
             </h2>
@@ -15,11 +15,11 @@
     </article>
 
     <article class="version">
-        <a href="" style="background:url('upload/full/6.jpg') no-repeat;background-size:cover">
+        <a href="../articles/12/" style="background:url('../upload/full/4.jpg') no-repeat;background-size:cover">
             <h2>version :&nbsp;
-                <span>Man Vs Wild</span>
+                <span>Hello World</span>
             </h2>
-                            <span>1.5</span>
+                            <span>1.5.7</span>
                     </a>
     </article>
 
