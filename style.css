@@ -331,11 +331,12 @@ footer {
     background: #525252;
     text-align: center;
     font-size: 13pt;
-    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
     padding: 25px 0;
+    position:absolute;
+    margin-top:50px;
 }
 
 footer div {

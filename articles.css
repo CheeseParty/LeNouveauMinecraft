@@ -37,9 +37,12 @@ p {
 footer {
     color: #525252;
     background: #EFEFEF;
+    margin-top:60px;
+    position:static;
 }
 
 footer div {
+    
     color: #27AE60;
     text-shadow: 5px 0 #197F44;
 }

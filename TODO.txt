@@ -61,3 +61,8 @@ Aussi utiliser cette procédure de reconnexion sur les pages seulement accessibl
 aux utilisateurs connectés fréquemment visitées. (login.php, write.php, autre?)
 
 Faire un systeme de commentaires sur les articles
+
+Finir commentaires : réponse & supprimer
+Intégrer commentaire dans article
+Rédiger tuto gravatar + installer map, mod, shader
+slide

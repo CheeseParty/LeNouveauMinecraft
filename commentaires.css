@@ -1,8 +1,4 @@
-body {
-    margin: 0;
-    background:#f9f9f9;
-   
-}
+
 #commentaires, #postcommentaire {
     width:1000px;
     margin:0 auto;
@@ -114,6 +110,7 @@ textarea:focus {
     width:100%;
     text-align:right;
     margin-top:-10px;
+    
 }
 .rep_btn, .del_btn {
     display:inline-block;
@@ -130,6 +127,7 @@ textarea:focus {
 .del_btn {
     margin-right:15px;
     background-color:#A83E94;
+    border: 1px solid #A83E94;
 }
 
 .del_btn:hover {
@@ -139,12 +137,15 @@ textarea:focus {
 }
 .rep_btn {
     background-color:#778172;
+    border: 1px solid #778172;
+    
 }
 
 .rep_btn:hover {
     background-color:#fff;
     border:1px solid #329609;
     color:#329609;
+    
 }
 
 .reptextarea {
