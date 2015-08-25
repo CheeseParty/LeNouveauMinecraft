@@ -28,6 +28,10 @@ session_start();
                     echo "<a href='../../'>Retourner à l'accueil</a>";
                 }
             ?>
+            <br><br>
+            <?php
+                include('commentaires.php');
+            ?>
         </section>
         <footer>
             <div>N</div>
