@@ -240,10 +240,15 @@ h1 {
 
 /* Slide */
 #slide {
-    width: 86.8%;
-    max-width: 1400px;
-    background-color: #D2D2D2;
-    height: 300px;
+    width: calc(86.8% - 60px);
+    max-width: 1295px;
+    text-align: justify;
+    line-height: 1.4;
+    font-size: 14pt;
+    font-family: "Merriweather";
+    padding: 30px;
+    color: #fff;
+    background: #33BB6C;
     margin: 105px auto 0 auto;
 }
 
@@ -349,7 +354,7 @@ footer span {
 @media screen and (max-width: 1000px) {
     #header-container,
     #slide {
-        width: 90%;
+        width: calc(90% - 60px);
     }
 
     #header-inner {
@@ -366,9 +371,9 @@ footer span {
     }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 600px) {
     article {
-        font-size: 2.6vw;
+        font-size: 3.3vw;
     }
 }
 

@@ -107,7 +107,7 @@ if(!isset($_SESSION['AUTH'])) {
         <?php endif ?>
     
         <div id="slide">
-            
+            Bonjour et bienvenue sur Nether News! Notre site est en construction, mais nous ne vous retenons pas de lire nos articles. <br>Installez-vous confortablement : de longues heures de lecture vous attendent.
         </div>
         <section id="articles">
             <?php
