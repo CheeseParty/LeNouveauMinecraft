@@ -12,7 +12,7 @@ if(isset($_SESSION['AUTH'])) {
         $insertrep = $db -> prepare('INSERT INTO commentaires (id, idarticle, pseudo, contenu, date, gravatar, answer_to) VALUES (:id, :idarticle, :pseudo, :contenu, :date, :gravatar, :answer_to)');
         $insertrep -> execute(array(
             'id' => '',
-            'idarticle' => '',
+            'idarticle' => $_POST['idarticle'],
             'pseudo' => $_SESSION['AUTH'],
             'contenu' => $_POST['contenu'],
             'date' => date('Y/m/d G:i:s'),

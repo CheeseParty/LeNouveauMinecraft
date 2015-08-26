@@ -263,7 +263,7 @@
             <script type="text/javascript">
                 
                 // Afficher un commentaire
-                function insertComment() {
+                function insertComment(id) {
                     var commentairediv = document.createElement("DIV");
                     commentairediv.className = 'commentaire';
 
@@ -295,7 +295,7 @@
                         var delbtn = document.createElement("button");
                         delbtn.className = "del_btn";
                         delbtn.innerHTML = "Supprimer ♥";
-                        //delbtn.setAttribute("onclick", "delcommentPopup("+id+")");
+                        delbtn.setAttribute("onclick", "delcommentPopup("+id+")");
                         btns.appendChild(delbtn); 
                     }
 
@@ -316,7 +316,6 @@
                 
                 // Envoyer un commentaire à la bdd
                 function postComment() {
-                    console.log(articleget);
                     var comment = document.getElementsByName('commentaire')[0].value;
                     if(comment !== "") {
                         var postcomment;
@@ -326,10 +325,12 @@
                             postcomment = ActiveXObject('Microsoft.XMLHTTP');
                         }
 
-                        postcomment.open("POST","\\lenouveauminecraft/postacomment.php",true);
+                        postcomment.open("POST","../../postacomment.php",true);
                         postcomment.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                         postcomment.send("idarticle="+articleget+"&contenu="+comment);
-                        document.getElementById("commentaires").insertBefore(insertComment(), document.querySelector('.commentaire:first-child'));                     
+                        document.getElementById("commentaires").insertBefore(insertComment(), document.querySelector('.commentaire:first-child')); 
+                        
+                        
                     }            
                 }
                     var exists = false;
@@ -359,7 +360,7 @@
                             var sendrep_btn = document.createElement("button");
                             sendrep_btn.className = "sendrep_btn";
                             sendrep_btn.innerHTML = "Répondre";
-                            sendrep_btn.setAttribute("onclick","postReply("+previous+")");
+                            sendrep_btn.setAttribute("onclick","postReply("+id+")");
 
                             var commentaires = document.getElementById("commentaires");
 
@@ -374,7 +375,7 @@
                 }
                 
                 // Envoyer une réponse de commentaire à la bdd & creer une div de réponse
-                function postReply(previous) {
+                function postReply(id, previous) {
                     var rep = document.getElementsByClassName('reptextarea')[0].value;
                     var id = document.getElementsByName('answer_to')[0].value;
                     var commentaires = document.getElementById("commentaires");
@@ -388,9 +389,9 @@
                             postrep = ActiveXObject('Microsoft.XMLHTTP');
                         }
                         
-                        postrep.open("POST","replycomment.php",true);
+                        postrep.open("POST","../../replycomment.php",true);
                         postrep.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-                        postrep.send("contenu="+rep+"&answer_to="+id);                         
+                        postrep.send("contenu="+rep+"&answer_to="+id+"&idarticle="+articleget);                         
                     
                         var repdiv = document.createElement("DIV");
                         repdiv.className = 'commentaire_reponse';
@@ -423,7 +424,7 @@
                             var delbtn = document.createElement("button");
                             delbtn.className = "del_btn";
                             delbtn.innerHTML = "Supprimer ♥";
-                            //delbtn.setAttribute("onclick", "delcommentPopup("+id+")");
+                            delbtn.setAttribute("onclick", "delcommentPopup("+id+")");
                             btns.appendChild(delbtn); 
                             
                         }
@@ -440,13 +441,13 @@
                         exists = false;
                     }
                 } 
-                    
+                // Supprimer un commentaire        
                function delcommentPopup(id) {
                     var input = document.createElement('input');
                     input.type = "hidden";
                     input.name = "id";
                     input.value = id;
-                    
+                   
                    var confirmbox = confirm('Voulez vous vraiment supprimer ce commentaire ?');
                     if(confirmbox == true) {
                         var delcomment;
@@ -456,7 +457,7 @@
                             delcomment = ActiveXObject('Microsoft.XMLHTTP');
                         }
                        
-                        delcomment.open("POST","delcomment.php",true);
+                        delcomment.open("POST","../../delcomment.php",true);
                         delcomment.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                         delcomment.send("id="+id); 
                         
